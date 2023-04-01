@@ -7,19 +7,19 @@ export const Aside: React.FC = () => {
         <aside className={styles.root}>
             <ul className={styles.items}>
                 <li className={styles.item}>
-                    <a className={styles.link} href="#">Profile</a>
+                    <a className={styles.link} href="src/components#">Profile</a>
                 </li>
                 <li className={styles.item}>
-                    <a className={styles.link} href="#">Messages</a>
+                    <a className={styles.link} href="src/components#">Messages</a>
                 </li>
                 <li className={styles.item}>
-                    <a className={styles.link} href="#">News</a>
+                    <a className={styles.link} href="src/components#">News</a>
                 </li>
                 <li className={styles.item}>
-                    <a className={styles.link} href="#">Music</a>
+                    <a className={styles.link} href="src/components#">Music</a>
                 </li>
                 <li className={styles.item}>
-                    <a className={styles.link} href="#">Settings</a>
+                    <a className={styles.link} href="src/components#">Settings</a>
                 </li>
             </ul>
         </aside>

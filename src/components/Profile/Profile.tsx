@@ -2,7 +2,9 @@ import React from 'react';
 
 import styles from './Profile.module.css';
 
-import profileBackground from '../assets/images/profile-background.png';
+import profileBackground from '../../assets/images/profile-background.png';
+
+import {Posts} from './Posts/Posts';
 
 
 export const Profile: React.FC = () => {
@@ -11,12 +13,7 @@ export const Profile: React.FC = () => {
             <div className={styles.profile}>
                 <img src={profileBackground} alt="profile-background"/>
                 <div>avatar + descr</div>
-                <div>My posts</div>
-                <div>New post</div>
-                <div className={styles.items}>
-                    <div className={styles.item}>Post1</div>
-                    <div className={styles.item}>Post2</div>
-                </div>
+                <Posts/>
             </div>
         </main>
     )
