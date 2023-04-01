@@ -1,46 +1,18 @@
 import React from 'react';
 import './App.css';
 
-import logo from './assets/images/logo.svg'
-import profileBackground from './assets/images/profile-background.png'
+import {Header} from './components/Header';
+import {Aside} from './components/Aside';
+import {Profile} from './components/Profile';
 
 
 const App = () => {
     return (
         <div className="app-wrapper">
-            <header className="header">
-                <img src={logo} alt="logo"/>
-            </header>
+            <Header/>
             <div className="container">
-                <aside className="aside">
-                    <ul className="navigation__items">
-                        <li className="navigation__item">
-                            <a className="navigation__link" href="#">Profile</a>
-                        </li>
-                        <li className="navigation__item">
-                            <a className="navigation__link" href="#">Messages</a>
-                        </li>
-                        <li className="navigation__item">
-                            <a className="navigation__link" href="#">News</a>
-                        </li>
-                        <li className="navigation__item">
-                            <a className="navigation__link" href="#">Music</a>
-                        </li>
-                        <li className="navigation__item">
-                            <a className="navigation__link" href="#">Settings</a>
-                        </li>
-                    </ul>
-                </aside>
-                <main className="main">
-                    <img src={profileBackground} alt="profile-background"/>
-                    <div>avatar + descr</div>
-                    <div>My posts</div>
-                    <div>New post</div>
-                    <div>
-                        <div>Post1</div>
-                        <div>Post2</div>
-                    </div>
-                </main>
+                <Aside/>
+                <Profile/>
             </div>
         </div>
     );
