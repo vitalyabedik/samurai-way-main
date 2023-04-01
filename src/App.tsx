@@ -1,16 +1,17 @@
 import React from 'react';
-import './App.css';
+
+import styles from './App.module.css';
 
 import {Header} from './components/Header';
 import {Aside} from './components/Aside';
 import {Profile} from './components/Profile';
 
 
-const App = () => {
+const App: React.FC = () => {
     return (
-        <div className="app-wrapper">
+        <div className={styles.root}>
             <Header/>
-            <div className="container">
+            <div className={styles.container}>
                 <Aside/>
                 <Profile/>
             </div>
