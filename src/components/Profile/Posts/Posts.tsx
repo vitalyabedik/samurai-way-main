@@ -12,10 +12,8 @@ export const Posts: React.FC = () => {
                 <button>Add post</button>
             </div>
             <div className={styles.posts}>
-                <Post/>
-                <Post/>
-                <Post/>
-                <Post/>
+                <Post message="Hi, how are you?" likes={4}/>
+                <Post message={'It\'s my first post?'} likes={10}/>
             </div>
         </div>
     )

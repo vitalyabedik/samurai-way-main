@@ -2,11 +2,16 @@ import React from 'react';
 
 import styles from './Post.module.css';
 
-export const Post: React.FC = () => {
+type MessageProps = {
+    message: string
+    likes: number
+}
+
+export const Post: React.FC<MessageProps> = (props) => {
     return (
         <div className={styles.item}>
-            Post
-            <div><span>Like</span></div>
+            {props.message}
+            <div><span>{props.likes}</span></div>
         </div>
     )
 }
