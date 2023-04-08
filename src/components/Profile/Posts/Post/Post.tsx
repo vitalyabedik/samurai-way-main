@@ -9,7 +9,9 @@ export const Post = (props: MessageProps) => {
     return (
         <div className={styles.item}>
             {props.message}
-            <div><span>{props.likes}</span></div>
+            <div>
+                <span>{props.likes}</span>
+            </div>
         </div>
     )
 }
