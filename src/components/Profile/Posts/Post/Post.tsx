@@ -1,5 +1,3 @@
-import React from 'react';
-
 import styles from './Post.module.css';
 
 type MessageProps = {
@@ -7,7 +5,7 @@ type MessageProps = {
     likes: number
 }
 
-export const Post: React.FC<MessageProps> = (props) => {
+export const Post = (props: MessageProps) => {
     return (
         <div className={styles.item}>
             {props.message}

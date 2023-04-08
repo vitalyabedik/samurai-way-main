@@ -5,15 +5,17 @@ import styles from './App.module.css';
 import {Header} from './components/Header/Header';
 import {Aside} from './components/Aside/Aside';
 import {Profile} from './components/Profile/Profile';
+import {Dialogs} from './components/Dialogs/Dialogs';
 
 
-const App: React.FC = () => {
+const App = () => {
     return (
         <div className={styles.root}>
             <Header/>
             <div className={styles.container}>
                 <Aside/>
-                <Profile/>
+                {/*<Profile/>*/}
+                <Dialogs/>
             </div>
         </div>
     );

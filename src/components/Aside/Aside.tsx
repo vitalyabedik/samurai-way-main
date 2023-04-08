@@ -1,8 +1,6 @@
-import React from 'react';
-
 import styles from './Aside.module.css';
 
-export const Aside: React.FC = () => {
+export const Aside = () => {
     return (
         <aside className={styles.root}>
             <ul className={styles.items}>
