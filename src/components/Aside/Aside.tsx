@@ -1,3 +1,5 @@
+import {Link} from 'react-router-dom';
+
 import styles from './Aside.module.css';
 
 export const Aside = () => {
@@ -5,19 +7,19 @@ export const Aside = () => {
         <aside className={styles.root}>
             <ul className={styles.items}>
                 <li className={styles.item}>
-                    <a className={styles.link} href="src/components#">Profile</a>
+                    <Link to="/profile" className={styles.link}>Profile</Link>
                 </li>
                 <li className={styles.item}>
-                    <a className={styles.link} href="src/components#">Messages</a>
+                    <Link to="/messages" className={styles.link}>Messages</Link>
                 </li>
                 <li className={styles.item}>
-                    <a className={styles.link} href="src/components#">News</a>
+                    <Link to="/news" className={styles.link}>News</Link>
                 </li>
                 <li className={styles.item}>
-                    <a className={styles.link} href="src/components#">Music</a>
+                    <Link to="/music" className={styles.link}>Music</Link>
                 </li>
                 <li className={styles.item}>
-                    <a className={styles.link} href="src/components#">Settings</a>
+                    <Link to="/settings" className={styles.link}>Settings</Link>
                 </li>
             </ul>
         </aside>
