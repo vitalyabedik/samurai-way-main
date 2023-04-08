@@ -1,4 +1,4 @@
-import {Link} from 'react-router-dom';
+import {NavLink} from 'react-router-dom';
 
 import styles from './Aside.module.css';
 
@@ -7,19 +7,19 @@ export const Aside = () => {
         <aside className={styles.root}>
             <ul className={styles.items}>
                 <li className={styles.item}>
-                    <Link to="/profile" className={styles.link}>Profile</Link>
+                    <NavLink to="/profile" className={styles.link} activeClassName={styles.link_active}>Profile</NavLink>
                 </li>
                 <li className={styles.item}>
-                    <Link to="/messages" className={styles.link}>Messages</Link>
+                    <NavLink to="/messages" className={styles.link} activeClassName={styles.link_active}>Messages</NavLink>
                 </li>
                 <li className={styles.item}>
-                    <Link to="/news" className={styles.link}>News</Link>
+                    <NavLink to="/news" className={styles.link} activeClassName={styles.link_active}>News</NavLink>
                 </li>
                 <li className={styles.item}>
-                    <Link to="/music" className={styles.link}>Music</Link>
+                    <NavLink to="/music" className={styles.link} activeClassName={styles.link_active}>Music</NavLink>
                 </li>
                 <li className={styles.item}>
-                    <Link to="/settings" className={styles.link}>Settings</Link>
+                    <NavLink to="/settings" className={styles.link} activeClassName={styles.link_active}>Settings</NavLink>
                 </li>
             </ul>
         </aside>

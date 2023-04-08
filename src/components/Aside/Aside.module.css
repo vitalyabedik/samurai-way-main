@@ -2,3 +2,11 @@
     width: 290px;
     background-color: #F7F9FB;
 }
+
+.link {
+    color:red;
+}
+
+.link_active {
+    color:green;
+}
