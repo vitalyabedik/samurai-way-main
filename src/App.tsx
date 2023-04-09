@@ -18,13 +18,15 @@ const App = () => {
                 <Header/>
                 <div className={styles.container}>
                     <Aside/>
-                    <Switch>
-                        <Route path="/profile" component={Profile}/>
-                        <Route path="/messages" component={Dialogs}/>
-                        <Route path="/news" component={News}/>
-                        <Route path="/music" component={Music}/>
-                        <Route path="/settings" component={Settings}/>
-                    </Switch>
+                    <div className={styles.content}>
+                        <Switch>
+                            <Route path="/profile" component={Profile}/>
+                            <Route path="/messages" component={Dialogs}/>
+                            <Route path="/news" component={News}/>
+                            <Route path="/music" component={Music}/>
+                            <Route path="/settings" component={Settings}/>
+                        </Switch>
+                    </div>
                 </div>
             </div>
         </BrowserRouter>

@@ -20,7 +20,7 @@ export const Header = () => {
                     <div className={styles.searchIcon}>
                         <img src={iconSearch} alt="icon-search"/>
                     </div>
-                    <input className={styles.searchInput}/>
+                    <input className={styles.searchInput} placeholder='Search for Friends , music and more..'/>
                 </div>
         </header>
     )

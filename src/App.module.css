@@ -1,11 +1,14 @@
 .root {
   margin: 0 auto;
+  font-family:Inter, sans-serif;
 }
 
 .container {
-  max-width: 1440px;
   display: flex;
   background-color: #f9fafb;
 }
 
-
+.content {
+  width: 1000px;
+  margin: 0 auto;
+}
