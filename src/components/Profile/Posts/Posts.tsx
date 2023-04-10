@@ -2,10 +2,11 @@ import styles from './Posts.module.css';
 
 import {Post} from './Post/Post';
 
+
 export const Posts = () => {
     return (
-        <div className={styles.items}>
-            <div>
+        <div className={styles.timeline}>
+            <div className={styles.createPost}>
                 <textarea></textarea>
                 <button>Add post</button>
             </div>

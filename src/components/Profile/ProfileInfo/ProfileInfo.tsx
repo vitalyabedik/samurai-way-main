@@ -1,7 +1,7 @@
 import styles from './ProfileInfo.module.css';
 
 import profileCover from '../../../assets/images/profile/profile-cover.jpg';
-import avatar8 from '../../../assets/images/profile/avatar-8.jpg';
+import avatar8 from '../../../assets/images/profile/avatars/avatar-8.jpg';
 
 export const ProfileInfo = () => {
     return (

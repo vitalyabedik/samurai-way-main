@@ -1,6 +1,7 @@
 .root {
   margin: 0 auto;
   font-family:Inter, sans-serif;
+  font-size: 15px;
 }
 
 .container {
@@ -11,4 +12,10 @@
 .content {
   width: 1000px;
   margin: 0 auto;
+}
+
+h4 {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  font-weight: 600;
 }
