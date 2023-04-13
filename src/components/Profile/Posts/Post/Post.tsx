@@ -1,16 +1,14 @@
 import styles from './Post.module.css';
 
-type MessageProps = {
-    message: string
-    likes: number
-}
+import {MessageType} from '../Posts';
 
-export const Post = (props: MessageProps) => {
+
+export const Post = (props: MessageType) => {
     return (
         <div className={styles.item}>
             {props.message}
             <div>
-                <span>{props.likes}</span>
+                <span>{props.likesCount}</span>
             </div>
         </div>
     )

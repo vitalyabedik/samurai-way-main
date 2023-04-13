@@ -2,14 +2,18 @@ import styles from './Posts.module.css';
 
 import {Post} from './Post/Post';
 
+export type MessageType = {
+    message: string
+    likesCount: number
+}
 
-export const Posts = () => {
-    const posts = [
-        {id: 1, message: 'Hi, how are you?', likesCount: 4},
-        {id: 2, message: 'It\'s my first post?', likesCount: 10},
-    ]
+type PropsType = {
+    posts: Array<MessageType>
+}
 
-    const postsElements = posts.map(post => <Post message={post.message} likes={post.likesCount}/>)
+export const Posts = (props: PropsType) => {
+
+    const postsElements = props.posts.map(post => <Post message={post.message} likesCount={post.likesCount}/>)
 
     return (
         <div className={styles.timeline}>
