@@ -1,9 +1,8 @@
 import styles from './Post.module.css';
 
-import {MessageType} from '../Posts';
+import {PostType} from '../../../../index';
 
-
-export const Post = (props: MessageType) => {
+export const Post = (props: PostType) => {
     return (
         <div className={styles.item}>
             {props.message}

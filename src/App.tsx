@@ -10,8 +10,16 @@ import {Dialogs} from './components/Dialogs/Dialogs';
 import {Music} from './components/Music/Music';
 import {News} from './components/News/News';
 import {Settings} from './components/Settings/Settings';
+import {DialogsType, MessagesType, PostsType, UsersType} from './index';
 
-const App = () => {
+type PropsType = {
+    posts: PostsType
+    users: UsersType
+    dialogs: DialogsType
+    messages: MessagesType
+}
+
+export const App = (props: PropsType) => {
     return (
         <BrowserRouter>
             <div className={styles.root}>
@@ -20,11 +28,15 @@ const App = () => {
                     <Aside/>
                     <div className={styles.content}>
                         <Switch>
-                            <Route path="/profile" component={Profile}/>
-                            <Route path="/messages" component={Dialogs}/>
-                            <Route path="/news" component={News}/>
-                            <Route path="/music" component={Music}/>
-                            <Route path="/settings" component={Settings}/>
+                            <Route path="/profile" render={() =>
+                                <Profile posts={props.posts} users={props.users}/>
+                            }/>
+                            <Route path="/messages" render={() =>
+                                <Dialogs dialogs={props.dialogs} messages={props.messages}/>
+                            }/>
+                            <Route path="/news" render={() => <News/>}/>
+                            <Route path="/music" render={() => <Music/>}/>
+                            <Route path="/settings" render={() => <Settings/>}/>
                         </Switch>
                     </div>
                 </div>
@@ -33,4 +45,4 @@ const App = () => {
     );
 }
 
-export default App;
+

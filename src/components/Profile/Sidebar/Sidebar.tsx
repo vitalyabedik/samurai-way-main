@@ -2,11 +2,16 @@ import styles from './Sidebar.module.css'
 
 import {About} from './About/About';
 import {Friends} from './Friends/Friends';
+import {UsersType} from '../../../index';
 
-export const Sidebar = () => {
+type PropsType = {
+    users: UsersType
+}
+
+export const Sidebar = (props: PropsType) => {
     return (
         <div className={styles.root}>
-            <About/>
+            <About users={props.users}/>
             <Friends/>
         </div>
     )

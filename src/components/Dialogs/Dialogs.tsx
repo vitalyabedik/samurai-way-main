@@ -2,44 +2,33 @@ import styles from './Dialogs.module.css'
 
 import {MessageItem} from './Message/Message';
 import {DialogItem} from './DialogItem/DialogItem';
+import {DialogsType, MessagesType} from '../../index';
 
-export const Dialogs = () => {
-    const dialogs = [
-        {id: 1, name: 'Dennis Han'},
-        {id: 2, name: 'Erica Jones'},
-        {id: 3, name: 'Alex Dolgove'},
-        {id: 4, name: 'Alex Dolgove'},
-        {id: 5, name: 'Stella Johnson'},
-        {id: 6, name: 'Alex Dolgove'},
-        {id: 7, name: 'Stella Johnson'},
-        {id: 8, name: 'Dennis Han'},
-    ]
+type PropsType = {
+    dialogs: DialogsType
+    messages: MessagesType
+}
 
-    const messages = [
-        {id: 1, message: 'Hi'},
-        {id: 2, message: 'Hello'},
-        {id: 3, message: 'How are you?'},
-        {id: 4, message: 'What happened?'},
-        {id: 5, message: 'How can i do it?'},
-        {id: 6, message: 'Yo'},
-        {id: 7, message: 'Hello'},
-        {id: 8, message: 'How are you?'},
-    ]
+export const Dialogs = (props: PropsType) => {
+    const dialogsElements = props.dialogs.map(dialog => {
+        return (
+            <DialogItem id={dialog.id} name={dialog.name}/>
+        )
+    })
 
-    const dialogsElements = dialogs.map(dialog => <DialogItem id={dialog.id} name={dialog.name}/>)
-    const messagesElements = messages.map(message => <MessageItem id={message.id} message={message.message}/>)
+    const messagesElements = props.messages.map(message => {
+        return (
+            <MessageItem id={message.id} message={message.message}/>
+        )
+    })
 
     return (
         <div className={styles.root}>
             <div className={styles.dialogs}>
-                <div className={styles.dialogs__items}>
-                    {dialogsElements}
-                </div>
+                <div className={styles.dialogs__items}>{dialogsElements}</div>
             </div>
             <div className={styles.messages}>
-                <div className={styles.messages__items}>
-                    {messagesElements}
-                </div>
+                <div className={styles.messages__items}>{messagesElements}</div>
             </div>
         </div>
     )
