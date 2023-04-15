@@ -1,6 +1,6 @@
 import styles from './Post.module.css';
 
-import {PostType} from '../../../../index';
+import {PostType} from '../../../../types/profilePage/profilePageTypes';
 
 export const Post = (props: PostType) => {
     return (

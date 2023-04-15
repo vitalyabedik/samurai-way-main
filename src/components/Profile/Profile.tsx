@@ -3,11 +3,10 @@ import styles from './Profile.module.css';
 import {Posts} from './Posts/Posts';
 import {ProfileInfo} from './ProfileInfo/ProfileInfo';
 import {Sidebar} from './Sidebar/Sidebar';
-import {PostsType, UsersType} from '../../index';
+import {ProfilePageType} from '../../types';
 
 type PropsType = {
-    posts: PostsType
-    users: UsersType
+    state: ProfilePageType
 }
 
 export const Profile = (props: PropsType) => {
@@ -16,8 +15,8 @@ export const Profile = (props: PropsType) => {
         <div className={styles.root}>
             <ProfileInfo />
             <div className={styles.items}>
-                <Posts posts={props.posts}/>
-                <Sidebar users={props.users}/>
+                <Posts posts={props.state.posts}/>
+                <Sidebar users={props.state.users}/>
             </div>
         </div>
     )

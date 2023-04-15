@@ -10,13 +10,11 @@ import {Dialogs} from './components/Dialogs/Dialogs';
 import {Music} from './components/Music/Music';
 import {News} from './components/News/News';
 import {Settings} from './components/Settings/Settings';
-import {DialogsType, MessagesType, PostsType, UsersType} from './index';
+import {StateType} from './redux/state';
+
 
 type PropsType = {
-    posts: PostsType
-    users: UsersType
-    dialogs: DialogsType
-    messages: MessagesType
+   state: StateType
 }
 
 export const App = (props: PropsType) => {
@@ -29,10 +27,10 @@ export const App = (props: PropsType) => {
                     <div className={styles.content}>
                         <Switch>
                             <Route path="/profile" render={() =>
-                                <Profile posts={props.posts} users={props.users}/>
+                                <Profile state={props.state.profilePage}/>
                             }/>
                             <Route path="/messages" render={() =>
-                                <Dialogs dialogs={props.dialogs} messages={props.messages}/>
+                                <Dialogs state={props.state.dialogsPage}/>
                             }/>
                             <Route path="/news" render={() => <News/>}/>
                             <Route path="/music" render={() => <Music/>}/>

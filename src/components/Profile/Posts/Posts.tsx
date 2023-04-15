@@ -1,11 +1,11 @@
 import styles from './Posts.module.css';
 
 import {Post} from './Post/Post';
-import {PostsType} from '../../../index';
+import {PostType} from '../../../types/profilePage/profilePageTypes';
 
 
 type PropsType = {
-    posts: PostsType
+    posts: PostType[]
 }
 
 export const Posts = (props: PropsType) => {

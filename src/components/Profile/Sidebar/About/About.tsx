@@ -1,9 +1,9 @@
 import styles from './About.module.css';
 
-import { UsersType} from '../../../../index';
+import { UserType} from '../../../../types/profilePage/profilePageTypes';
 
 type PropsType = {
-    users: UsersType
+    users: UserType[]
 }
 
 export const About = (props: PropsType) => {

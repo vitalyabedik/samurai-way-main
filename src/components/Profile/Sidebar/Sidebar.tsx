@@ -2,10 +2,10 @@ import styles from './Sidebar.module.css'
 
 import {About} from './About/About';
 import {Friends} from './Friends/Friends';
-import {UsersType} from '../../../index';
+import {UserType} from '../../../types/profilePage/profilePageTypes';
 
 type PropsType = {
-    users: UsersType
+    users: UserType[]
 }
 
 export const Sidebar = (props: PropsType) => {
