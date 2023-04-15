@@ -1,7 +1,7 @@
 import styles from './Aside.module.css';
 
-import {Contacts} from './Contacts/Contacts';
-import {Navbar} from './Navbar/Navbar';
+import {Contacts} from './Contacts';
+import {Navbar} from './Navbar';
 import {AsideType} from '../../types';
 
 type PropsType = {

@@ -1,7 +1,7 @@
 import styles from './Dialogs.module.css'
 
-import {MessageItem} from './Message/Message';
-import {DialogItem} from './DialogItem/DialogItem';
+import {MessageItem} from './Message';
+import {DialogItem} from './DialogItem';
 import {DialogsPageType} from '../../types';
 
 type PropsType = {

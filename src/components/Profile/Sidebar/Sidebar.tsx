@@ -1,7 +1,7 @@
 import styles from './Sidebar.module.css'
 
-import {About} from './About/About';
-import {Friends} from './Friends/Friends';
+import {About} from './About';
+import {Friends} from './Friends';
 
 import { SidebarType} from '../../../types';
 

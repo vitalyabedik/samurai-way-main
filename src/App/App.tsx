@@ -3,14 +3,14 @@ import {BrowserRouter, Switch, Route} from 'react-router-dom';
 
 import styles from './App.module.css';
 
-import {Header} from './components/Header/Header';
-import {Aside} from './components/Aside/Aside';
-import {Profile} from './components/Profile/Profile';
-import {Dialogs} from './components/Dialogs/Dialogs';
-import {Music} from './components/Music/Music';
-import {News} from './components/News/News';
-import {Settings} from './components/Settings/Settings';
-import {StateType} from './redux/state';
+import {Header} from '../components/Header';
+import {Aside} from '../components/Aside';
+import {Profile} from '../components/Profile';
+import {Dialogs} from '../components/Dialogs';
+import {Music} from '../components/Music';
+import {News} from '../components/News';
+import {Settings} from '../components/Settings';
+import {StateType} from '../redux/state';
 
 
 type PropsType = {
