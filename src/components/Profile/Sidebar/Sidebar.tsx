@@ -13,7 +13,7 @@ export const Sidebar = (props: PropsType) => {
     return (
         <div className={styles.root}>
             <About about={props.state.about}/>
-            <Friends/>
+            <Friends friends={props.state.friends}/>
         </div>
     )
 }

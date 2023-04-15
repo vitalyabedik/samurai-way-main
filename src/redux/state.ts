@@ -58,8 +58,8 @@ export const state: StateType = {
             {
                 id: 5,
                 avatar: avatar5,
-                userFirstName: 'Stella',
-                userLastName: 'Johnson'
+                userFirstName: 'Dennis',
+                userLastName: 'Han'
             },
             {
                 id: 6,
@@ -156,8 +156,8 @@ export const state: StateType = {
                     {
                         id: 5,
                         avatar: avatar5,
-                        userFirstName: 'Stella',
-                        userLastName: 'Johnson'
+                        userFirstName: 'Dennis',
+                        userLastName: 'Han'
                     },
                     {
                         id: 6,
@@ -187,7 +187,7 @@ export const state: StateType = {
             {id: 2, name: 'Erica Jones'},
             {id: 3, name: 'Alex Dolgove'},
             {id: 4, name: 'Alex Dolgove'},
-            {id: 5, name: 'Stella Johnson'},
+            {id: 5, name: 'Dennis Han'},
             {id: 6, name: 'Alex Dolgove'},
             {id: 7, name: 'Stella Johnson'},
             {id: 8, name: 'Dennis Han'},

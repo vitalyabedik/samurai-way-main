@@ -1,6 +1,75 @@
 .root {
-    height: 500px;
-    background-color: blue;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #ebe9e6;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
     margin-top: 20px;
+}
+
+.friendsHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.friendsCount {
+    color: #666666;
+    font-size: 14px;
+}
+
+.seeAll {
+    font-size: 15px;
+    color: #2563EB;
+}
+
+.items {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 5px;
+
+}
+
+.item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 0;
+}
+
+.img {
+    height: 96px;
+    width: 89px;
+
+
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.userName {
+    font-size: 14px;
+    color: #4B5563;
+    font-weight: 600;
+    margin-top: 8px;
+}
+
+.friendsButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-top: 6px;
+    background-color: #f0f2f5;
+    border: none;
+    border-radius: 6px;
+    padding: 10px;
+    color: #666666;
+    cursor: pointer;
+}
+
+.friendsButton:hover {
+    opacity: 0.9;
 }
 
