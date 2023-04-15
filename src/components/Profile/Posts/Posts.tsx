@@ -2,9 +2,11 @@ import styles from './Posts.module.css';
 
 import {Post} from './Post';
 import {PostType} from '../../../types/profilePageTypes';
+import {UserType} from '../../../types';
 
 
 type PropsType = {
+    currentUser: UserType
     posts: PostType[]
 }
 
@@ -12,10 +14,8 @@ export const Posts = (props: PropsType) => {
     const postsElements = props.posts.map(post => {
         return (
             <Post key={post.id}
-                  id={post.id}
-                  message={post.message}
-                  likesCount={post.likesCount}
-            />
+                  post={post}
+                  currentUser={props.currentUser}/>
         )
     })
 

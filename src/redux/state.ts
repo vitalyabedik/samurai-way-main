@@ -83,8 +83,20 @@ export const state: StateType = {
     },
     profilePage: {
         posts: [
-            {id: 1, message: 'Hi, how are you?', likesCount: 4},
-            {id: 2, message: 'It\'s my first post?', likesCount: 10},
+            {
+                id: 1,
+                message: `Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
+                    sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
+                    Ut wisi enim ad minim laoreet dolore magna aliquam erat volutpat`,
+                likesCount: 4
+            },
+            {
+                id: 2,
+                message: `Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
+                    sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
+                    Ut wisi enim ad minim laoreet dolore magna aliquam erat volutpat`,
+                likesCount: 10
+            },
         ],
         sidebar: {
             about: [

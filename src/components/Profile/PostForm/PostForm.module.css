@@ -12,7 +12,7 @@
     display: flex;
     justify-content: space-between;
 
-    border-bottom: 1px solid rgba(229,231,235, 1);
+    border-bottom: 1px solid rgba(229, 231, 235, 1);
     margin-bottom: 20px;
     padding-bottom: 20px;
 
@@ -52,7 +52,7 @@
 }
 
 .button {
-    background-color: #2563EB ;
+    background-color: #2563EB;
     padding: 0 20px;
     cursor: pointer;
     color: #FFFFFF;

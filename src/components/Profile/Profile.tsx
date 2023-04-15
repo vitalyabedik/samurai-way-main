@@ -18,7 +18,7 @@ export const Profile = (props: PropsType) => {
             <div className={styles.items}>
                 <div className={styles.timeline}>
                     <PostForm state={props.state}/>
-                    <Posts posts={props.state.profilePage.posts}/>
+                    <Posts currentUser={props.state.currentUser} posts={props.state.profilePage.posts}/>
                 </div>
                 <Sidebar state={props.state.profilePage.sidebar}/>
             </div>
