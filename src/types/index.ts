@@ -1,2 +1,4 @@
-export * from './profilePage';
-export * from './dialogsPage';
+export * from './profilePageTypes';
+export * from './dialogsPageTypes';
+export * from './asideTypes';
+export * from './usersTypes';

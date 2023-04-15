@@ -23,7 +23,7 @@ export const App = (props: PropsType) => {
             <div className={styles.root}>
                 <Header/>
                 <div className={styles.container}>
-                    <Aside/>
+                    <Aside state={props.state.aside}/>
                     <div className={styles.content}>
                         <Switch>
                             <Route path="/profile" render={() =>

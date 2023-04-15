@@ -1,13 +1,13 @@
 import styles from './About.module.css';
 
-import { UserType} from '../../../../types/profilePage/profilePageTypes';
+import {AboutType} from '../../../../types/profilePageTypes';
 
 type PropsType = {
-    users: UserType[]
+    about: AboutType[]
 }
 
 export const About = (props: PropsType) => {
-    const userAboutElements = props.users[0].about.map(user => {
+    const userAboutElements = props.about.map(user => {
         return (
             <li key={user.id} className={styles.item}>
                 <div className={styles.iconBlock}>

@@ -16,7 +16,7 @@ export const Profile = (props: PropsType) => {
             <ProfileInfo />
             <div className={styles.items}>
                 <Posts posts={props.state.posts}/>
-                <Sidebar users={props.state.users}/>
+                <Sidebar state={props.state.sidebar}/>
             </div>
         </div>
     )

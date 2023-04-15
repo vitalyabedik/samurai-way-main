@@ -14,6 +14,13 @@
   margin: 0 auto;
 }
 
+h3 {
+  color: #333333;
+  font-weight: 600;
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+}
+
 h4 {
   font-size: 1.125rem;
   line-height: 1.75rem;

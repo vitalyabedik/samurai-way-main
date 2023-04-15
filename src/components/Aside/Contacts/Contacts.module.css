@@ -1,17 +1,13 @@
 .root {
-    width: 270px;
+    border-top: 1px solid rgba(229,231,235, 1);
     font-size: 16px;
-    font-weight: 600;
-    border-right: 1px solid rgba(229,231,235, 1);
-    border-bottom: 1px solid rgba(229,231,235, 1);
+    font-weight: 500;
+    color: #2d2d2d;
 }
 
-.wrapper {
-    margin: 15px 5px;
-}
-
-.items {
-    margin-bottom: 10px;
+.title {
+    margin-bottom: 12px;
+    padding: 12px 12px 0;
 }
 
 .item {
@@ -20,7 +16,7 @@
     align-items: center;
     height:45px;
     padding: 0px 12px;
-    margin-bottom: 4px;
+    margin-bottom: 12px;
     border-radius: 10px;
     transition: 0.3s;
     cursor: pointer;
@@ -30,6 +26,16 @@
     display: flex;
     margin-right: 10px;
     margin-left:10px;
+    width: 35px;
+    height: 35px;
+}
+
+.item__avatar {
+    border-radius: 50%;
+}
+
+.item__userName {
+    margin-left: 5px;
 }
 
 .item__link {

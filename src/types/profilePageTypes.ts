@@ -1,3 +1,5 @@
+import {UsersType} from './usersTypes';
+
 export type PostType = {
     id: number
     message: string
@@ -11,12 +13,17 @@ export type AboutType = {
     description: string
 }
 
-export type UserType = {
-    about: AboutType[]
+export type FriendsType = {
+    count: string
+    list: UsersType
 }
 
+export type SidebarType = {
+    about: AboutType[]
+    friends: FriendsType
+}
 
 export type ProfilePageType = {
     posts: PostType[]
-    users: UserType[]
+    sidebar: SidebarType
 }

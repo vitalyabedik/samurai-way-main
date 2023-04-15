@@ -1,7 +1,7 @@
 import styles from './Posts.module.css';
 
 import {Post} from './Post/Post';
-import {PostType} from '../../../types/profilePage/profilePageTypes';
+import {PostType} from '../../../types/profilePageTypes';
 
 
 type PropsType = {

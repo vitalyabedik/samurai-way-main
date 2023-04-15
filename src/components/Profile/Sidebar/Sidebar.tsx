@@ -2,16 +2,17 @@ import styles from './Sidebar.module.css'
 
 import {About} from './About/About';
 import {Friends} from './Friends/Friends';
-import {UserType} from '../../../types/profilePage/profilePageTypes';
+
+import { SidebarType} from '../../../types';
 
 type PropsType = {
-    users: UserType[]
+    state: SidebarType
 }
 
 export const Sidebar = (props: PropsType) => {
     return (
         <div className={styles.root}>
-            <About users={props.users}/>
+            <About about={props.state.about}/>
             <Friends/>
         </div>
     )
