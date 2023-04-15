@@ -21,10 +21,6 @@ export const Posts = (props: PropsType) => {
 
     return (
         <div className={styles.timeline}>
-            <div className={styles.createPost}>
-                <textarea></textarea>
-                <button>Add post</button>
-            </div>
             <div className={styles.posts}>{postsElements}</div>
         </div>
     )

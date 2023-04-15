@@ -1,22 +1,26 @@
 import styles from './Profile.module.css';
 
-import {Posts} from './Posts/Posts';
 import {ProfileInfo} from './ProfileInfo/ProfileInfo';
+import {PostForm} from './PostForm';
+import {Posts} from './Posts/Posts';
 import {Sidebar} from './Sidebar/Sidebar';
-import {ProfilePageType} from '../../types';
+import {StateType} from '../../redux/state';
 
 type PropsType = {
-    state: ProfilePageType
+    state: StateType
 }
 
 export const Profile = (props: PropsType) => {
 
     return (
         <div className={styles.root}>
-            <ProfileInfo />
+            <ProfileInfo/>
             <div className={styles.items}>
-                <Posts posts={props.state.posts}/>
-                <Sidebar state={props.state.sidebar}/>
+                <div className={styles.timeline}>
+                    <PostForm state={props.state}/>
+                    <Posts posts={props.state.profilePage.posts}/>
+                </div>
+                <Sidebar state={props.state.profilePage.sidebar}/>
             </div>
         </div>
     )

@@ -13,15 +13,22 @@ import avatar7 from '../assets/images/profile/avatars/avatar-7.jpg'
 import avatar8 from '../assets/images/profile/avatars/avatar-8.jpg'
 
 
-import {ProfilePageType, DialogsPageType, AsideType} from '../types';
+import {ProfilePageType, DialogsPageType, AsideType, UserType} from '../types';
 
 export type StateType = {
+    currentUser: UserType
     aside: AsideType
     profilePage: ProfilePageType
     dialogsPage: DialogsPageType
 }
 
 export const state: StateType = {
+    currentUser: {
+        id: 1,
+        avatar: avatar2,
+        userFirstName: 'Erica',
+        userLastName: 'Jones'
+    },
     aside: {
         contacts: [
             {

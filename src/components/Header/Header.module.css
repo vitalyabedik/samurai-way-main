@@ -4,7 +4,7 @@
     height: 65px;
     padding: 0 15px;
     box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-    border-bottom: 1px solid rgba(229,231,235, 1)
+    border-bottom: 1px solid rgba(229, 231, 235, 1)
 }
 
 .logoBlock {
@@ -29,7 +29,7 @@
 }
 
 .searchIcon {
-   position: absolute;
+    position: absolute;
     left: 10px;
     top: 25px;
 }

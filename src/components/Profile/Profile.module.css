@@ -2,6 +2,10 @@
     margin: 30px;
 }
 
+.timeline {
+    width: 480px;
+}
+
 .items {
     margin-top:20px;
     display: flex;
