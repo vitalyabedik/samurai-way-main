@@ -4,14 +4,16 @@ import React from 'react';
 
 type PropsType = {
     state: StateType
+    addPost: (message: string) => void
 }
 
 export const PostForm = (props: PropsType) => {
     let newPostElement = React.createRef<HTMLTextAreaElement>()
 
     const addPostHandler = () => {
+        debugger
         const text = newPostElement.current?.value
-        alert(text)
+        text && props.addPost(text)
     }
 
     return (

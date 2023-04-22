@@ -5,9 +5,9 @@ import './assets/styles/styles.css'
 import './index.css';
 
 import {App} from './App/App';
-import {state} from './redux/state'
+import {addPost, state} from './redux/state'
 
 ReactDOM.render(
-    <App state={state}/>,
+    <App state={state} addPost={addPost}/>,
     document.getElementById('root')
 );

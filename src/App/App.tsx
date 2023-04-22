@@ -15,6 +15,7 @@ import {StateType} from '../redux/state';
 
 type PropsType = {
     state: StateType
+    addPost: (message: string) => void
 }
 
 export const App = (props: PropsType) => {
@@ -27,7 +28,7 @@ export const App = (props: PropsType) => {
                     <div className={styles.content}>
                         <Switch>
                             <Route path="/profile" render={() =>
-                                <Profile state={props.state}/>
+                                <Profile state={props.state} addPost={props.addPost}/>
                             }/>
                             <Route path="/messages" render={() =>
                                 <Dialogs state={props.state.dialogsPage}/>

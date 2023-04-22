@@ -8,6 +8,7 @@ import {StateType} from '../../redux/state';
 
 type PropsType = {
     state: StateType
+    addPost: (message: string) => void
 }
 
 export const Profile = (props: PropsType) => {
@@ -18,7 +19,7 @@ export const Profile = (props: PropsType) => {
                 <ProfileInfo/>
                 <div className={styles.items}>
                     <div className={styles.timeline}>
-                        <PostForm state={props.state}/>
+                        <PostForm state={props.state} addPost={props.addPost}/>
                         <Posts currentUser={props.state.currentUser} posts={props.state.profilePage.posts}/>
                     </div>
                     <Sidebar state={props.state.profilePage.sidebar}/>
