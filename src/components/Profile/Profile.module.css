@@ -2,6 +2,11 @@
     margin: 30px;
 }
 
+.content {
+    width: 1000px;
+    margin: 0 auto;
+}
+
 .timeline {
     width: 480px;
 }

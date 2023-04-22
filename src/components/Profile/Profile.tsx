@@ -14,13 +14,15 @@ export const Profile = (props: PropsType) => {
 
     return (
         <div className={styles.root}>
-            <ProfileInfo/>
-            <div className={styles.items}>
-                <div className={styles.timeline}>
-                    <PostForm state={props.state}/>
-                    <Posts currentUser={props.state.currentUser} posts={props.state.profilePage.posts}/>
+            <div className={styles.content}>
+                <ProfileInfo/>
+                <div className={styles.items}>
+                    <div className={styles.timeline}>
+                        <PostForm state={props.state}/>
+                        <Posts currentUser={props.state.currentUser} posts={props.state.profilePage.posts}/>
+                    </div>
+                    <Sidebar state={props.state.profilePage.sidebar}/>
                 </div>
-                <Sidebar state={props.state.profilePage.sidebar}/>
             </div>
         </div>
     )

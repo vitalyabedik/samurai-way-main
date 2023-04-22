@@ -1,7 +1,4 @@
-export type DialogType = {
-    id: number
-    name: string
-}
+import {UsersType} from './usersTypes';
 
 export type MessageType = {
     id: number
@@ -10,6 +7,6 @@ export type MessageType = {
 
 
 export type DialogsPageType = {
-    dialogs: DialogType[]
+    dialogs: UsersType
     messages: MessageType[]
 }

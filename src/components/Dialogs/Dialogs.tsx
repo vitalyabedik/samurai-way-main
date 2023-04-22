@@ -1,17 +1,19 @@
 import styles from './Dialogs.module.css'
 
 import {MessageItem} from './Message';
-import {DialogItem} from './DialogItem';
+import {DialogItems} from './DialogItems';
+import {DialogForm} from './DialogsForm';
 import {DialogsPageType} from '../../types';
 
+
 type PropsType = {
-    state : DialogsPageType
+    state: DialogsPageType
 }
 
 export const Dialogs = (props: PropsType) => {
     const dialogsElements = props.state.dialogs.map(dialog => {
         return (
-            <DialogItem id={dialog.id} name={dialog.name}/>
+            <DialogItems id={dialog.id} dialog={dialog}/>
         )
     })
 
@@ -23,11 +25,10 @@ export const Dialogs = (props: PropsType) => {
 
     return (
         <div className={styles.root}>
-            <div className={styles.dialogs}>
-                <div className={styles.dialogs__items}>{dialogsElements}</div>
-            </div>
+            <div className={styles.dialogs__items}>{dialogsElements}</div>
             <div className={styles.messages}>
                 <div className={styles.messages__items}>{messagesElements}</div>
+                <DialogForm/>
             </div>
         </div>
     )

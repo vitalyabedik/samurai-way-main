@@ -7,7 +7,7 @@ type PropsType = {
 
 export const MessageItem = (props: PropsType) => {
     return (
-        <div className={styles.message__item}>
+        <div className={styles.root}>
             {props.message}
         </div>
     )

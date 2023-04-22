@@ -1,0 +1,68 @@
+.root {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    background-color: white;
+    padding: 20px;
+    overflow: hidden;
+    border: 1px solid #ebe9e6;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+}
+
+.textareaBlock {
+    /*align-items: center;*/
+    /*display: flex;*/
+    /*justify-content: space-between;*/
+
+
+}
+
+/*.avatar {*/
+/*    display: block;*/
+/*    width: 40px;*/
+/*    height: 40px;*/
+/*    border-radius: 50%;*/
+/*}*/
+
+.textarea {
+    font-style: normal;
+    color: #393939;
+    overflow: hidden;
+    background: #f0f2f5;
+    border: none;
+    border-radius: 20px;
+    resize: none;
+    padding: 12px 24px;
+    height: 40px;
+    outline: none;
+    width: 100%;
+    margin-left: 12px;
+
+    /*white-space: pre-wrap;*/
+    /*white-space: -moz-pre-wrap;*/
+    /*white-space: -o-pre-wrap;*/
+    /*word-wrap: break-word;*/
+}
+
+/*.buttonBlock {*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*    justify-content: flex-end;*/
+/*}*/
+
+.button {
+    background-color: #2563EB;
+    padding: 0 20px;
+    cursor: pointer;
+    color: #FFFFFF;
+    font-weight: 500;
+    height: 36px;
+    border: none;
+    border-radius: 6px;
+}
+
+.button:hover {
+    opacity: 0.9;
+}
+

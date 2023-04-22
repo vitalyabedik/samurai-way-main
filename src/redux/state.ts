@@ -183,14 +183,54 @@ export const state: StateType = {
     },
     dialogsPage: {
         dialogs: [
-            {id: 1, name: 'Dennis Han'},
-            {id: 2, name: 'Erica Jones'},
-            {id: 3, name: 'Alex Dolgove'},
-            {id: 4, name: 'Alex Dolgove'},
-            {id: 5, name: 'Dennis Han'},
-            {id: 6, name: 'Alex Dolgove'},
-            {id: 7, name: 'Stella Johnson'},
-            {id: 8, name: 'Dennis Han'},
+            {
+                id: 1,
+                avatar: avatar1,
+                userFirstName: 'Dennis',
+                userLastName: 'Han'
+            },
+            {
+                id: 2,
+                avatar: avatar2,
+                userFirstName: 'Erica',
+                userLastName: 'Jones'
+            },
+            {
+                id: 3,
+                avatar: avatar3,
+                userFirstName: 'Alex',
+                userLastName: 'Dolgove'
+            },
+            {
+                id: 4,
+                avatar: avatar4,
+                userFirstName: 'Alex',
+                userLastName: 'Dolgove'
+            },
+            {
+                id: 5,
+                avatar: avatar5,
+                userFirstName: 'Dennis',
+                userLastName: 'Han'
+            },
+            {
+                id: 6,
+                avatar: avatar6,
+                userFirstName: 'Alex',
+                userLastName: 'Dolgove'
+            },
+            {
+                id: 7,
+                avatar: avatar7,
+                userFirstName: 'Stella',
+                userLastName: 'Johnson'
+            },
+            {
+                id: 8,
+                avatar: avatar8,
+                userFirstName: 'Dennis',
+                userLastName: 'Han'
+            },
         ],
         messages: [
             {id: 1, message: 'Hi'},
