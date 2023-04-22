@@ -11,7 +11,6 @@ export const PostForm = (props: PropsType) => {
     let newPostElement = React.createRef<HTMLTextAreaElement>()
 
     const addPostHandler = () => {
-        debugger
         const text = newPostElement.current?.value
         text && props.addPost(text)
     }

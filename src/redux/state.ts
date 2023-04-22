@@ -14,6 +14,7 @@ import avatar8 from '../assets/images/profile/avatars/avatar-8.jpg'
 
 
 import {ProfilePageType, DialogsPageType, AsideType, UserType} from '../types';
+import {rerenderEntireTree} from '../render';
 
 export type StateType = {
     currentUser: UserType
@@ -246,7 +247,6 @@ export const state: StateType = {
 };
 
 export const addPost = (postMessage: string) => {
-    debugger
     const newPost = {
         id: 3,
         message: postMessage,
@@ -254,6 +254,7 @@ export const addPost = (postMessage: string) => {
     }
 
     state.profilePage.posts.push(newPost)
+    rerenderEntireTree(state)
 
     // return [newPost, ...state.profilePage.posts]
 }
