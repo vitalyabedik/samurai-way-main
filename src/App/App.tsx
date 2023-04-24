@@ -15,24 +15,35 @@ import {StateType} from '../redux/state';
 
 type PropsType = {
     state: StateType
-    addPost: (message: string) => void
+    addPost: () => void
+    updateNewPostText: (newText: string) => void
+    addMessage: () => void
+    updateNewMessageText: (newMessageText: string) => void
 }
 
 export const App = (props: PropsType) => {
+    const {state, addPost, updateNewPostText, addMessage, updateNewMessageText} = props
+    const {aside, dialogsPage} = props.state
+
     return (
         <BrowserRouter>
             <div className={styles.root}>
                 <Header/>
                 <div className={styles.container}>
-                    <Aside state={props.state.aside}/>
+                    <Aside state={aside}/>
                     <div className={styles.content}>
                         <Switch>
                             <Route path="/profile" render={() =>
-                                <Profile state={props.state} addPost={props.addPost}/>
-                            }/>
-                            <Route path="/messages" render={() =>
-                                <Dialogs state={props.state.dialogsPage}/>
-                            }/>
+                                <Profile state={state}
+                                         addPost={addPost}
+                                         updateNewPostText={updateNewPostText}
+                                />}
+                            />
+                            <Route path="/messages" render={() => <Dialogs state={dialogsPage}
+                                                                           addMessage={addMessage}
+                                                                           updateNewMessageText={updateNewMessageText}
+                                                                    />}
+                            />
                             <Route path="/news" render={() => <News/>}/>
                             <Route path="/music" render={() => <Music/>}/>
                             <Route path="/settings" render={() => <Settings/>}/>

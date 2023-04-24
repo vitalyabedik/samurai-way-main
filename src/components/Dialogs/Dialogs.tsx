@@ -5,21 +5,25 @@ import {DialogItems} from './DialogItems';
 import {DialogForm} from './DialogsForm';
 import {DialogsPageType} from '../../types';
 
-
 type PropsType = {
     state: DialogsPageType
+    addMessage: () => void
+    updateNewMessageText: (newMessageText: string) => void
 }
 
 export const Dialogs = (props: PropsType) => {
-    const dialogsElements = props.state.dialogs.map(dialog => {
+    const {addMessage, updateNewMessageText} = props
+    const {dialogs, messages, newMessageText} = props.state
+
+    const dialogsElements = dialogs.map(dialog => {
         return (
-            <DialogItems id={dialog.id} dialog={dialog}/>
+            <DialogItems key={dialog.id} id={dialog.id} dialog={dialog}/>
         )
     })
 
-    const messagesElements = props.state.messages.map(message => {
+    const messagesElements = messages.map(message => {
         return (
-            <MessageItem id={message.id} message={message.message}/>
+            <MessageItem key={message.id} id={message.id} message={message.message}/>
         )
     })
 
@@ -28,7 +32,10 @@ export const Dialogs = (props: PropsType) => {
             <div className={styles.dialogs__items}>{dialogsElements}</div>
             <div className={styles.messages}>
                 <div className={styles.messages__items}>{messagesElements}</div>
-                <DialogForm/>
+                <DialogForm newMessageText={newMessageText}
+                            addMessage={addMessage}
+                            updateNewMessageText={updateNewMessageText}
+                />
             </div>
         </div>
     )

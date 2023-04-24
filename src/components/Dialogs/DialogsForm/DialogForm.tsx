@@ -3,21 +3,34 @@ import React, {createRef} from 'react';
 import styles from './DialogForm.module.css'
 
 type PropsType = {
-
+    addMessage: () => void
+    updateNewMessageText: (newMessageText: string) => void
+    newMessageText: string
 }
 
 export const DialogForm = (props: PropsType) => {
-    const textareaRef = createRef<HTMLTextAreaElement>()
+    const {addMessage, updateNewMessageText, newMessageText} = props
+
+    const newMessageRef = createRef<HTMLTextAreaElement>()
 
     const sendMessage = () => {
-        const text = textareaRef.current?.value
-        alert(text)
+        addMessage()
+    }
+
+    const onMessageChange = () => {
+        const text = newMessageRef.current?.value
+        text && updateNewMessageText(text)
     }
 
     return (
         <div className={styles.root}>
             <div className={styles.textareaBlock}>
-                <textarea ref={textareaRef} className={styles.textarea} placeholder={'Your Message'}></textarea>
+                <textarea onChange={onMessageChange}
+                          ref={newMessageRef}
+                          value={props.newMessageText}
+                          className={styles.textarea}
+                          placeholder={'Your Message'}
+                />
             </div>
             <div className={styles.buttonBlock}>
                 <button onClick={sendMessage} className={styles.button}>Send</button>

@@ -99,6 +99,7 @@ export const state: StateType = {
                 likesCount: 10
             },
         ],
+        newPostText: 'it-kamasutra.com newPostText',
         sidebar: {
             about: [
                 {
@@ -242,20 +243,39 @@ export const state: StateType = {
             {id: 6, message: 'Yo'},
             {id: 7, message: 'Hello'},
             {id: 8, message: 'How are you?'},
-        ]
+        ],
+        newMessageText: 'it-kamasutra.com newMessageText'
     },
 };
 
-export const addPost = (postMessage: string) => {
+export const addPost = () => {
     const newPost = {
         id: 3,
-        message: postMessage,
+        message: state.profilePage.newPostText,
         likesCount: 0
     }
-
     state.profilePage.posts.push(newPost)
+    state.profilePage.newPostText = ''
     rerenderEntireTree(state)
+}
 
-    // return [newPost, ...state.profilePage.posts]
+export const addMessage = () => {
+    const newMessage = {
+        id: 9,
+        message: state.dialogsPage.newMessageText,
+    }
+    state.dialogsPage.messages.push(newMessage)
+    state.dialogsPage.newMessageText = ''
+    rerenderEntireTree(state)
+}
+
+export const updateNewPostText = (newText: string) => {
+    state.profilePage.newPostText = newText
+    rerenderEntireTree(state)
+}
+
+export const updateNewMessageText = (newMessageText: string) => {
+    state.dialogsPage.newMessageText = newMessageText
+    rerenderEntireTree(state)
 }
 

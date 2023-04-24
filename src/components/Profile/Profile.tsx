@@ -8,10 +8,13 @@ import {StateType} from '../../redux/state';
 
 type PropsType = {
     state: StateType
-    addPost: (message: string) => void
+    addPost: () => void
+    updateNewPostText: (newText: string) => void
 }
 
 export const Profile = (props: PropsType) => {
+    const {state, addPost, updateNewPostText} = props
+    const {currentUser, profilePage} = props.state
 
     return (
         <div className={styles.root}>
@@ -19,10 +22,10 @@ export const Profile = (props: PropsType) => {
                 <ProfileInfo/>
                 <div className={styles.items}>
                     <div className={styles.timeline}>
-                        <PostForm state={props.state} addPost={props.addPost}/>
-                        <Posts currentUser={props.state.currentUser} posts={props.state.profilePage.posts}/>
+                        <PostForm state={state} addPost={addPost} updateNewPostText={updateNewPostText}/>
+                        <Posts currentUser={currentUser} posts={profilePage.posts}/>
                     </div>
-                    <Sidebar state={props.state.profilePage.sidebar}/>
+                    <Sidebar state={profilePage.sidebar}/>
                 </div>
             </div>
         </div>
