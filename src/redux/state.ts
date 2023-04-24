@@ -14,7 +14,14 @@ import avatar8 from '../assets/images/profile/avatars/avatar-8.jpg'
 
 
 import {ProfilePageType, DialogsPageType, AsideType, UserType} from '../types';
-import {rerenderEntireTree} from '../render';
+
+let onChangeState = () => {
+    console.log('state changed')
+}
+
+export const subscriber = (callback: () => void) => {
+    onChangeState = callback                         // observer pattern // publisher-subscriber
+}                                                    // addEventListener
 
 export type StateType = {
     currentUser: UserType
@@ -256,7 +263,7 @@ export const addPost = () => {
     }
     state.profilePage.posts.push(newPost)
     state.profilePage.newPostText = ''
-    rerenderEntireTree(state)
+    onChangeState()
 }
 
 export const addMessage = () => {
@@ -266,16 +273,18 @@ export const addMessage = () => {
     }
     state.dialogsPage.messages.push(newMessage)
     state.dialogsPage.newMessageText = ''
-    rerenderEntireTree(state)
+    onChangeState()
 }
 
 export const updateNewPostText = (newText: string) => {
     state.profilePage.newPostText = newText
-    rerenderEntireTree(state)
+    onChangeState()
 }
 
 export const updateNewMessageText = (newMessageText: string) => {
     state.dialogsPage.newMessageText = newMessageText
-    rerenderEntireTree(state)
+    onChangeState()
 }
+
+
 
