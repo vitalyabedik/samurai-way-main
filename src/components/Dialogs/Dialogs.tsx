@@ -9,12 +9,9 @@ import {ActionTypes} from '../../redux/state';
 type PropsType = {
     state: DialogsPageType
     dispatch: (action: ActionTypes) => void
-    // addMessage: () => void
-    // updateNewMessageText: (newMessageText: string) => void
 }
 
 export const Dialogs = (props: PropsType) => {
-    // const {addMessage, updateNewMessageText} = props
     const {dispatch} = props
     const {dialogs, messages, newMessageText} = props.state
 

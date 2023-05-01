@@ -6,27 +6,21 @@ import {addMessageAC, changeNewMessageTextAC} from '../../../redux/actions/messa
 
 type PropsType = {
     dispatch: (action: ActionTypes) => void
-    // addMessage: () => void
-    // updateNewMessageText: (newMessageText: string) => void
     newMessageText: string
 }
 
 export const DialogForm = (props: PropsType) => {
     const {dispatch} = props
-    // const {addMessage, updateNewMessageText, newMessageText} = props
 
     const newMessageRef = createRef<HTMLTextAreaElement>()
 
     const sendMessage = () => {
         dispatch(addMessageAC())
-        // addMessage()
-        // addMessage()
     }
 
     const onMessageChange = () => {
         const text = newMessageRef.current?.value
         text && dispatch(changeNewMessageTextAC(text))
-        // text && updateNewMessageText(text)
     }
 
     return (

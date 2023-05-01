@@ -28,10 +28,6 @@ export type StateType = {
 
 export type StoreType = {
     _state: StateType
-    // addPost: () => void
-    // addMessage: () => void
-    // updateNewPostText: (newText: string) => void
-    // updateNewMessageText: (newMessageText: string) => void
     _onChange: () => void
     subscribe: (callback: () => void) => void
     getState: () => StateType
@@ -310,33 +306,6 @@ export const store: StoreType = {
             // }
         }
     },
-    // addPost() {
-    //     const newPost: PostType = {
-    //         id: 3,
-    //         message: this._state.profilePage.newPostText,
-    //         likesCount: 0
-    //     }
-    //     this._state.profilePage.posts.push(newPost)
-    //     this._state.profilePage.newPostText = ''
-    //     this._onChange()
-    // },
-    // addMessage() {
-    //     const newMessage: MessageType = {
-    //         id: 9,
-    //         message: this._state.dialogsPage.newMessageText,
-    //     }
-    //     this._state.dialogsPage.messages.push(newMessage)
-    //     this._state.dialogsPage.newMessageText = ''
-    //     this._onChange()
-    // },
-    // updateNewPostText(newText: string) {
-    //     this._state.profilePage.newPostText = newText
-    //     this._onChange()
-    // },
-    // updateNewMessageText(newMessageText: string) {
-    //     this._state.dialogsPage.newMessageText = newMessageText
-    //     this._onChange()
-    // },
 }
 
 

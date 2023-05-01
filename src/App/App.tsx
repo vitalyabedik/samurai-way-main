@@ -10,7 +10,7 @@ import {Dialogs} from '../components/Dialogs';
 import {Music} from '../components/Music';
 import {News} from '../components/News';
 import {Settings} from '../components/Settings';
-import {store, StoreType} from '../redux/state';
+import {StoreType} from '../redux/state';
 
 type PropsType = {
     store: StoreType
