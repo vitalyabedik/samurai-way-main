@@ -5,19 +5,17 @@ import './assets/styles/styles.css'
 import './index.css';
 
 import {App} from './App/App';
-import {state, addPost, addMessage, updateNewMessageText, updateNewPostText, subscriber} from './redux/state'
+import {store} from './redux/state'
+import {BrowserRouter} from 'react-router-dom';
 
 export const renderTree = () => {
     ReactDOM.render(
-        <App state={state}
-             addPost={addPost}
-             updateNewPostText={updateNewPostText}
-             addMessage={addMessage}
-             updateNewMessageText={updateNewMessageText}
-        />,
-        document.getElementById('root')
+        <BrowserRouter>
+            <App store={store}/>
+        </BrowserRouter>
+        , document.getElementById('root')
     );
 }
 
 renderTree()
-subscriber(renderTree)
+store.subscribe(renderTree)
