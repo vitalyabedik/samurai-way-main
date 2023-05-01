@@ -13,6 +13,11 @@ import avatar7 from '../assets/images/profile/avatars/avatar-7.jpg'
 import avatar8 from '../assets/images/profile/avatars/avatar-8.jpg'
 
 import {ProfilePageType, DialogsPageType, AsideType, UserType, PostType, MessageType} from '../types';
+import {MESSAGES_ADD, MESSAGES_UPDATE_NEW_TEXT, POST_ADD, POST_UPDATE_NEW_TEXT} from './actions/actionTypes';
+import {PostActionType} from './actions/postAction';
+import {MessagesActionType} from './actions/messagesAction';
+
+export type ActionTypes = PostActionType | MessagesActionType
 
 export type StateType = {
     currentUser: UserType
@@ -23,13 +28,14 @@ export type StateType = {
 
 export type StoreType = {
     _state: StateType
-    addPost: () => void
-    addMessage: () => void
-    updateNewPostText: (newText: string) => void
-    updateNewMessageText: (newMessageText: string) => void
+    // addPost: () => void
+    // addMessage: () => void
+    // updateNewPostText: (newText: string) => void
+    // updateNewMessageText: (newMessageText: string) => void
     _onChange: () => void
     subscribe: (callback: () => void) => void
     getState: () => StateType
+    dispatch: (action: ActionTypes) => void
 }
 
 export const store: StoreType = {
@@ -257,33 +263,6 @@ export const store: StoreType = {
             newMessageText: 'it-kamasutra.com newMessageText'
         },
     },
-    addPost() {
-        const newPost: PostType = {
-            id: 3,
-            message: this._state.profilePage.newPostText,
-            likesCount: 0
-        }
-        this._state.profilePage.posts.push(newPost)
-        this._state.profilePage.newPostText = ''
-        this._onChange()
-    },
-    addMessage() {
-        const newMessage: MessageType = {
-            id: 9,
-            message: this._state.dialogsPage.newMessageText,
-        }
-        this._state.dialogsPage.messages.push(newMessage)
-        this._state.dialogsPage.newMessageText = ''
-        this._onChange()
-    },
-    updateNewPostText(newText: string) {
-        this._state.profilePage.newPostText = newText
-        this._onChange()
-    },
-    updateNewMessageText(newMessageText: string) {
-        this._state.dialogsPage.newMessageText = newMessageText
-        this._onChange()
-    },
     _onChange() {
         console.log('state changed')
     },
@@ -292,7 +271,72 @@ export const store: StoreType = {
     },
     getState() {
         return this._state
-    }
+    },
+    dispatch(action) {  // {type: 'ADD-POST'}
+        switch (action.type) {
+            case POST_ADD: {
+                const newPost: PostType = {
+                    id: 3,
+                    message: this._state.profilePage.newPostText,
+                    likesCount: 0
+                }
+                this._state.profilePage.posts.push(newPost)
+                this._state.profilePage.newPostText = ''
+                this._onChange()
+            } break
+
+            case POST_UPDATE_NEW_TEXT: {
+                this._state.profilePage.newPostText = action.newText
+                this._onChange()
+            } break
+
+            case MESSAGES_ADD: {
+                const newMessage: MessageType = {
+                    id: 9,
+                    message: this._state.dialogsPage.newMessageText,
+                }
+                this._state.dialogsPage.messages.push(newMessage)
+                this._state.dialogsPage.newMessageText = ''
+                this._onChange()
+            } break
+
+            case MESSAGES_UPDATE_NEW_TEXT: {
+                this._state.dialogsPage.newMessageText = action.newMessageText
+                this._onChange()
+            } break
+
+            // default: {
+            //     this._state
+            // }
+        }
+    },
+    // addPost() {
+    //     const newPost: PostType = {
+    //         id: 3,
+    //         message: this._state.profilePage.newPostText,
+    //         likesCount: 0
+    //     }
+    //     this._state.profilePage.posts.push(newPost)
+    //     this._state.profilePage.newPostText = ''
+    //     this._onChange()
+    // },
+    // addMessage() {
+    //     const newMessage: MessageType = {
+    //         id: 9,
+    //         message: this._state.dialogsPage.newMessageText,
+    //     }
+    //     this._state.dialogsPage.messages.push(newMessage)
+    //     this._state.dialogsPage.newMessageText = ''
+    //     this._onChange()
+    // },
+    // updateNewPostText(newText: string) {
+    //     this._state.profilePage.newPostText = newText
+    //     this._onChange()
+    // },
+    // updateNewMessageText(newMessageText: string) {
+    //     this._state.dialogsPage.newMessageText = newMessageText
+    //     this._onChange()
+    // },
 }
 
 

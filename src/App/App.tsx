@@ -18,7 +18,6 @@ type PropsType = {
 
 export const App = (props: PropsType) => {
     const state = props.store.getState()
-    const {addPost, updateNewPostText, addMessage, updateNewMessageText} = props.store
 
     return (
         <div className={styles.root}>
@@ -29,13 +28,11 @@ export const App = (props: PropsType) => {
                     <Switch>
                         <Route path="/profile" render={() =>
                             <Profile state={state}
-                                     addPost={addPost.bind(store)}
-                                     updateNewPostText={updateNewPostText.bind(store)}
+                                     dispatch={props.store.dispatch.bind(props.store)}
                             />}
                         />
                         <Route path="/messages" render={() => <Dialogs state={state.dialogsPage}
-                                                                       addMessage={addMessage.bind(store)}
-                                                                       updateNewMessageText={updateNewMessageText.bind(store)}
+                                                                       dispatch={props.store.dispatch.bind(props.store)}
                         />}
                         />
                         <Route path="/news" render={() => <News/>}/>

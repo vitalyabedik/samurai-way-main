@@ -4,16 +4,15 @@ import {ProfileInfo} from './ProfileInfo/ProfileInfo';
 import {PostForm} from './PostForm';
 import {Posts} from './Posts/Posts';
 import {Sidebar} from './Sidebar/Sidebar';
-import {StateType} from '../../redux/state';
+import {ActionTypes, StateType} from '../../redux/state';
 
 type PropsType = {
     state: StateType
-    addPost: () => void
-    updateNewPostText: (newText: string) => void
+    dispatch: (action: ActionTypes) => void
 }
 
 export const Profile = (props: PropsType) => {
-    const {state, addPost, updateNewPostText} = props
+    const {state, dispatch} = props
     const {currentUser, profilePage} = props.state
 
     return (
@@ -22,7 +21,7 @@ export const Profile = (props: PropsType) => {
                 <ProfileInfo/>
                 <div className={styles.items}>
                     <div className={styles.timeline}>
-                        <PostForm state={state} addPost={addPost} updateNewPostText={updateNewPostText}/>
+                        <PostForm state={state} dispatch={dispatch}/>
                         <Posts currentUser={currentUser} posts={profilePage.posts}/>
                     </div>
                     <Sidebar state={profilePage.sidebar}/>

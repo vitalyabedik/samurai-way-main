@@ -4,15 +4,18 @@ import {MessageItem} from './Message';
 import {DialogItems} from './DialogItems';
 import {DialogForm} from './DialogsForm';
 import {DialogsPageType} from '../../types';
+import {ActionTypes} from '../../redux/state';
 
 type PropsType = {
     state: DialogsPageType
-    addMessage: () => void
-    updateNewMessageText: (newMessageText: string) => void
+    dispatch: (action: ActionTypes) => void
+    // addMessage: () => void
+    // updateNewMessageText: (newMessageText: string) => void
 }
 
 export const Dialogs = (props: PropsType) => {
-    const {addMessage, updateNewMessageText} = props
+    // const {addMessage, updateNewMessageText} = props
+    const {dispatch} = props
     const {dialogs, messages, newMessageText} = props.state
 
     const dialogsElements = dialogs.map(dialog => {
@@ -33,8 +36,7 @@ export const Dialogs = (props: PropsType) => {
             <div className={styles.messages}>
                 <div className={styles.messages__items}>{messagesElements}</div>
                 <DialogForm newMessageText={newMessageText}
-                            addMessage={addMessage}
-                            updateNewMessageText={updateNewMessageText}
+                            dispatch={dispatch}
                 />
             </div>
         </div>

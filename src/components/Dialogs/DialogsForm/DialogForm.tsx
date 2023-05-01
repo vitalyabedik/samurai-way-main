@@ -1,25 +1,32 @@
 import React, {createRef} from 'react';
 
 import styles from './DialogForm.module.css'
+import {ActionTypes} from '../../../redux/state';
+import {addMessageAC, changeNewMessageTextAC} from '../../../redux/actions/messagesAction';
 
 type PropsType = {
-    addMessage: () => void
-    updateNewMessageText: (newMessageText: string) => void
+    dispatch: (action: ActionTypes) => void
+    // addMessage: () => void
+    // updateNewMessageText: (newMessageText: string) => void
     newMessageText: string
 }
 
 export const DialogForm = (props: PropsType) => {
-    const {addMessage, updateNewMessageText, newMessageText} = props
+    const {dispatch} = props
+    // const {addMessage, updateNewMessageText, newMessageText} = props
 
     const newMessageRef = createRef<HTMLTextAreaElement>()
 
     const sendMessage = () => {
-        addMessage()
+        dispatch(addMessageAC())
+        // addMessage()
+        // addMessage()
     }
 
     const onMessageChange = () => {
         const text = newMessageRef.current?.value
-        text && updateNewMessageText(text)
+        text && dispatch(changeNewMessageTextAC(text))
+        // text && updateNewMessageText(text)
     }
 
     return (
