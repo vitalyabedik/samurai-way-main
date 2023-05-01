@@ -2,7 +2,7 @@ import styles from './PostForm.module.css';
 import {ActionTypes, StateType} from '../../../redux/state';
 import React from 'react';
 
-import {addPostAC, changeNewPostTextAC} from '../../../redux/actions/postAction';
+import {addPostAC, changeNewPostTextAC} from '../../../redux/actions/profileAction';
 
 type PropsType = {
     state: StateType

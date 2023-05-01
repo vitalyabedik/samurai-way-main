@@ -12,12 +12,15 @@ import avatar6 from '../assets/images/profile/avatars/avatar-6.jpg'
 import avatar7 from '../assets/images/profile/avatars/avatar-7.jpg'
 import avatar8 from '../assets/images/profile/avatars/avatar-8.jpg'
 
-import {ProfilePageType, DialogsPageType, AsideType, UserType, PostType, MessageType} from '../types';
-import {MESSAGES_ADD, MESSAGES_UPDATE_NEW_TEXT, POST_ADD, POST_UPDATE_NEW_TEXT} from './actions/actionTypes';
-import {PostActionType} from './actions/postAction';
-import {MessagesActionType} from './actions/messagesAction';
+import {ProfilePageType, DialogsPageType, AsideType, UserType} from '../types';
+import {ProfileActionType} from './actions/profileAction';
+import {DialogsActionType} from './actions/dialogsAction';
 
-export type ActionTypes = PostActionType | MessagesActionType
+import {profileReducer} from './reducers/profileReducer';
+import {dialogsReducer} from './reducers/dialogsReducer';
+import {asideReducer} from './reducers/asideReducer';
+
+export type ActionTypes = ProfileActionType | DialogsActionType
 
 export type StateType = {
     currentUser: UserType
@@ -268,43 +271,12 @@ export const store: StoreType = {
     getState() {
         return this._state
     },
-    dispatch(action) {  // {type: 'ADD-POST'}
-        switch (action.type) {
-            case POST_ADD: {
-                const newPost: PostType = {
-                    id: 3,
-                    message: this._state.profilePage.newPostText,
-                    likesCount: 0
-                }
-                this._state.profilePage.posts.push(newPost)
-                this._state.profilePage.newPostText = ''
-                this._onChange()
-            } break
+    dispatch(action) {
+        this._state.profilePage = profileReducer(this._state.profilePage, action)
+        this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action)
+        this._state.aside = asideReducer(this._state.aside, action)
 
-            case POST_UPDATE_NEW_TEXT: {
-                this._state.profilePage.newPostText = action.newText
-                this._onChange()
-            } break
-
-            case MESSAGES_ADD: {
-                const newMessage: MessageType = {
-                    id: 9,
-                    message: this._state.dialogsPage.newMessageText,
-                }
-                this._state.dialogsPage.messages.push(newMessage)
-                this._state.dialogsPage.newMessageText = ''
-                this._onChange()
-            } break
-
-            case MESSAGES_UPDATE_NEW_TEXT: {
-                this._state.dialogsPage.newMessageText = action.newMessageText
-                this._onChange()
-            } break
-
-            // default: {
-            //     this._state
-            // }
-        }
+        this._onChange()
     },
 }
 

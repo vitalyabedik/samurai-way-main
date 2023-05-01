@@ -1,6 +1,6 @@
 import {MESSAGES_ADD, MESSAGES_UPDATE_NEW_TEXT} from './actionTypes';
 
-export type MessagesActionType = ReturnType<typeof addMessageAC> | ReturnType<typeof changeNewMessageTextAC>
+export type DialogsActionType = ReturnType<typeof addMessageAC> | ReturnType<typeof changeNewMessageTextAC>
 
 export const addMessageAC = () => ({
     type: MESSAGES_ADD

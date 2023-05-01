@@ -1,6 +1,6 @@
 import {POST_ADD, POST_UPDATE_NEW_TEXT} from './actionTypes';
 
-export type PostActionType = ReturnType<typeof addPostAC> | ReturnType<typeof changeNewPostTextAC>
+export type ProfileActionType = ReturnType<typeof addPostAC> | ReturnType<typeof changeNewPostTextAC>
 
 export const addPostAC = () => ({
     type: POST_ADD
