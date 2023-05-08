@@ -1,7 +1,7 @@
 import React, {createRef} from 'react';
 
 import styles from './DialogForm.module.css'
-import {ActionTypes} from '../../../redux/state';
+import {ActionTypes} from '../../../redux/store';
 import {addMessageAC, changeNewMessageTextAC} from '../../../redux/actions/dialogsAction';
 
 type PropsType = {

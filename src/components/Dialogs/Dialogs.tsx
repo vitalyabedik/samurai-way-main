@@ -4,7 +4,7 @@ import {MessageItem} from './Message';
 import {DialogItems} from './DialogItems';
 import {DialogForm} from './DialogsForm';
 import {DialogsPageType} from '../../types';
-import {ActionTypes} from '../../redux/state';
+import {ActionTypes} from '../../redux/store';
 
 type PropsType = {
     state: DialogsPageType

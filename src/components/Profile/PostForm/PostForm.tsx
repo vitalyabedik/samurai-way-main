@@ -1,5 +1,5 @@
 import styles from './PostForm.module.css';
-import {ActionTypes, StateType} from '../../../redux/state';
+import {ActionTypes, StateType} from '../../../redux/store';
 import React from 'react';
 
 import {addPostAC, changeNewPostTextAC} from '../../../redux/actions/profileAction';

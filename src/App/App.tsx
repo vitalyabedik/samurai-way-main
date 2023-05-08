@@ -10,10 +10,13 @@ import {Dialogs} from '../components/Dialogs';
 import {Music} from '../components/Music';
 import {News} from '../components/News';
 import {Settings} from '../components/Settings';
-import {StoreType} from '../redux/state';
+import {StoreType} from '../redux/redux-store';
+import {ActionTypes} from '../redux/store';
+
 
 type PropsType = {
     store: StoreType
+    dispatch: (action: ActionTypes) => void
 }
 
 export const App = (props: PropsType) => {
@@ -28,11 +31,11 @@ export const App = (props: PropsType) => {
                     <Switch>
                         <Route path="/profile" render={() =>
                             <Profile state={state}
-                                     dispatch={props.store.dispatch.bind(props.store)}
+                                     dispatch={props.store.dispatch}
                             />}
                         />
                         <Route path="/messages" render={() => <Dialogs state={state.dialogsPage}
-                                                                       dispatch={props.store.dispatch.bind(props.store)}
+                                                                       dispatch={props.store.dispatch}
                         />}
                         />
                         <Route path="/news" render={() => <News/>}/>

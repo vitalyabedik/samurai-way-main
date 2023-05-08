@@ -4,7 +4,7 @@ import {ProfileInfo} from './ProfileInfo/ProfileInfo';
 import {PostForm} from './PostForm';
 import {Posts} from './Posts/Posts';
 import {Sidebar} from './Sidebar/Sidebar';
-import {ActionTypes, StateType} from '../../redux/state';
+import {ActionTypes, StateType} from '../../redux/store';
 
 type PropsType = {
     state: StateType
