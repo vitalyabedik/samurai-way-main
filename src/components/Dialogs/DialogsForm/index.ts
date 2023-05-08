@@ -1,1 +1,1 @@
-export * from './DialogForm'
+export * from './DialogsForm'

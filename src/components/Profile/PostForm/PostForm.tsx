@@ -1,27 +1,27 @@
-import styles from './PostForm.module.css';
-import {ActionTypes, StateType} from '../../../redux/store';
 import React from 'react';
 
-import {addPostAC, changeNewPostTextAC} from '../../../redux/actions/profileAction';
+import styles from './PostForm.module.css';
+
+import {StateType} from '../../../redux/store';
 
 type PropsType = {
     state: StateType
-    dispatch: (action: ActionTypes) => void
+    addPost: () => void
+    onPostChange: (text: string) => void
 }
 
 export const PostForm = (props: PropsType) => {
-    const {dispatch} = props
     const {currentUser, profilePage} = props.state
 
     let newPostElement = React.createRef<HTMLTextAreaElement>()
 
     const addPostHandler = () => {
-        dispatch(addPostAC())
+        props.addPost()
     }
 
     const onPostChange = () => {
         const text = newPostElement.current?.value
-        text && dispatch(changeNewPostTextAC(text))
+        text && props.onPostChange(text)
     }
 
     return (

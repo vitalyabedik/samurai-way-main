@@ -29,15 +29,8 @@ export const App = (props: PropsType) => {
                 <Aside state={state.aside}/>
                 <div className={styles.content}>
                     <Switch>
-                        <Route path="/profile" render={() =>
-                            <Profile state={state}
-                                     dispatch={props.store.dispatch}
-                            />}
-                        />
-                        <Route path="/messages" render={() => <Dialogs state={state.dialogsPage}
-                                                                       dispatch={props.store.dispatch}
-                        />}
-                        />
+                        <Route path="/profile" render={() => <Profile store={props.store}/>}/>
+                        <Route path="/messages" render={() => <Dialogs store={props.store}/>}/>
                         <Route path="/news" render={() => <News/>}/>
                         <Route path="/music" render={() => <Music/>}/>
                         <Route path="/settings" render={() => <Settings/>}/>

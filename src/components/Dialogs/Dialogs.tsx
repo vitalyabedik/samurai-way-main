@@ -2,18 +2,16 @@ import styles from './Dialogs.module.css'
 
 import {MessageItem} from './Message';
 import {DialogItems} from './DialogItems';
-import {DialogForm} from './DialogsForm';
-import {DialogsPageType} from '../../types';
-import {ActionTypes} from '../../redux/store';
+import {StoreType} from '../../redux/redux-store';
+import {DialogsFormContainer} from './DialogsFormContainer';
 
 type PropsType = {
-    state: DialogsPageType
-    dispatch: (action: ActionTypes) => void
+    store: StoreType
 }
 
 export const Dialogs = (props: PropsType) => {
-    const {dispatch} = props
-    const {dialogs, messages, newMessageText} = props.state
+    const state = props.store.getState()
+    const {dialogs, messages} = state.dialogsPage
 
     const dialogsElements = dialogs.map(dialog => {
         return (
@@ -32,9 +30,7 @@ export const Dialogs = (props: PropsType) => {
             <div className={styles.dialogs__items}>{dialogsElements}</div>
             <div className={styles.messages}>
                 <div className={styles.messages__items}>{messagesElements}</div>
-                <DialogForm newMessageText={newMessageText}
-                            dispatch={dispatch}
-                />
+                <DialogsFormContainer store={props.store}/>
             </div>
         </div>
     )

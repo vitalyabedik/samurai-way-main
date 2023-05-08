@@ -1,19 +1,18 @@
 import styles from './Profile.module.css';
 
 import {ProfileInfo} from './ProfileInfo/ProfileInfo';
-import {PostForm} from './PostForm';
 import {Posts} from './Posts/Posts';
 import {Sidebar} from './Sidebar/Sidebar';
-import {ActionTypes, StateType} from '../../redux/store';
+import {StoreType} from '../../redux/redux-store';
+import {PostFormContainer} from './PostFormContainer';
 
 type PropsType = {
-    state: StateType
-    dispatch: (action: ActionTypes) => void
+    store: StoreType
 }
 
 export const Profile = (props: PropsType) => {
-    const {state, dispatch} = props
-    const {currentUser, profilePage} = props.state
+    const state = props.store.getState()
+    const {currentUser, profilePage} = state
 
     return (
         <div className={styles.root}>
@@ -21,7 +20,7 @@ export const Profile = (props: PropsType) => {
                 <ProfileInfo/>
                 <div className={styles.items}>
                     <div className={styles.timeline}>
-                        <PostForm state={state} dispatch={dispatch}/>
+                        <PostFormContainer store={props.store}/>
                         <Posts currentUser={currentUser} posts={profilePage.posts}/>
                     </div>
                     <Sidebar state={profilePage.sidebar}/>
