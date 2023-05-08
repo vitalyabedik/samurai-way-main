@@ -2,23 +2,30 @@ import styles from './Aside.module.css';
 
 import {Contacts} from './Contacts';
 import {Navbar} from './Navbar';
-import {AsideType} from '../../types';
+import {StoreContext} from '../../StoreContext';
 
-type PropsType = {
-    state: AsideType
-}
-
-export const Aside = (props: PropsType) => {
+export const Aside = () => {
     return (
-        <aside className={styles.root}>
-            <div className={styles.wrapper}>
-                <div className={styles.navbar}>
-                    <Navbar/>
-                </div>
-                <div className={styles.contacts}>
-                    <Contacts contacts={props.state.contacts}/>
-                </div>
-            </div>
-        </aside>
+        <StoreContext.Consumer>
+            {
+                (store) => {
+                    const state = store.getState()
+
+                    return (
+                        <aside className={styles.root}>
+                            <div className={styles.wrapper}>
+                                <div className={styles.navbar}>
+                                    <Navbar/>
+                                </div>
+                                <div className={styles.contacts}>
+                                    <Contacts contacts={state.aside.contacts}/>
+                                </div>
+                            </div>
+                        </aside>
+
+                    )
+                }
+            }
+        </StoreContext.Consumer>
     )
 }

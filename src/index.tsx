@@ -7,13 +7,14 @@ import './index.css';
 import {App} from './App/App';
 import store from './redux/redux-store'
 import {BrowserRouter} from 'react-router-dom';
+import {Provider} from './StoreContext';
 
 export const renderTree = () => {
     ReactDOM.render(
         <BrowserRouter>
-            <App store={store}
-                 dispatch={store.dispatch.bind(store)}
-            />
+            <Provider store={store}>
+                <App />
+            </Provider>
         </BrowserRouter>
         , document.getElementById('root')
     );

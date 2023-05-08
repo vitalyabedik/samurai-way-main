@@ -5,32 +5,22 @@ import styles from './App.module.css';
 
 import {Header} from '../components/Header';
 import {Aside} from '../components/Aside';
-import {Profile} from '../components/Profile';
-import {Dialogs} from '../components/Dialogs';
 import {Music} from '../components/Music';
 import {News} from '../components/News';
 import {Settings} from '../components/Settings';
-import {StoreType} from '../redux/redux-store';
-import {ActionTypes} from '../redux/store';
+import {ProfileContainer} from '../components/Profile/ProfileContainer';
+import {DialogsContainer} from '../components/Dialogs/DialogsContainer';
 
-
-type PropsType = {
-    store: StoreType
-    dispatch: (action: ActionTypes) => void
-}
-
-export const App = (props: PropsType) => {
-    const state = props.store.getState()
-
+export const App = () => {
     return (
         <div className={styles.root}>
             <Header/>
             <div className={styles.container}>
-                <Aside state={state.aside}/>
+                <Aside />
                 <div className={styles.content}>
                     <Switch>
-                        <Route path="/profile" render={() => <Profile store={props.store}/>}/>
-                        <Route path="/messages" render={() => <Dialogs store={props.store}/>}/>
+                        <Route path="/profile" render={() => <ProfileContainer />}/>
+                        <Route path="/messages" render={() => <DialogsContainer />}/>
                         <Route path="/news" render={() => <News/>}/>
                         <Route path="/music" render={() => <Music/>}/>
                         <Route path="/settings" render={() => <Settings/>}/>
