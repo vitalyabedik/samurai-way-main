@@ -4,17 +4,11 @@ import {ProfileInfo} from './ProfileInfo/ProfileInfo';
 import {Posts} from './Posts/Posts';
 import {Sidebar} from './Sidebar/Sidebar';
 import {PostForm} from './PostForm';
-import {StateType} from '../../redux/store';
+import {ProfilePropsType} from './ProfileContainer';
 
-type PropsType = {
-    state: StateType
-    addPost: () => void
-    onPostChange: (text: string) => void
-}
-
-export const Profile = (props: PropsType) => {
+export const Profile = (props: ProfilePropsType) => {
     const {addPost, onPostChange} = props
-    const {currentUser, profilePage} = props.state
+    const {currentUser, profilePage} = props
 
     return (
         <div className={styles.root}>
@@ -22,7 +16,7 @@ export const Profile = (props: PropsType) => {
                 <ProfileInfo/>
                 <div className={styles.items}>
                     <div className={styles.timeline}>
-                        <PostForm state={props.state} addPost={addPost} onPostChange={onPostChange}/>
+                        <PostForm profilePage={profilePage} currentUser={currentUser} addPost={addPost} onPostChange={onPostChange}/>
                         <Posts currentUser={currentUser} posts={profilePage.posts}/>
                     </div>
                     <Sidebar state={profilePage.sidebar}/>

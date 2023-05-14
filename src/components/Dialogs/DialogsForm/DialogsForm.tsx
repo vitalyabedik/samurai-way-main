@@ -2,18 +2,18 @@ import React, {createRef} from 'react';
 
 import styles from './DialogsForm.module.css'
 
-import { StateType} from '../../../redux/store';
+import {DialogsPageType} from '../../../types';
 
 
 type PropsType = {
-    state: StateType
+    state: DialogsPageType
     sendMessage: () => void
     onMessageChange: (text: string) => void
 }
 
 export const DialogsForm = (props: PropsType) => {
     const {state, sendMessage, onMessageChange} = props
-    const newMessageText = state.dialogsPage.newMessageText
+    const newMessageText = state.newMessageText
 
     const newMessageRef = createRef<HTMLTextAreaElement>()
 

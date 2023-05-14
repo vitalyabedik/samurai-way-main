@@ -1,5 +1,5 @@
 import {MESSAGES_ADD, MESSAGES_UPDATE_NEW_TEXT} from '../actions/actionTypes';
-import {DialogsPageType, MessageType} from '../../types';
+import {DialogsPageType, MessageType, UsersType} from '../../types';
 import {ActionTypes} from '../store';
 import avatar1 from '../../assets/images/profile/avatars/avatar-1.jpg';
 import avatar2 from '../../assets/images/profile/avatars/avatar-2.jpg';
@@ -10,7 +10,7 @@ import avatar6 from '../../assets/images/profile/avatars/avatar-6.jpg';
 import avatar7 from '../../assets/images/profile/avatars/avatar-7.jpg';
 import avatar8 from '../../assets/images/profile/avatars/avatar-8.jpg';
 
-const initialState: DialogsPageType = {
+const initialState = {
     dialogs: [
         {
             id: 1,
@@ -60,7 +60,7 @@ const initialState: DialogsPageType = {
             userFirstName: 'Dennis',
             userLastName: 'Han'
         },
-    ],
+    ] as UsersType,
     messages: [
         {id: 1, message: 'Hi'},
         {id: 2, message: 'Hello'},
@@ -70,12 +70,14 @@ const initialState: DialogsPageType = {
         {id: 6, message: 'Yo'},
         {id: 7, message: 'Hello'},
         {id: 8, message: 'How are you?'},
-    ],
+    ] as MessageType[],
     newMessageText: 'it-kamasutra.com newMessageText'
 }
 
+export type InitialStateType = typeof initialState
 
-export const dialogsReducer = (state = initialState, action: ActionTypes) => {
+
+export const dialogsReducer = (state: InitialStateType = initialState, action: ActionTypes): InitialStateType => {
     switch (action.type) {
         case MESSAGES_ADD:
             const newMessage: MessageType = {

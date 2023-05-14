@@ -2,16 +2,17 @@ import React from 'react';
 
 import styles from './PostForm.module.css';
 
-import {StateType} from '../../../redux/store';
+import {ProfilePageType, UserType} from '../../../types';
 
 type PropsType = {
-    state: StateType
+    profilePage: ProfilePageType
+    currentUser: UserType
     addPost: () => void
     onPostChange: (text: string) => void
 }
 
 export const PostForm = (props: PropsType) => {
-    const {currentUser, profilePage} = props.state
+    const {currentUser, profilePage} = props
 
     let newPostElement = React.createRef<HTMLTextAreaElement>()
 

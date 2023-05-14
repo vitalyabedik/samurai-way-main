@@ -1,5 +1,4 @@
-
-import {AsideType, } from '../../types';
+import {UsersType,} from '../../types';
 import {ActionTypes} from '../store';
 import avatar1 from '../../assets/images/profile/avatars/avatar-1.jpg';
 import avatar2 from '../../assets/images/profile/avatars/avatar-2.jpg';
@@ -10,7 +9,7 @@ import avatar6 from '../../assets/images/profile/avatars/avatar-6.jpg';
 import avatar7 from '../../assets/images/profile/avatars/avatar-7.jpg';
 import avatar8 from '../../assets/images/profile/avatars/avatar-8.jpg';
 
-const initialState: AsideType = {
+const initialState = {
     contacts: [
         {
             id: 1,
@@ -60,9 +59,11 @@ const initialState: AsideType = {
             userFirstName: 'Dennis',
             userLastName: 'Han'
         },
-    ],
+    ] as UsersType,
 }
 
-export const asideReducer = (state= initialState, action: ActionTypes) => {
+export type InitialStateType = typeof initialState
+
+export const asideReducer = (state: InitialStateType= initialState, action: ActionTypes): InitialStateType => {
     return state
 }

@@ -1,5 +1,5 @@
 import {POST_ADD, POST_UPDATE_NEW_TEXT} from '../actions/actionTypes';
-import {PostType, ProfilePageType} from '../../types';
+import {AboutType, FriendsType, PostType, ProfilePageType, SidebarType} from '../../types';
 import {ActionTypes} from '../store';
 import homeIcon from '../../assets/images/profile/about/icon-home.svg';
 import globeIcon from '../../assets/images/profile/about/icon-globe.svg';
@@ -14,7 +14,7 @@ import avatar6 from '../../assets/images/profile/avatars/avatar-6.jpg';
 import avatar7 from '../../assets/images/profile/avatars/avatar-7.jpg';
 import avatar8 from '../../assets/images/profile/avatars/avatar-8.jpg';
 
-const initialState: ProfilePageType = {
+const initialState = {
     posts: [
         {
             id: 1,
@@ -30,7 +30,7 @@ const initialState: ProfilePageType = {
                     Ut wisi enim ad minim laoreet dolore magna aliquam erat volutpat`,
             likesCount: 10
         },
-    ],
+    ] as PostType[],
     newPostText: 'it-kamasutra.com newPostText',
     sidebar: {
         about: [
@@ -59,7 +59,7 @@ const initialState: ProfilePageType = {
                 description: '3,240 People'
             },
 
-        ],
+        ] ,
         friends: {
             count: '34510',
             list: [
@@ -113,11 +113,12 @@ const initialState: ProfilePageType = {
                 },
             ],
         }
-    },
+    } as SidebarType,
 }
 
+export type InitialStateType = typeof initialState
 
-export const profileReducer = (state = initialState, action: ActionTypes) => {
+export const profileReducer = (state:InitialStateType = initialState, action: ActionTypes):InitialStateType => {
     switch (action.type) {
         case POST_ADD:
             const newPost: PostType = {

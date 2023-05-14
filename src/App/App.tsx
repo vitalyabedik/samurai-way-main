@@ -4,19 +4,19 @@ import {Switch, Route} from 'react-router-dom';
 import styles from './App.module.css';
 
 import {Header} from '../components/Header';
-import {Aside} from '../components/Aside';
 import {Music} from '../components/Music';
 import {News} from '../components/News';
 import {Settings} from '../components/Settings';
 import {ProfileContainer} from '../components/Profile/ProfileContainer';
 import {DialogsContainer} from '../components/Dialogs/DialogsContainer';
+import {AsideContainer} from '../components/Aside/AsideContainer';
 
 export const App = () => {
     return (
         <div className={styles.root}>
             <Header/>
             <div className={styles.container}>
-                <Aside />
+                <AsideContainer />
                 <div className={styles.content}>
                     <Switch>
                         <Route path="/profile" render={() => <ProfileContainer />}/>
