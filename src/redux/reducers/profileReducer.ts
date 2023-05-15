@@ -1,5 +1,5 @@
 import {POST_ADD, POST_UPDATE_NEW_TEXT} from '../actions/actionTypes';
-import {AboutType, FriendsType, PostType, ProfilePageType, SidebarType} from '../../types';
+import {PostType, SidebarType} from '../../types';
 import {ActionTypes} from '../store';
 import homeIcon from '../../assets/images/profile/about/icon-home.svg';
 import globeIcon from '../../assets/images/profile/about/icon-globe.svg';

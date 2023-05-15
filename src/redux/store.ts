@@ -19,8 +19,9 @@ import {DialogsActionType} from './actions/dialogsAction';
 import {profileReducer} from './reducers/profileReducer';
 import {dialogsReducer} from './reducers/dialogsReducer';
 import {asideReducer} from './reducers/asideReducer';
+import {UsersActionType} from './actions/usersAction';
 
-export type ActionTypes = ProfileActionType | DialogsActionType
+export type ActionTypes = ProfileActionType | DialogsActionType | UsersActionType
 
 export type StateType = {
     currentUser: UserType

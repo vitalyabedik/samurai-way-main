@@ -1,5 +1,3 @@
-import avatar2 from '../assets/images/profile/avatars/avatar-2.jpg';
-
 export type UserType = {
     id: number
     avatar: string
