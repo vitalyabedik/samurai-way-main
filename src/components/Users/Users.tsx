@@ -9,115 +9,17 @@ import defaultUserPhoto from '../../assets/images/users/default-user.png'
 export const Users = (props: UsersPropsType) => {
         const {users} = props.usersPage
 
-
-        // if (users.length === 0) {
-        //     props.setUsers([
-        //         {
-        //             id: 1,
-        //             followed: true,
-        //             avatar: avatar1,
-        //             userFirstName: 'Dennis',
-        //             userLastName: 'Han',
-        //             status: 'I am a boss',
-        //             location: {
-        //                 city: 'New York',
-        //                 country: 'USA'
-        //             }
-        //         },
-        //         {
-        //             id: 2,
-        //             followed: false,
-        //             avatar: avatar2,
-        //             userFirstName: 'Erica',
-        //             userLastName: 'Jones',
-        //             status: 'I am a friend',
-        //             location: {
-        //                 city: 'Berlin',
-        //                 country: 'Germany'
-        //             }
-        //         },
-        //         {
-        //             id: 3,
-        //             followed: false,
-        //             avatar: avatar3,
-        //             userFirstName: 'Alex',
-        //             userLastName: 'Dolgove',
-        //             status: 'I am a doctor',
-        //             location: {
-        //                 city: 'Kiev',
-        //                 country: 'Ukraine'
-        //             }
-        //         },
-        //         {
-        //             id: 4,
-        //             followed: false,
-        //             avatar: avatar4,
-        //             userFirstName: 'Alex',
-        //             userLastName: 'Dolgove',
-        //             status: 'I am a doctor',
-        //             location: {
-        //                 city: 'Kiev',
-        //                 country: 'Ukraine'
-        //             }
-        //         },
-        //         {
-        //             id: 5,
-        //             followed: false,
-        //             avatar: avatar5,
-        //             userFirstName: 'Dennis',
-        //             userLastName: 'Han',
-        //             status: 'I am a boss',
-        //             location: {
-        //                 city: 'New York',
-        //                 country: 'USA'
-        //             }
-        //         },
-        //         {
-        //             id: 6,
-        //             followed: false,
-        //             avatar: avatar6,
-        //             userFirstName: 'Alex',
-        //             userLastName: 'Dolgove',
-        //             status: 'I am a doctor',
-        //             location: {
-        //                 city: 'Kiev',
-        //                 country: 'Ukraine'
-        //             }
-        //         },
-        //         {
-        //             id: 7,
-        //             followed: false,
-        //             avatar: avatar7,
-        //             userFirstName: 'Stella',
-        //             userLastName: 'Johnson',
-        //             status: 'I am a designer',
-        //             location: {
-        //                 city: 'Bali',
-        //                 country: 'Indonesia'
-        //             }
-        //         },
-        //         {
-        //             id: 8,
-        //             followed: false,
-        //             avatar: avatar8,
-        //             userFirstName: 'Dennis',
-        //             userLastName: 'Han',
-        //             status: 'I am a boss',
-        //             location: {
-        //                 city: 'New York',
-        //                 country: 'USA'
-        //             }
-        //         },
-        //     ])
-        // }
-
-        useEffect(() => {
+        const fetchUsers = () => {
             const baseURL = 'https://social-network.samuraijs.com/api/1.0'
             axios.get(`${baseURL}/users`).then(res => {
                 const data = res.data.items
                 props.setUsers(data)
             })
-        }, [])
+        }
+
+        // useEffect(() => {
+        //     fetchUsers()
+        // }, [])
 
 
         const onClickFollowHandler = (userId: number) => {
@@ -130,6 +32,7 @@ export const Users = (props: UsersPropsType) => {
 
         return (
             <div>
+                <button onClick={fetchUsers}>Show users</button>
                 {
                     users.map(user => {
                         return (
