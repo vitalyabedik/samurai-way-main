@@ -5,9 +5,7 @@ import axios from 'axios';
 import {UsersPropsType} from './UsersContainer';
 
 export class Users extends React.Component<UsersPropsType> {
-    constructor(props: UsersPropsType) {
-        super(props);
-
+    componentDidMount() {
         const baseURL = 'https://social-network.samuraijs.com/api/1.0'
         axios.get(`${baseURL}/users`).then(res => {
             const data = res.data.items
@@ -46,7 +44,8 @@ export class Users extends React.Component<UsersPropsType> {
                                 <div>
                                     {
                                         user.followed
-                                            ? <button onClick={() => this.onClickUnFollowHandler(user.id)}>Unfollow</button>
+                                            ? <button
+                                                onClick={() => this.onClickUnFollowHandler(user.id)}>Unfollow</button>
                                             : <button onClick={() => this.onClickFollowHandler(user.id)}>Follow</button>
                                     }
                                 </div>
