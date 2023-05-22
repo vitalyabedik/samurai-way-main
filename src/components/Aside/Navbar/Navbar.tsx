@@ -4,6 +4,7 @@ import styles from './Navbar.module.css';
 
 import iconProfile from '../../../assets/images/aside/icon-profile.svg';
 import iconMessages from '../../../assets/images/aside/icon-messages.svg';
+import iconUsers from '../../../assets/images/aside/icon-users.svg';
 import iconNews from '../../../assets/images/aside/icon-news.svg';
 import iconMusic from '../../../assets/images/aside/icon-music.svg';
 import iconSettings from '../../../assets/images/aside/icon-settings.svg';
@@ -17,6 +18,14 @@ export const Navbar = () => {
                         <img src={iconProfile} alt="icon-profile"/>
                     </div>
                     <span>Profile</span>
+                </NavLink>
+            </li>
+            <li className={styles.item}>
+                <NavLink to="/users" className={styles.item__link} activeClassName={styles.item__link_active}>
+                    <div className={styles.item__image}>
+                        <img src={iconUsers} alt="icon-users"/>
+                    </div>
+                    <span>Users</span>
                 </NavLink>
             </li>
             <li className={styles.item}>
