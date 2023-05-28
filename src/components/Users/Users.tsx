@@ -1,59 +1,90 @@
 import React from 'react';
+
 import styles from './Users.module.css';
+
 import defaultUserPhoto from '../../assets/images/users/default-user.png';
-import axios from 'axios';
-import {UsersPropsType} from './UsersContainer';
+import {UserType} from '../../types/usersPageTypes';
 
-export class Users extends React.Component<UsersPropsType> {
-    componentDidMount() {
-        const baseURL = 'https://social-network.samuraijs.com/api/1.0'
-        axios.get(`${baseURL}/users`).then(res => {
-            const data = res.data.items
-            this.props.setUsers(data)
-        })
+type PropsType = {
+    users: UserType[]
+    currentPage: number
+    pageSize: number
+    totalUsersCount: number
+    follow: (userId: number) => void
+    unFollow: (userId: number) => void
+    onPageChanged: (pageNumber: number) => void
+}
+
+export const Users: React.FC<PropsType> = (props) => {
+    const {
+        users,
+        currentPage,
+        pageSize,
+        totalUsersCount,
+        follow,
+        unFollow,
+        onPageChanged
+    } = props
+
+    const onClickFollowHandler = (userId: number) => {
+        follow(userId)
     }
 
-    onClickFollowHandler = (userId: number) => {
-        this.props.follow(userId)
+    const onClickUnFollowHandler = (userId: number) => {
+        unFollow(userId)
     }
 
-    onClickUnFollowHandler = (userId: number) => {
-        this.props.unFollow(userId)
+    const onPageChangedHandler = (pageNumber: number) => {
+        onPageChanged(pageNumber)
     }
 
+    let pagesCount = Math.ceil(totalUsersCount / pageSize)
+    let pages = []
 
-    render() {
-        return (
-            <div>
-                {
-                    this.props.usersPage.users.map(user => {
-                        return (
-                            <div key={user.id}>
-                                <div>
-                                    <img className={styles.userPhoto}
-                                         src={user.photos.small ? user.photos.small : defaultUserPhoto}
-                                         alt="user-image"/>
-                                </div>
-                                <div>
-                                    <span>{user.name}</span>
-                                    <span>{user.status}</span>
-                                </div>
-                                <div>
-                                    <span>{`${'user.location.city'} ${'user.location.country'}`}</span>
-                                </div>
-                                <div>
-                                    {
-                                        user.followed
-                                            ? <button
-                                                onClick={() => this.onClickUnFollowHandler(user.id)}>Unfollow</button>
-                                            : <button onClick={() => this.onClickFollowHandler(user.id)}>Follow</button>
-                                    }
-                                </div>
-                            </div>
-                        )
-                    })
-                }
+    for (let i = 1; i <= pagesCount; i++) {
+        pages.push(i)
+    }
+    return (
+        <div>
+            <div className={styles.pagination}>
+                {pages.map(p => {
+                    return (
+                        <span
+                            className={currentPage === p ? styles.selectedPage : ''}
+                            onClick={() => onPageChangedHandler(p)}
+                        >
+                                {p}
+                            </span>
+                    )
+                })}
             </div>
-        );
-    }
+            {
+                users.map(user => {
+                    return (
+                        <div key={user.id}>
+                            <div>
+                                <img className={styles.userPhoto}
+                                     src={user.photos.small ? user.photos.small : defaultUserPhoto}
+                                     alt="user-image"/>
+                            </div>
+                            <div>
+                                <span>{user.name}</span>
+                                <span>{user.status}</span>
+                            </div>
+                            <div>
+                                <span>{`${'user.location.city'} ${'user.location.country'}`}</span>
+                            </div>
+                            <div>
+                                {
+                                    user.followed
+                                        ? <button onClick={() => onClickUnFollowHandler(user.id)}>Unfollow</button>
+                                        : <button onClick={() => onClickFollowHandler(user.id)}>Follow</button>
+                                }
+                            </div>
+                        </div>
+                    )
+                })
+            }
+        </div>
+    );
 }

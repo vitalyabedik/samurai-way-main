@@ -1,18 +1,18 @@
-import avatar1 from '../../assets/images/profile/avatars/avatar-1.jpg';
-import avatar2 from '../../assets/images/profile/avatars/avatar-2.jpg';
-import avatar3 from '../../assets/images/profile/avatars/avatar-3.jpg';
-import avatar4 from '../../assets/images/profile/avatars/avatar-4.jpg';
-import avatar5 from '../../assets/images/profile/avatars/avatar-5.jpg';
-import avatar6 from '../../assets/images/profile/avatars/avatar-6.jpg';
-import avatar7 from '../../assets/images/profile/avatars/avatar-7.jpg';
-import avatar8 from '../../assets/images/profile/avatars/avatar-8.jpg';
-
-import {USERS_FOLLOW, USERS_SET, USERS_UNFOLLOW} from '../actions/actionTypes';
+import {
+    USERS_FOLLOW,
+    USERS_SET,
+    USERS_SET_CURRENT_PAGE,
+    USERS_SET_TOTAL_COUNT,
+    USERS_UNFOLLOW
+} from '../actions/actionTypes';
 import {UserType} from '../../types/usersPageTypes';
 import {ActionTypes} from '../actions/actionCreatorsTypes';
 
 const initialState = {
-    users: [] as UserType[]
+    users: [] as UserType[],
+    pageSize: 50,
+    totalUsersCount: 0,
+    currentPage: 1
 }
 
 export type InitialStateType = typeof initialState
@@ -40,9 +40,20 @@ export const usersReducer = (state: InitialStateType = initialState, action: Act
         case (USERS_SET) : {
             return {
                 ...state,
-                users: [...state.users, ...action.payload.users]
+                users: action.payload.users
             }
         }
+        case (USERS_SET_CURRENT_PAGE) : {
+            return {
+                ...state, currentPage: action.payload.currentPage
+            }
+        }
+        case (USERS_SET_TOTAL_COUNT): {
+            return {
+                ...state, totalUsersCount: action.payload.totalUsersCount
+            }
+        }
+
         default:
             return state;
     }
