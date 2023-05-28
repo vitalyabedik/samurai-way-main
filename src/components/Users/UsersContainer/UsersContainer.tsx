@@ -1,7 +1,6 @@
 import React from 'react';
 import axios from 'axios';
 import {connect} from 'react-redux';
-import {Dispatch} from 'redux';
 
 import {AppStateType} from '../../../redux/redux-store';
 import {InitialStateType} from '../../../redux/reducers/usersReducer';
@@ -92,29 +91,14 @@ const mapStateToProps = (state: AppStateType): MapStateToPropsType => {
     }
 }
 
-const mapDispatchToProps = (dispatch: Dispatch): MapDispatchToProps => {
-    return {
-        follow: (userId: number) => {
-            dispatch(followAC(userId))
-        },
-        unFollow: (userId: number) => {
-            dispatch(unFollowAC(userId))
-        },
-        setUsers: (users: UserType[]) => {
-            dispatch(setUsersAC(users))
-        },
-        setCurrentPage: (page: number) => {
-            dispatch(setCurrentPageAC(page))
-        },
-        setTotalUsersCount: (totalCount: number) => {
-            dispatch(setTotalUserCountAC(totalCount))
-        },
-        setUsersLoading: (isLoading: boolean) => {
-            dispatch(setUsersLoadingAC(isLoading))
-        }
-    }
-}
+export const UsersContainer = connect(mapStateToProps, {
+    follow: followAC,
+    unFollow: unFollowAC,
+    setUsers: setUsersAC,
+    setCurrentPage: setCurrentPageAC,
+    setTotalUsersCount: setTotalUserCountAC,
+    setUsersLoading: setUsersLoadingAC
+})(UsersContainerAPI)
 
-export const UsersContainer = connect(mapStateToProps, mapDispatchToProps)(UsersContainerAPI)
 
 

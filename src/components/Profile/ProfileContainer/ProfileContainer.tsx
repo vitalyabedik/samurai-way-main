@@ -1,6 +1,5 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {Dispatch} from 'redux';
 
 import {addPostAC, changeNewPostTextAC} from '../../../redux/actions/profileAction';
 import {Profile} from '../Profile';
@@ -27,16 +26,7 @@ const mapStateToProps = (state : AppStateType): MapStateToPropsType => {
     }
 }
 
-const mapDispatchToProps = (dispatch: Dispatch): MapDispatchToProps => {
-    return {
-        addPost : () => {
-            dispatch(addPostAC())
-        },
-        onPostChange : (text: string) => {
-            dispatch(changeNewPostTextAC(text))
-        },
-    }
-}
-
-
-export const ProfileContainer = connect(mapStateToProps, mapDispatchToProps)(Profile)
+export const ProfileContainer = connect(mapStateToProps, {
+    addPost: addPostAC,
+    onPostChange: changeNewPostTextAC
+})(Profile)
