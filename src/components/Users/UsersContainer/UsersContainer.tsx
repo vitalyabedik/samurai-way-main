@@ -10,16 +10,18 @@ import {
     followAC,
     setCurrentPageAC,
     setTotalUserCountAC,
-    setUsersAC,
+    setUsersAC, setUsersLoadingAC,
     unFollowAC
 } from '../../../redux/actions/usersAction';
 import {Users} from '../Users';
+import {Preloader} from '../../common';
 
 type MapStateToPropsType = {
     usersPage: InitialStateType
     pageSize: number
     totalUsersCount: number
     currentPage: number
+    isLoading: boolean
 }
 
 type MapDispatchToProps = {
@@ -28,6 +30,7 @@ type MapDispatchToProps = {
     setUsers: (users: UserType[]) => void
     setCurrentPage: (page: number) => void
     setTotalUsersCount: (totalCount: number) => void
+    setUsersLoading: (isLoading: boolean) => void
 }
 
 export class UsersContainerAPI extends React.Component<UsersPropsType> {
@@ -36,11 +39,29 @@ export class UsersContainerAPI extends React.Component<UsersPropsType> {
         const currentPage = `page=${this.props.currentPage}`
         const count = `page=${this.props.pageSize}`
 
+        this.props.setUsersLoading(true)
         axios.get(`${baseURL}/users?${currentPage}&${count}`).then(res => {
+            this.props.setUsersLoading(false)
             const data = res.data.items
             this.props.setUsers(data)
             this.props.setTotalUsersCount(res.data.totalCount)
         })
+    }
+
+    render() {
+        return (
+            <>
+                {this.props.isLoading && <Preloader/>}
+                <Users users={this.props.usersPage.users}
+                       currentPage={this.props.currentPage}
+                       pageSize={this.props.pageSize}
+                       totalUsersCount={this.props.totalUsersCount}
+                       follow={this.props.follow}
+                       unFollow={this.props.unFollow}
+                       onPageChanged={this.onPageChanged}
+                />
+            </>
+        );
     }
 
     onPageChanged = (pageNumber: number) => {
@@ -50,23 +71,12 @@ export class UsersContainerAPI extends React.Component<UsersPropsType> {
         const currentPage = `page=${pageNumber}`
         const count = `page=${this.props.pageSize}`
 
+        this.props.setUsersLoading(true)
         axios.get(`${baseURL}/users?${currentPage}&${count}`).then(res => {
+            this.props.setUsersLoading(false)
             const data = res.data.items
             this.props.setUsers(data)
         })
-    }
-
-    render() {
-        return (
-            <Users users={this.props.usersPage.users}
-                   currentPage={this.props.currentPage}
-                   pageSize={this.props.pageSize}
-                   totalUsersCount={this.props.totalUsersCount}
-                   follow ={this.props.follow}
-                   unFollow ={this.props.unFollow}
-                   onPageChanged = {this.onPageChanged}
-            />
-        );
     }
 }
 
@@ -77,7 +87,8 @@ const mapStateToProps = (state: AppStateType): MapStateToPropsType => {
         usersPage: state.usersPage,
         pageSize: state.usersPage.pageSize,
         totalUsersCount: state.usersPage.totalUsersCount,
-        currentPage: state.usersPage.currentPage
+        currentPage: state.usersPage.currentPage,
+        isLoading: state.usersPage.isLoading
     }
 }
 
@@ -97,6 +108,9 @@ const mapDispatchToProps = (dispatch: Dispatch): MapDispatchToProps => {
         },
         setTotalUsersCount: (totalCount: number) => {
             dispatch(setTotalUserCountAC(totalCount))
+        },
+        setUsersLoading: (isLoading: boolean) => {
+            dispatch(setUsersLoadingAC(isLoading))
         }
     }
 }

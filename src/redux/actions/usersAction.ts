@@ -1,4 +1,11 @@
-import {USERS_FOLLOW, USERS_SET, USERS_SET_CURRENT_PAGE, USERS_SET_TOTAL_COUNT, USERS_UNFOLLOW} from './actionTypes';
+import {
+    USERS_FOLLOW,
+    USERS_IS_LOADING,
+    USERS_SET,
+    USERS_SET_CURRENT_PAGE,
+    USERS_SET_TOTAL_COUNT,
+    USERS_UNFOLLOW
+} from './actionTypes';
 import {UserType} from '../../types/usersPageTypes';
 
 export type UsersActionType = ReturnType<typeof followAC>
@@ -6,6 +13,7 @@ export type UsersActionType = ReturnType<typeof followAC>
     | ReturnType<typeof setUsersAC>
     | ReturnType<typeof setCurrentPageAC>
     | ReturnType<typeof setTotalUserCountAC>
+    | ReturnType<typeof setUsersLoadingAC>
 
 export const followAC = (userId: number) => ({
     type: USERS_FOLLOW,
@@ -41,3 +49,10 @@ export const setTotalUserCountAC = (totalUsersCount: number) => ({
         totalUsersCount
     }
 } as const);
+
+export const setUsersLoadingAC = (isLoading: boolean) => ({
+    type: USERS_IS_LOADING,
+    payload: {
+        isLoading
+    }
+} as const)
