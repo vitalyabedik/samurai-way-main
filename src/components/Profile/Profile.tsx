@@ -7,19 +7,19 @@ import {PostForm} from './PostForm';
 import {ProfilePropsType} from './ProfileContainer';
 
 export const Profile = (props: ProfilePropsType) => {
-    const {addPost, onPostChange} = props
+    const {profile, addPost, onPostChange} = props
     const {currentUser, profilePage} = props
 
     return (
         <div className={styles.root}>
             <div className={styles.content}>
-                <ProfileInfo/>
+                <ProfileInfo profile={profile}/>
                 <div className={styles.items}>
                     <div className={styles.timeline}>
                         <PostForm profilePage={profilePage} currentUser={currentUser} addPost={addPost} onPostChange={onPostChange}/>
                         <Posts currentUser={currentUser} posts={profilePage.posts}/>
                     </div>
-                    <Sidebar state={profilePage.sidebar}/>
+                    <Sidebar state={profilePage.sidebar} profile={profile}/>
                 </div>
             </div>
         </div>

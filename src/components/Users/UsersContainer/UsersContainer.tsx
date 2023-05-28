@@ -32,6 +32,8 @@ type MapDispatchToProps = {
     setUsersLoading: (isLoading: boolean) => void
 }
 
+export type UsersPropsType = MapStateToPropsType & MapDispatchToProps
+
 export class UsersContainerAPI extends React.Component<UsersPropsType> {
     componentDidMount() {
         const baseURL = 'https://social-network.samuraijs.com/api/1.0'
@@ -78,8 +80,6 @@ export class UsersContainerAPI extends React.Component<UsersPropsType> {
         })
     }
 }
-
-export type UsersPropsType = MapStateToPropsType & MapDispatchToProps
 
 const mapStateToProps = (state: AppStateType): MapStateToPropsType => {
     return {

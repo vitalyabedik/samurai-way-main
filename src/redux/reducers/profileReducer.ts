@@ -1,10 +1,12 @@
-import {POST_ADD, POST_UPDATE_NEW_TEXT} from '../actions/actionTypes';
-import {PostType, SidebarType} from '../../types';
+import {POST_ADD, POST_UPDATE_NEW_TEXT, PROFILE_SET_USER_PROFILE} from '../actions/actionTypes';
+import {PostType, ProfileType, SidebarType} from '../../types';
 import {ActionTypes} from '../store';
+
 import homeIcon from '../../assets/images/profile/about/icon-home.svg';
 import globeIcon from '../../assets/images/profile/about/icon-globe.svg';
 import heartIcon from '../../assets/images/profile/about/icon-heart.svg';
 import rssIcon from '../../assets/images/profile/about/icon-rss.svg';
+
 import avatar1 from '../../assets/images/profile/avatars/avatar-1.jpg';
 import avatar2 from '../../assets/images/profile/avatars/avatar-2.jpg';
 import avatar3 from '../../assets/images/profile/avatars/avatar-3.jpg';
@@ -38,7 +40,7 @@ const initialState = {
                 id: 1,
                 icon: homeIcon,
                 info: 'Live In',
-                description: 'Cairo, Egypt'
+                description: ''
             },
             {
                 id: 2,
@@ -114,6 +116,7 @@ const initialState = {
             ],
         }
     } as SidebarType,
+    profile: null as ProfileType | null
 }
 
 export type InitialStateType = typeof initialState
@@ -136,6 +139,11 @@ export const profileReducer = (state:InitialStateType = initialState, action: Ac
                 ...state,
                 newPostText: action.newText
             };
+        case PROFILE_SET_USER_PROFILE:
+            return {
+                ...state,
+                profile: action.payload.profile
+            }
         default:
             return state;
     }

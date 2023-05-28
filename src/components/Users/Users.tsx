@@ -1,7 +1,7 @@
 import React from 'react';
+import {NavLink} from 'react-router-dom';
 
 import styles from './Users.module.css';
-
 import defaultUserPhoto from '../../assets/images/users/default-user.png';
 import {UserType} from '../../types/usersPageTypes';
 
@@ -63,9 +63,11 @@ export const Users: React.FC<PropsType> = (props) => {
                     return (
                         <div key={user.id}>
                             <div>
-                                <img className={styles.userPhoto}
-                                     src={user.photos.small ? user.photos.small : defaultUserPhoto}
-                                     alt="user-image"/>
+                                <NavLink to={`/profile/${user.id}`}>
+                                    <img className={styles.userPhoto}
+                                        src={user.photos.small ? user.photos.small : defaultUserPhoto}
+                                        alt="user-image"/>
+                                </NavLink>
                             </div>
                             <div>
                                 <span>{user.name}</span>

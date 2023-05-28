@@ -23,8 +23,40 @@ export type SidebarType = {
     friends: FriendsType
 }
 
+
+type ProfileContacts = {
+    'facebook': string | null,
+    'website': string | null
+    'vk': string | null
+    'twitter': string | null
+    'instagram': string | null
+    'youtube': string | null
+    'github': string | null
+    'mainLink': string | null
+}
+
+type ProfilePhotos = {
+    small: string
+    large: string
+}
+
+export type ProfileType = {
+    'aboutMe': string,
+    'contacts': ProfileContacts,
+    'lookingForAJob': boolean
+    'lookingForAJobDescription': string
+    'fullName': string
+    'userId': number
+    'photos': ProfilePhotos
+}
+
+
 export type ProfilePageType = {
     posts: PostType[]
     newPostText: string
     sidebar: SidebarType
+    profile: ProfileType | null
 }
+
+
+
