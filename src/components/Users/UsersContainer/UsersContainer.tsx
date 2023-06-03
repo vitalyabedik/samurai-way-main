@@ -41,12 +41,15 @@ export class UsersContainerAPI extends React.Component<UsersPropsType> {
         const count = `page=${this.props.pageSize}`
 
         this.props.setUsersLoading(true)
-        axios.get(`${baseURL}/users?${currentPage}&${count}`).then(res => {
-            this.props.setUsersLoading(false)
-            const data = res.data.items
-            this.props.setUsers(data)
-            this.props.setTotalUsersCount(res.data.totalCount)
+        axios.get(`${baseURL}/users?${currentPage}&${count}`, {
+            withCredentials: true
         })
+            .then(res => {
+                this.props.setUsersLoading(false)
+                const data = res.data.items
+                this.props.setUsers(data)
+                this.props.setTotalUsersCount(res.data.totalCount)
+            })
     }
 
     render() {
@@ -73,11 +76,14 @@ export class UsersContainerAPI extends React.Component<UsersPropsType> {
         const count = `page=${this.props.pageSize}`
 
         this.props.setUsersLoading(true)
-        axios.get(`${baseURL}/users?${currentPage}&${count}`).then(res => {
-            this.props.setUsersLoading(false)
-            const data = res.data.items
-            this.props.setUsers(data)
+        axios.get(`${baseURL}/users?${currentPage}&${count}`, {
+            withCredentials: true
         })
+            .then(res => {
+                this.props.setUsersLoading(false)
+                const data = res.data.items
+                this.props.setUsers(data)
+            })
     }
 }
 

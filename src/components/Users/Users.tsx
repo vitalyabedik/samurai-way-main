@@ -4,6 +4,8 @@ import {NavLink} from 'react-router-dom';
 import styles from './Users.module.css';
 import defaultUserPhoto from '../../assets/images/users/default-user.png';
 import {UserType} from '../../types/usersPageTypes';
+import axios from 'axios';
+import {UsersPropsType} from './UsersContainer';
 
 type PropsType = {
     users: UserType[]
@@ -23,7 +25,7 @@ export const Users: React.FC<PropsType> = (props) => {
         totalUsersCount,
         follow,
         unFollow,
-        onPageChanged
+        onPageChanged,
     } = props
 
     const onClickFollowHandler = (userId: number) => {
@@ -65,8 +67,8 @@ export const Users: React.FC<PropsType> = (props) => {
                             <div>
                                 <NavLink to={`/profile/${user.id}`}>
                                     <img className={styles.userPhoto}
-                                        src={user.photos.small ? user.photos.small : defaultUserPhoto}
-                                        alt="user-image"/>
+                                         src={user.photos.small ? user.photos.small : defaultUserPhoto}
+                                         alt="user-image"/>
                                 </NavLink>
                             </div>
                             <div>
@@ -79,8 +81,39 @@ export const Users: React.FC<PropsType> = (props) => {
                             <div>
                                 {
                                     user.followed
-                                        ? <button onClick={() => onClickUnFollowHandler(user.id)}>Unfollow</button>
-                                        : <button onClick={() => onClickFollowHandler(user.id)}>Follow</button>
+                                        ? <button onClick={() => {
+                                            const baseURL = 'https://social-network.samuraijs.com/api/1.0'
+                                            const userId = user.id
+
+                                            axios.delete(`${baseURL}/follow/${userId}`,  {
+                                                withCredentials: true,
+                                                headers: {
+                                                    'API-KEY' : '2f06710d-814e-48f6-bf89-aa04b6eef483'
+                                                }
+                                            })
+                                                .then(res => {
+                                                    if (res.data.resultCode === 0) {
+                                                        onClickUnFollowHandler(user.id)
+                                                    }
+                                                })
+                                        }}>Unfollow</button>
+                                        : <button onClick={() => {
+                                            const baseURL = 'https://social-network.samuraijs.com/api/1.0'
+                                            const userId = user.id
+
+
+                                            axios.post(`${baseURL}/follow/${userId}`, {}, {
+                                                withCredentials: true,
+                                                headers: {
+                                                    'API-KEY' : '2f06710d-814e-48f6-bf89-aa04b6eef483'
+                                                }
+                                            })
+                                                .then(res => {
+                                                    if (res.data.resultCode === 0) {
+                                                        onClickFollowHandler(user.id)
+                                                    }
+                                                })
+                                        }}>Follow</button>
                                 }
                             </div>
                         </div>
