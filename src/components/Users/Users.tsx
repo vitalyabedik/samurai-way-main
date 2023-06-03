@@ -2,10 +2,10 @@ import React from 'react';
 import {NavLink} from 'react-router-dom';
 
 import styles from './Users.module.css';
+
 import defaultUserPhoto from '../../assets/images/users/default-user.png';
 import {UserType} from '../../types/usersPageTypes';
-import axios from 'axios';
-import {UsersPropsType} from './UsersContainer';
+import {usersAPI} from '../../api';
 
 type PropsType = {
     users: UserType[]
@@ -29,11 +29,21 @@ export const Users: React.FC<PropsType> = (props) => {
     } = props
 
     const onClickFollowHandler = (userId: number) => {
-        follow(userId)
+        usersAPI.follow(userId)
+            .then(data => {
+                if (data.resultCode === 0) {
+                    follow(userId)
+                }
+            })
     }
 
     const onClickUnFollowHandler = (userId: number) => {
-        unFollow(userId)
+        usersAPI.unFollow(userId)
+            .then(data => {
+                if (data.resultCode === 0) {
+                    unFollow(userId)
+                }
+            })
     }
 
     const onPageChangedHandler = (pageNumber: number) => {
@@ -49,9 +59,10 @@ export const Users: React.FC<PropsType> = (props) => {
     return (
         <div>
             <div className={styles.pagination}>
-                {pages.map(p => {
+                {pages.map((p, i) => {
                     return (
                         <span
+
                             className={currentPage === p ? styles.selectedPage : ''}
                             onClick={() => onPageChangedHandler(p)}
                         >
@@ -81,39 +92,8 @@ export const Users: React.FC<PropsType> = (props) => {
                             <div>
                                 {
                                     user.followed
-                                        ? <button onClick={() => {
-                                            const baseURL = 'https://social-network.samuraijs.com/api/1.0'
-                                            const userId = user.id
-
-                                            axios.delete(`${baseURL}/follow/${userId}`,  {
-                                                withCredentials: true,
-                                                headers: {
-                                                    'API-KEY' : '2f06710d-814e-48f6-bf89-aa04b6eef483'
-                                                }
-                                            })
-                                                .then(res => {
-                                                    if (res.data.resultCode === 0) {
-                                                        onClickUnFollowHandler(user.id)
-                                                    }
-                                                })
-                                        }}>Unfollow</button>
-                                        : <button onClick={() => {
-                                            const baseURL = 'https://social-network.samuraijs.com/api/1.0'
-                                            const userId = user.id
-
-
-                                            axios.post(`${baseURL}/follow/${userId}`, {}, {
-                                                withCredentials: true,
-                                                headers: {
-                                                    'API-KEY' : '2f06710d-814e-48f6-bf89-aa04b6eef483'
-                                                }
-                                            })
-                                                .then(res => {
-                                                    if (res.data.resultCode === 0) {
-                                                        onClickFollowHandler(user.id)
-                                                    }
-                                                })
-                                        }}>Follow</button>
+                                        ? <button onClick={() => {onClickUnFollowHandler(user.id)}}>Unfollow</button>
+                                        : <button onClick={() => {onClickFollowHandler(user.id)}}>Follow</button>
                                 }
                             </div>
                         </div>
