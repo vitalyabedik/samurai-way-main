@@ -3,13 +3,13 @@ import axios from 'axios';
 import {connect} from 'react-redux';
 
 import {AppStateType} from '../../../redux/redux-store';
-import {InitialStateType} from '../../../redux/reducers/usersReducer';
+import {FollowingInProgressType, InitialStateType} from '../../../redux/reducers/usersReducer';
 import {UserType} from '../../../types/usersPageTypes';
 import {
     followAC,
     setCurrentPageAC,
     setTotalUserCountAC,
-    setUsersAC, setUsersLoadingAC,
+    setUsersAC, setUsersFollowingAC, setUsersLoadingAC,
     unFollowAC
 } from '../../../redux/actions/usersAction';
 import {Users} from '../Users';
@@ -22,6 +22,7 @@ type MapStateToPropsType = {
     totalUsersCount: number
     currentPage: number
     isLoading: boolean
+    followingInProgress: FollowingInProgressType
 }
 
 type MapDispatchToProps = {
@@ -31,6 +32,7 @@ type MapDispatchToProps = {
     setCurrentPage: (page: number) => void
     setTotalUsersCount: (totalCount: number) => void
     setUsersLoading: (isLoading: boolean) => void
+    setUsersFollowing: (userId: number, isFetching: boolean) => void
 }
 
 export type UsersPropsType = MapStateToPropsType & MapDispatchToProps
@@ -57,6 +59,8 @@ export class UsersContainerAPI extends React.Component<UsersPropsType> {
                        follow={this.props.follow}
                        unFollow={this.props.unFollow}
                        onPageChanged={this.onPageChanged}
+                       followingInProgress={this.props.followingInProgress}
+                       setUsersFollowing={this.props.setUsersFollowing}
                 />
             </>
         );
@@ -79,7 +83,8 @@ const mapStateToProps = (state: AppStateType): MapStateToPropsType => {
         pageSize: state.usersPage.pageSize,
         totalUsersCount: state.usersPage.totalUsersCount,
         currentPage: state.usersPage.currentPage,
-        isLoading: state.usersPage.isLoading
+        isLoading: state.usersPage.isLoading,
+        followingInProgress: state.usersPage.followingInProgress
     }
 }
 
@@ -89,7 +94,8 @@ export const UsersContainer = connect(mapStateToProps, {
     setUsers: setUsersAC,
     setCurrentPage: setCurrentPageAC,
     setTotalUsersCount: setTotalUserCountAC,
-    setUsersLoading: setUsersLoadingAC
+    setUsersLoading: setUsersLoadingAC,
+    setUsersFollowing: setUsersFollowingAC
 })(UsersContainerAPI)
 
 

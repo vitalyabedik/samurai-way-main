@@ -1,5 +1,5 @@
 import {
-    USERS_FOLLOW,
+    USERS_FOLLOW, USERS_FOLLOWING_IN_PROGRESS,
     USERS_IS_LOADING,
     USERS_SET,
     USERS_SET_CURRENT_PAGE,
@@ -14,6 +14,7 @@ export type UsersActionType = ReturnType<typeof followAC>
     | ReturnType<typeof setCurrentPageAC>
     | ReturnType<typeof setTotalUserCountAC>
     | ReturnType<typeof setUsersLoadingAC>
+    | ReturnType<typeof setUsersFollowingAC>
 
 export const followAC = (userId: number) => ({
     type: USERS_FOLLOW,
@@ -54,5 +55,13 @@ export const setUsersLoadingAC = (isLoading: boolean) => ({
     type: USERS_IS_LOADING,
     payload: {
         isLoading
+    }
+} as const)
+
+export const setUsersFollowingAC = (userId: number, isFetching: boolean) => ({
+    type: USERS_FOLLOWING_IN_PROGRESS,
+    payload: {
+        userId,
+        isFetching
     }
 } as const)
