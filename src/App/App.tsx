@@ -3,7 +3,7 @@ import {Switch, Route} from 'react-router-dom';
 
 import styles from './App.module.css';
 
-import {Header} from '../components/Header';
+import {HeaderContainer} from '../components/Header/HeaderContainer';
 import {Music} from '../components/Music';
 import {News} from '../components/News';
 import {Settings} from '../components/Settings';
@@ -12,11 +12,10 @@ import {DialogsContainer} from '../components/Dialogs/DialogsContainer';
 import {AsideContainer} from '../components/Aside/AsideContainer';
 import {UsersContainer} from '../components/Users/UsersContainer';
 
-
 export const App = () => {
     return (
         <div className={styles.root}>
-            <Header/>
+            <HeaderContainer/>
             <div className={styles.container}>
                 <AsideContainer />
                 <div className={styles.content}>
