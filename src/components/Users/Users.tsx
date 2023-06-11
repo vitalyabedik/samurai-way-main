@@ -5,7 +5,6 @@ import styles from './Users.module.css';
 
 import defaultUserPhoto from '../../assets/images/users/default-user.png';
 import {UserType} from '../../types/usersPageTypes';
-import {usersAPI} from '../../api';
 import {FollowingInProgressType} from '../../redux/reducers/usersReducer';
 
 type PropsType = {
@@ -17,7 +16,7 @@ type PropsType = {
     follow: (userId: number) => void
     unFollow: (userId: number) => void
     onPageChanged: (pageNumber: number) => void
-    setUsersFollowing: (userId: number, followingInProgress: boolean) => void
+    // setUsersFollowing: (userId: number, followingInProgress: boolean) => void
 }
 
 export const Users: React.FC<PropsType> = (props) => {
@@ -26,33 +25,16 @@ export const Users: React.FC<PropsType> = (props) => {
         currentPage,
         pageSize,
         totalUsersCount,
-        follow,
-        unFollow,
         followingInProgress,
         onPageChanged,
-        setUsersFollowing
     } = props
 
     const onClickFollowHandler = (userId: number) => {
-        setUsersFollowing(userId, true)
-        usersAPI.follow(userId)
-            .then(data => {
-                if (data.resultCode === 0) {
-                    follow(userId)
-                }
-            })
-        setUsersFollowing(userId, false)
+        props.follow(userId)
     }
 
     const onClickUnFollowHandler = (userId: number) => {
-        setUsersFollowing(userId, true)
-        usersAPI.unFollow(userId)
-            .then(data => {
-                if (data.resultCode === 0) {
-                    unFollow(userId)
-                }
-            })
-        setUsersFollowing(userId, false)
+        props.unFollow(userId)
     }
 
 
@@ -83,7 +65,6 @@ export const Users: React.FC<PropsType> = (props) => {
             {
                 users.map(user => {
                     let isDisabled = followingInProgress.some(id => id === user.id)
-                    console.log(isDisabled)
                     return (
                         <div key={user.id}>
                             <div>

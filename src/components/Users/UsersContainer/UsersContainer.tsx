@@ -1,20 +1,20 @@
 import React from 'react';
-import axios from 'axios';
 import {connect} from 'react-redux';
 
 import {AppStateType} from '../../../redux/redux-store';
 import {FollowingInProgressType, InitialStateType} from '../../../redux/reducers/usersReducer';
 import {UserType} from '../../../types/usersPageTypes';
 import {
-    followAC,
     setCurrentPageAC,
-    setTotalUserCountAC,
-    setUsersAC, setUsersFollowingAC, setUsersLoadingAC,
-    unFollowAC
+    setUsersAC,
 } from '../../../redux/actions/usersAction';
 import {Users} from '../Users';
 import {Preloader} from '../../common';
-import {usersAPI} from '../../../api/usersApi';
+import {
+    followThunkCreator,
+    getUsersThunkCreator,
+    unFollowThunkCreator
+} from '../../../redux/thunks/usersThunk';
 
 type MapStateToPropsType = {
     usersPage: InitialStateType
@@ -30,22 +30,15 @@ type MapDispatchToProps = {
     unFollow: (userId: number) => void
     setUsers: (users: UserType[]) => void
     setCurrentPage: (page: number) => void
-    setTotalUsersCount: (totalCount: number) => void
-    setUsersLoading: (isLoading: boolean) => void
-    setUsersFollowing: (userId: number, isFetching: boolean) => void
+    getUsers: (currentPage: number, pageSize: number) => void
+    changePage: (currentPage: number, pageSize: number) => void
 }
 
 export type UsersPropsType = MapStateToPropsType & MapDispatchToProps
 
 export class UsersContainerAPI extends React.Component<UsersPropsType> {
     componentDidMount() {
-        this.props.setUsersLoading(true)
-        usersAPI.getUsers(this.props.currentPage, this.props.pageSize)
-            .then(data => {
-                this.props.setUsersLoading(false)
-                this.props.setUsers(data.items)
-                this.props.setTotalUsersCount(data.totalCount)
-            })
+        this.props.getUsers(this.props.currentPage, this.props.pageSize)
     }
 
     render() {
@@ -60,20 +53,13 @@ export class UsersContainerAPI extends React.Component<UsersPropsType> {
                        unFollow={this.props.unFollow}
                        onPageChanged={this.onPageChanged}
                        followingInProgress={this.props.followingInProgress}
-                       setUsersFollowing={this.props.setUsersFollowing}
                 />
             </>
         );
     }
 
     onPageChanged = (pageNumber: number) => {
-        this.props.setCurrentPage(pageNumber)
-        this.props.setUsersLoading(true)
-        usersAPI.getUsers(pageNumber, this.props.pageSize)
-            .then(data => {
-                this.props.setUsersLoading(false)
-                this.props.setUsers(data.items)
-            })
+        this.props.getUsers(pageNumber, this.props.pageSize)
     }
 }
 
@@ -89,13 +75,12 @@ const mapStateToProps = (state: AppStateType): MapStateToPropsType => {
 }
 
 export const UsersContainer = connect(mapStateToProps, {
-    follow: followAC,
-    unFollow: unFollowAC,
     setUsers: setUsersAC,
     setCurrentPage: setCurrentPageAC,
-    setTotalUsersCount: setTotalUserCountAC,
-    setUsersLoading: setUsersLoadingAC,
-    setUsersFollowing: setUsersFollowingAC
+    getUsers: getUsersThunkCreator,
+    follow: followThunkCreator,
+    unFollow: unFollowThunkCreator,
+    // changePage: changePageThunkCreator
 })(UsersContainerAPI)
 
 
