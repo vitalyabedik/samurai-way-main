@@ -1,14 +1,14 @@
 import React from 'react';
 import {connect} from 'react-redux';
 
-import {addPostAC, changeNewPostTextAC, setUserProfileAC} from '../../../redux/actions/profileAction';
+import {addPostAC, changeNewPostTextAC} from '../../../redux/actions/profileAction';
 import {Profile} from '../Profile';
 import {AppStateType} from '../../../redux/redux-store';
 import {InitialStateType} from '../../../redux/reducers/profileReducer';
 import {InitialCurrentUserStateType} from '../../../redux/reducers/currentUserReducer';
 import {ProfileType} from '../../../types';
 import {RouteComponentProps, withRouter} from 'react-router-dom';
-import {profileAPI} from '../../../api/profileApi';
+import {getUserProfileThunkCreator} from '../../../redux/thunks/profileThunk';
 
 type PathParamsType = {
     userId: string
@@ -23,7 +23,7 @@ type MapStateToPropsType = {
 type MapDispatchToProps = {
     addPost: () => void
     onPostChange: (text: string) => void
-    setUserProfile: (profile: any) => void
+    getUserProfile: (userId: string) => void
 }
 
 export type OwnPropsType = MapStateToPropsType & MapDispatchToProps
@@ -36,10 +36,7 @@ export class ProfileContainerAPI extends React.Component<ProfilePropsType> {
             userId = '2'
         }
 
-        profileAPI.getProfile(userId)
-            .then(data => {
-                this.props.setUserProfile(data)
-            })
+        this.props.getUserProfile(userId)
     }
 
     render() {
@@ -63,5 +60,5 @@ let withURLDataContainerComponent = withRouter(ProfileContainerAPI)
 export const ProfileContainer = connect(mapStateToProps, {
     addPost: addPostAC,
     onPostChange: changeNewPostTextAC,
-    setUserProfile: setUserProfileAC
+    getUserProfile: getUserProfileThunkCreator
 })(withURLDataContainerComponent)

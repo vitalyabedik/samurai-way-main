@@ -2,8 +2,7 @@ import {Dispatch} from 'redux';
 
 import {usersAPI} from '../../api';
 import {
-    followAC,
-    setCurrentPageAC,
+    followAC, setCurrentPageAC,
     setTotalUserCountAC,
     setUsersAC,
     setUsersFollowingAC,
@@ -13,6 +12,19 @@ import {
 export const getUsersThunkCreator = (currentPage: number, pageSize: number) => {
     return (dispatch: Dispatch) => {
 
+        dispatch(setUsersLoadingAC(true))
+        usersAPI.getUsers(currentPage, pageSize)
+            .then(data => {
+                dispatch(setUsersLoadingAC(false))
+                dispatch(setUsersAC(data.items))
+                dispatch(setTotalUserCountAC(data.totalCount))
+            })
+    }
+}
+
+export const changePageThunkCreator = (currentPage: number, pageSize: number) => {
+    return (dispatch: Dispatch) => {
+        dispatch(setCurrentPageAC(currentPage))
         dispatch(setUsersLoadingAC(true))
         usersAPI.getUsers(currentPage, pageSize)
             .then(data => {
@@ -51,9 +63,3 @@ export const unFollowThunkCreator = (userId: number) => {
     }
 }
 
-// export const changePageThunkCreator = (currentPage: number, pageSize: number) => {
-//     return (dispatch: Dispatch) => {
-//         dispatch(setCurrentPageAC(currentPage))
-//        getUsersThunkCreator(currentPage, pageSize)
-//     }
-// }

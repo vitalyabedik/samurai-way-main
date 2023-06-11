@@ -11,6 +11,7 @@ import {
 import {Users} from '../Users';
 import {Preloader} from '../../common';
 import {
+    changePageThunkCreator,
     followThunkCreator,
     getUsersThunkCreator,
     unFollowThunkCreator
@@ -59,7 +60,7 @@ export class UsersContainerAPI extends React.Component<UsersPropsType> {
     }
 
     onPageChanged = (pageNumber: number) => {
-        this.props.getUsers(pageNumber, this.props.pageSize)
+        this.props.changePage(pageNumber, this.props.pageSize)
     }
 }
 
@@ -80,7 +81,7 @@ export const UsersContainer = connect(mapStateToProps, {
     getUsers: getUsersThunkCreator,
     follow: followThunkCreator,
     unFollow: unFollowThunkCreator,
-    // changePage: changePageThunkCreator
+    changePage: changePageThunkCreator
 })(UsersContainerAPI)
 
 

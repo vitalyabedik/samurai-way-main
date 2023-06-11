@@ -16,7 +16,6 @@ type PropsType = {
     follow: (userId: number) => void
     unFollow: (userId: number) => void
     onPageChanged: (pageNumber: number) => void
-    // setUsersFollowing: (userId: number, followingInProgress: boolean) => void
 }
 
 export const Users: React.FC<PropsType> = (props) => {
