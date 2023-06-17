@@ -16,6 +16,10 @@ import {
     getUsersThunkCreator,
     unFollowThunkCreator
 } from '../../../redux/thunks/usersThunk';
+import {compose} from 'redux';
+import {addMessageAC, changeNewMessageTextAC} from '../../../redux/actions/dialogsAction';
+import {withAuthRedirectComponent} from '../../../hoc/withAuthRedirect';
+import {Dialogs} from '../../Dialogs';
 
 type MapStateToPropsType = {
     usersPage: InitialStateType
@@ -75,14 +79,25 @@ const mapStateToProps = (state: AppStateType): MapStateToPropsType => {
     }
 }
 
-export const UsersContainer = connect(mapStateToProps, {
-    setUsers: setUsersAC,
-    setCurrentPage: setCurrentPageAC,
-    getUsers: getUsersThunkCreator,
-    follow: followThunkCreator,
-    unFollow: unFollowThunkCreator,
-    changePage: changePageThunkCreator
-})(UsersContainerAPI)
+// export const UsersContainer = connect(mapStateToProps, {
+//     setUsers: setUsersAC,
+//     setCurrentPage: setCurrentPageAC,
+//     getUsers: getUsersThunkCreator,
+//     follow: followThunkCreator,
+//     unFollow: unFollowThunkCreator,
+//     changePage: changePageThunkCreator
+// })(UsersContainerAPI)
 
 
 
+export const UsersContainer = compose<React.ComponentType>(
+    connect(mapStateToProps, {
+        setUsers: setUsersAC,
+        setCurrentPage: setCurrentPageAC,
+        getUsers: getUsersThunkCreator,
+        follow: followThunkCreator,
+        unFollow: unFollowThunkCreator,
+        changePage: changePageThunkCreator
+    }),
+    withAuthRedirectComponent
+)(UsersContainerAPI)

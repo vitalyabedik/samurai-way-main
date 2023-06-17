@@ -1,4 +1,5 @@
 import React from 'react';
+import {compose} from 'redux';
 import {connect} from 'react-redux';
 
 import {addPostAC, changeNewPostTextAC} from '../../../redux/actions/profileAction';
@@ -61,10 +62,12 @@ const mapStateToProps = (state: AppStateType): MapStateToPropsType => {
     }
 }
 
-let withURLDataContainerComponent = withRouter(AuthRedirectComponent)
-
-export const ProfileContainer = withAuthRedirectComponent(connect(mapStateToProps, {
-    addPost: addPostAC,
-    onPostChange: changeNewPostTextAC,
-    getUserProfile: getUserProfileThunkCreator
-})(withURLDataContainerComponent))
+export const ProfileContainer = compose<React.ComponentType>(
+    connect(mapStateToProps, {
+        addPost: addPostAC,
+        onPostChange: changeNewPostTextAC,
+        getUserProfile: getUserProfileThunkCreator
+    }),
+    withRouter,
+    withAuthRedirectComponent
+)(ProfileContainerAPI)

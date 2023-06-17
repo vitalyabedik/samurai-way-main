@@ -5,6 +5,12 @@ import {Dialogs} from '../Dialogs';
 import {AppStateType} from '../../../redux/redux-store';
 import {InitialStateType} from '../../../redux/reducers/dialogsReducer';
 import {withAuthRedirectComponent} from '../../../hoc/withAuthRedirect';
+import {compose} from 'redux';
+import React from 'react';
+import {addPostAC, changeNewPostTextAC} from '../../../redux/actions/profileAction';
+import {getUserProfileThunkCreator} from '../../../redux/thunks/profileThunk';
+import {withRouter} from 'react-router-dom';
+import {ProfileContainerAPI} from '../../Profile/ProfileContainer';
 
 type MapStateToPropsType = {
     dialogsPage : InitialStateType
@@ -23,7 +29,10 @@ const mapStateToProps = (state : AppStateType): MapStateToPropsType => {
     }
 }
 
-export const DialogsContainer = withAuthRedirectComponent(connect(mapStateToProps, {
-    sendMessage: addMessageAC,
-    onMessageChange: changeNewMessageTextAC
-})(Dialogs))
+export const DialogsContainer = compose<React.ComponentType>(
+    connect(mapStateToProps, {
+        sendMessage: addMessageAC,
+        onMessageChange: changeNewMessageTextAC
+    }),
+    withAuthRedirectComponent
+)(Dialogs)
