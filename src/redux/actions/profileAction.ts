@@ -1,9 +1,15 @@
-import {POST_ADD, POST_UPDATE_NEW_TEXT, PROFILE_SET_USER_PROFILE} from './actionTypes';
+import {
+    POST_ADD,
+    POST_UPDATE_NEW_TEXT,
+    PROFILE_GET_STATUS,
+    PROFILE_SET_USER_PROFILE,
+} from './actionTypes';
 import {ProfileType} from '../../types';
 
 export type ProfileActionType = ReturnType<typeof addPostAC>
     | ReturnType<typeof changeNewPostTextAC>
     | ReturnType<typeof setUserProfileAC>
+    | ReturnType<typeof setUserStatusAC>
 
 export const addPostAC = () => ({
     type: POST_ADD
@@ -20,3 +26,11 @@ export const setUserProfileAC = (profile: ProfileType | null) => ({
         profile
     }
 } as const)
+
+export const setUserStatusAC = (status: string) => ({
+    type: PROFILE_GET_STATUS,
+    payload: {
+        status
+    }
+} as const)
+

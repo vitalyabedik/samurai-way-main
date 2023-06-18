@@ -9,10 +9,12 @@ import {ProfileStatus} from './ProfileStatus';
 
 type PropsType = {
     profile: ProfileType | null
+    status: string
+    updateUserStatus: (status: string) => void
 }
 
 export const ProfileInfo: React.FC<PropsType> = (props) => {
-    const {profile} = props
+    const {profile, status, updateUserStatus} = props
 
     if (!profile) {
         return <Preloader/>
@@ -31,7 +33,7 @@ export const ProfileInfo: React.FC<PropsType> = (props) => {
                 <div className={styles.profileInfo}>
                     <h1 className={styles.profileInfo__title}>{profile.fullName}</h1>
                     <p className={styles.profileInfo__description}>{profile.aboutMe}</p>
-                    <ProfileStatus status={'status'}/>
+                    <ProfileStatus status={status} updateUserStatus={updateUserStatus}/>
                 </div>
             </div>
         </div>
