@@ -1,28 +1,7 @@
 .root {
-    background-color: white;
-    padding: 20px;
-    border-radius: 8px;
-    overflow: hidden;
-    border: 1px solid #ebe9e6;
-    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
-}
-
-.imgAndTextarea {
-    align-items: center;
     display: flex;
-    justify-content: space-between;
-
-    border-bottom: 1px solid rgba(229, 231, 235, 1);
-    margin-bottom: 20px;
-    padding-bottom: 20px;
-
-}
-
-.avatar {
-    display: block;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
+    flex-direction: column;
+    width: 100%;
 }
 
 .textarea {
@@ -37,7 +16,6 @@
     height: 40px;
     outline: none;
     width: 100%;
-    margin-left: 12px;
 
     /*white-space: pre-wrap;*/
     /*white-space: -moz-pre-wrap;*/
@@ -49,6 +27,10 @@
     display: flex;
     align-items: center;
     justify-content: flex-end;
+
+    border-top: 1px solid rgba(229, 231, 235, 1);
+    margin-top: 20px;
+    padding-top: 20px;
 }
 
 .button {

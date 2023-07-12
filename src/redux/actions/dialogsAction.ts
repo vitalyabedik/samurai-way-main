@@ -1,12 +1,8 @@
-import {MESSAGES_ADD, MESSAGES_UPDATE_NEW_TEXT} from './actionTypes';
+import {MESSAGES_ADD} from './actionTypes';
 
-export type DialogsActionType = ReturnType<typeof addMessageAC> | ReturnType<typeof changeNewMessageTextAC>
+export type DialogsActionType = ReturnType<typeof addMessageAC>
 
-export const addMessageAC = () => ({
-    type: MESSAGES_ADD
-} as const)
-
-export const changeNewMessageTextAC = (newMessageText: string) => ({
-    type: MESSAGES_UPDATE_NEW_TEXT,
-    newMessageText
+export const addMessageAC = (newMessageBody: string) => ({
+    type: MESSAGES_ADD,
+    newMessageBody
 } as const)

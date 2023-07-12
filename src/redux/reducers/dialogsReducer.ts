@@ -1,4 +1,4 @@
-import {MESSAGES_ADD, MESSAGES_UPDATE_NEW_TEXT} from '../actions/actionTypes';
+import {MESSAGES_ADD} from '../actions/actionTypes';
 import {DialogsPageType, MessageType, UsersType} from '../../types';
 import {ActionTypes} from '../store';
 import avatar1 from '../../assets/images/profile/avatars/avatar-1.jpg';
@@ -71,7 +71,6 @@ const initialState = {
         {id: 7, message: 'Hello'},
         {id: 8, message: 'How are you?'},
     ] as MessageType[],
-    newMessageText: 'it-kamasutra.com newMessageText'
 }
 
 export type InitialStateType = typeof initialState
@@ -82,17 +81,11 @@ export const dialogsReducer = (state: InitialStateType = initialState, action: A
         case MESSAGES_ADD:
             const newMessage: MessageType = {
                 id: 9,
-                message: state.newMessageText,
+                message: action.newMessageBody,
             }
             return {
                 ...state,
                 messages: [...state.messages, newMessage],
-                newMessageText: ''
-            };
-        case MESSAGES_UPDATE_NEW_TEXT:
-            return {
-                ...state,
-                newMessageText: action.newMessageText
             };
         default:
             return state;

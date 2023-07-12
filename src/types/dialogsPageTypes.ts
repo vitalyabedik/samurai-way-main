@@ -9,5 +9,5 @@ export type MessageType = {
 export type DialogsPageType = {
     dialogs: UsersType
     messages: MessageType[]
-    newMessageText: string
+    newMessageBody: string
 }

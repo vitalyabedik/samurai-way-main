@@ -1,4 +1,4 @@
-import {POST_ADD, POST_UPDATE_NEW_TEXT, PROFILE_GET_STATUS, PROFILE_SET_USER_PROFILE} from '../actions/actionTypes';
+import {POST_ADD, PROFILE_GET_STATUS, PROFILE_SET_USER_PROFILE} from '../actions/actionTypes';
 import {PostType, ProfileType, SidebarType} from '../../types';
 import {ActionTypes} from '../store';
 
@@ -33,7 +33,6 @@ const initialState = {
             likesCount: 10
         },
     ] as PostType[],
-    newPostText: 'it-kamasutra.com newPostText',
     sidebar: {
         about: [
             {
@@ -127,18 +126,12 @@ export const profileReducer = (state:InitialStateType = initialState, action: Ac
         case POST_ADD:
             const newPost: PostType = {
                 id: 3,
-                message: state.newPostText,
+                message: action.newPostText,
                 likesCount: 0
             }
             return {
                 ...state,
                 posts: [...state.posts, newPost],
-                newPostText: ''
-            };
-        case POST_UPDATE_NEW_TEXT:
-            return {
-                ...state,
-                newPostText: action.newText
             };
         case PROFILE_SET_USER_PROFILE:
             return {

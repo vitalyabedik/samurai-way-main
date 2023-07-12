@@ -2,7 +2,7 @@ import React from 'react';
 import {compose} from 'redux';
 import {connect} from 'react-redux';
 
-import {addPostAC, changeNewPostTextAC} from '../../../redux/actions/profileAction';
+import {addPostAC} from '../../../redux/actions/profileAction';
 import {Profile} from '../Profile';
 import {AppStateType} from '../../../redux/redux-store';
 import {InitialStateType} from '../../../redux/reducers/profileReducer';
@@ -28,8 +28,7 @@ type MapStateToPropsType = {
 }
 
 type MapDispatchToProps = {
-    addPost: () => void
-    onPostChange: (text: string) => void
+    addPost: (newPostText: string) => void
     getUserProfile: (userId: string) => void
     getUserStatus: (userId: string) => void
     updateUserStatus: (status: string) => void
@@ -72,7 +71,6 @@ const mapStateToProps = (state: AppStateType): MapStateToPropsType => {
 export const ProfileContainer = compose<React.ComponentType>(
     connect(mapStateToProps, {
         addPost: addPostAC,
-        onPostChange: changeNewPostTextAC,
         getUserProfile: getUserProfileThunkCreator,
         getUserStatus: getUserStatusThunkCreator,
         updateUserStatus: updateUserStatusThunkCreator
