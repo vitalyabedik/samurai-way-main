@@ -9,7 +9,7 @@ import {HeaderPropsType} from './HeaderContainer';
 
 
 export const Header = (props: HeaderPropsType) => {
-    const {isAuth, login} = props
+    const {isAuth, login, logOut} = props
     return (
         <header className={styles.root}>
             <div className={styles.mainBlock}>
@@ -30,7 +30,7 @@ export const Header = (props: HeaderPropsType) => {
             </div>
             <div className={styles.loginBlock}>
                 {isAuth
-                    ? login
+                    ? <div>{login} - <button onClick={logOut}>Log out</button></div>
                     : <NavLink to={'/login'}>Login</NavLink>
                 }
             </div>

@@ -1,6 +1,7 @@
 import React, {DetailedHTMLProps, TextareaHTMLAttributes} from "react";
-import styles from './FormsControls.module.css'
 import {WrappedFieldMetaProps} from "redux-form";
+
+import styles from './FormsControls.module.css'
 
 type DefaultInputPropsType = DetailedHTMLProps<TextareaHTMLAttributes<HTMLTextAreaElement>, HTMLTextAreaElement>
 

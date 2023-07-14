@@ -1,0 +1,27 @@
+.root {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+
+.loginForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.loginCheckbox {
+    /*width: 70px;*/
+
+    display: flex;
+    align-items: center;
+}
+
+.loginCheckboxText {
+    padding-left: 20px;
+}
+
