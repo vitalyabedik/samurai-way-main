@@ -14,10 +14,10 @@ export const getUsersThunkCreator = (currentPage: number, pageSize: number) => {
 
         dispatch(setUsersLoadingAC(true))
         usersAPI.getUsers(currentPage, pageSize)
-            .then(data => {
+            .then(res => {
                 dispatch(setUsersLoadingAC(false))
-                dispatch(setUsersAC(data.items))
-                dispatch(setTotalUserCountAC(data.totalCount))
+                dispatch(setUsersAC(res.items))
+                dispatch(setTotalUserCountAC(res.totalCount))
             })
     }
 }
@@ -27,10 +27,10 @@ export const changePageThunkCreator = (currentPage: number, pageSize: number) =>
         dispatch(setCurrentPageAC(currentPage))
         dispatch(setUsersLoadingAC(true))
         usersAPI.getUsers(currentPage, pageSize)
-            .then(data => {
+            .then(res => {
                 dispatch(setUsersLoadingAC(false))
-                dispatch(setUsersAC(data.items))
-                dispatch(setTotalUserCountAC(data.totalCount))
+                dispatch(setUsersAC(res.items))
+                dispatch(setTotalUserCountAC(res.totalCount))
             })
     }
 }
@@ -40,8 +40,8 @@ export const followThunkCreator = (userId: number) => {
 
         dispatch(setUsersFollowingAC(userId, true))
         usersAPI.follow(userId)
-            .then(data => {
-                if (data.resultCode === 0) {
+            .then(res => {
+                if (res.resultCode === 0) {
                     dispatch(followAC(userId))
                 }
             })
@@ -54,8 +54,8 @@ export const unFollowThunkCreator = (userId: number) => {
 
         dispatch(setUsersFollowingAC(userId, true))
         usersAPI.unFollow(userId)
-            .then(data => {
-                if (data.resultCode === 0) {
+            .then(res => {
+                if (res.resultCode === 0) {
                     dispatch(unFollowAC(userId))
                 }
             })

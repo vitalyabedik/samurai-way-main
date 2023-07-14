@@ -11,7 +11,7 @@ import {ProfileContainer} from '../components/Profile/ProfileContainer';
 import {DialogsContainer} from '../components/Dialogs/DialogsContainer';
 import {AsideContainer} from '../components/Aside/AsideContainer';
 import {UsersContainer} from '../components/Users/UsersContainer';
-import {Login, LoginContainer} from '../components/Login';
+import {LoginContainer} from '../components/Login';
 
 export const App = () => {
     return (

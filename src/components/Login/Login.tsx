@@ -27,9 +27,10 @@ export type FormDataType = {
     rememberMe: boolean
 }
 
-export const LoginForm: React.FC<InjectedFormProps<FormDataType>> = (props) => {
+export const LoginForm: React.FC<InjectedFormProps<FormDataType>> = ({error, handleSubmit}) => {
+
     return (
-        <form className={styles.loginForm} onSubmit={props.handleSubmit}>
+        <form className={styles.loginForm} onSubmit={handleSubmit}>
             <div>
                 <Field placeholder="Email"
                        type="email"
@@ -53,6 +54,9 @@ export const LoginForm: React.FC<InjectedFormProps<FormDataType>> = (props) => {
                        validate={[required]}
                 /> <span className={styles.loginCheckboxText}>remember me</span>
             </div>
+            {error && <div className={styles.formSummaryError}>
+                {error}
+            </div>}
             <div>
                 <button className={styles.loginButton}>Login</button>
             </div>
@@ -68,12 +72,13 @@ type LoginType = {
     isAuth: boolean
 }
 
-export const Login = (props: LoginType) => {
+export const Login:React.FC<LoginType> = ({isAuth, login}) => {
+
     const onSubmitHandler = (formData: FormDataType) => {
-        props.login(formData)
+        login(formData)
     }
 
-    if (props.isAuth) return <Redirect to={'/profile'}/>
+    if (isAuth) return <Redirect to={'/profile'}/>
 
     return (
         <div className={styles.root}>

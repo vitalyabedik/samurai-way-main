@@ -7,8 +7,8 @@ import {setUserProfileAC, setUserStatusAC} from '../actions/profileAction';
 export const getUserProfileThunkCreator = (userId: string) => {
     return (dispatch: Dispatch) => {
         profileAPI.getProfile(userId)
-            .then(data => {
-                dispatch(setUserProfileAC(data))
+            .then(res => {
+                dispatch(setUserProfileAC(res))
             })
     }
 }
@@ -16,8 +16,8 @@ export const getUserProfileThunkCreator = (userId: string) => {
 export const getUserStatusThunkCreator = (userId: string) => {
     return (dispatch: Dispatch) => {
         profileAPI.getStatus(userId)
-            .then(data => {
-                dispatch(setUserStatusAC(data))
+            .then(res => {
+                dispatch(setUserStatusAC(res))
             })
     }
 }
@@ -25,8 +25,8 @@ export const getUserStatusThunkCreator = (userId: string) => {
 export const updateUserStatusThunkCreator = (status: string) => {
     return (dispatch: Dispatch) => {
         profileAPI.updateStatus(status)
-            .then(data => {
-                if (data.resultCode === 0) {
+            .then(res => {
+                if (res.resultCode === 0) {
                     dispatch(setUserStatusAC(status))
                 }
             })

@@ -1,4 +1,5 @@
 import {Dispatch} from 'redux'
+import {stopSubmit} from 'redux-form';
 
 import {authAPI} from '../../api';
 import {setAuthUserDataAC} from '../actions/authAction';
@@ -8,9 +9,9 @@ import {AppThunkDispatch, AppThunkType} from '../redux-store';
 export const getAuthUserDataThunkCreator = () => {
     return (dispatch: Dispatch) => {
         authAPI.me()
-            .then(data => {
-                if (data.resultCode === 0) {
-                    const {id, email, login} = data.data
+            .then(res => {
+                if (res.resultCode === 0) {
+                    const {id, email, login} = res.data
                     dispatch(setAuthUserDataAC(id, email, login, true))
                 }
             })
@@ -20,9 +21,12 @@ export const getAuthUserDataThunkCreator = () => {
 export const loginThunkCreator = (data: FormDataType): AppThunkType => {
     return (dispatch: AppThunkDispatch) => {
         authAPI.login(data)
-            .then(data => {
-                if (data.resultCode === 0) {
+            .then(res => {
+                if (res.resultCode === 0) {
                     dispatch(getAuthUserDataThunkCreator())
+                } else {
+                    const message = res.messages.length > 0 ? res.messages[0] : 'Some error'
+                    dispatch(stopSubmit('login', {_error: message}))
                 }
             })
     }
@@ -31,8 +35,8 @@ export const loginThunkCreator = (data: FormDataType): AppThunkType => {
 export const logoutThunkCreator = () => {
     return (dispatch: Dispatch) => {
         authAPI.logOut()
-            .then(data => {
-                if (data.resultCode === 0) {
+            .then(res => {
+                if (res.resultCode === 0) {
                     dispatch(setAuthUserDataAC(null, null, null, false))
                 }
             })
