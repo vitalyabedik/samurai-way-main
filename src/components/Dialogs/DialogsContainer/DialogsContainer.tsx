@@ -9,10 +9,8 @@ import {InitialStateType} from '../../../redux/reducers/dialogsReducer';
 import {withAuthRedirectComponent} from '../../../hoc/withAuthRedirect';
 import {withRouter} from 'react-router-dom';
 
-
 type MapStateToPropsType = {
     dialogsPage : InitialStateType
-    isAuth: boolean
 }
 
 type MapDispatchToProps = {
@@ -24,7 +22,6 @@ export type DialogsPropsType = MapStateToPropsType & MapDispatchToProps
 const mapStateToProps = (state : AppStateType): MapStateToPropsType => {
     return {
         dialogsPage: state.dialogsPage,
-        isAuth: state.auth.isAuth
     }
 }
 
