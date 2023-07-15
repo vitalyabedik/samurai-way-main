@@ -3,7 +3,7 @@ import {compose} from 'redux';
 import {connect} from 'react-redux';
 
 import {AppStateType} from '../../../redux/redux-store';
-import {FollowingInProgressType, InitialStateType} from '../../../redux/reducers/usersReducer';
+import {FollowingInProgressType} from '../../../redux/reducers/usersReducer';
 import {UserType} from '../../../types/usersPageTypes';
 import {
     setCurrentPageAC,
@@ -17,9 +17,16 @@ import {
     getUsersThunkCreator,
     unFollowThunkCreator
 } from '../../../redux/thunks/usersThunk';
+import {
+    getCurrentPage, getFollowingInProgress,
+    getIsLoading,
+    getPageSize,
+    getTotalUsersCount,
+    getUsers
+} from '../../../redux/selectors/usersSelector';
 
 type MapStateToPropsType = {
-    usersPage: InitialStateType
+    users: UserType[]
     pageSize: number
     totalUsersCount: number
     currentPage: number
@@ -47,7 +54,7 @@ export class UsersContainerAPI extends React.Component<UsersPropsType> {
         return (
             <>
                 {this.props.isLoading && <Preloader/>}
-                <Users users={this.props.usersPage.users}
+                <Users users={this.props.users}
                        currentPage={this.props.currentPage}
                        pageSize={this.props.pageSize}
                        totalUsersCount={this.props.totalUsersCount}
@@ -67,12 +74,12 @@ export class UsersContainerAPI extends React.Component<UsersPropsType> {
 
 const mapStateToProps = (state: AppStateType): MapStateToPropsType => {
     return {
-        usersPage: state.usersPage,
-        pageSize: state.usersPage.pageSize,
-        totalUsersCount: state.usersPage.totalUsersCount,
-        currentPage: state.usersPage.currentPage,
-        isLoading: state.usersPage.isLoading,
-        followingInProgress: state.usersPage.followingInProgress
+        users: getUsers(state),
+        pageSize: getPageSize(state),
+        totalUsersCount: getTotalUsersCount(state),
+        currentPage: getCurrentPage(state),
+        isLoading: getIsLoading(state),
+        followingInProgress: getFollowingInProgress(state)
     }
 }
 

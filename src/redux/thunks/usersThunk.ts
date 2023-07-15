@@ -8,6 +8,7 @@ import {
     setUsersFollowingAC,
     setUsersLoadingAC, unFollowAC
 } from '../actions/usersAction';
+import {AppThunkDispatch, AppThunkType} from '../redux-store';
 
 export const getUsersThunkCreator = (currentPage: number, pageSize: number) => {
     return (dispatch: Dispatch) => {
@@ -22,16 +23,10 @@ export const getUsersThunkCreator = (currentPage: number, pageSize: number) => {
     }
 }
 
-export const changePageThunkCreator = (currentPage: number, pageSize: number) => {
-    return (dispatch: Dispatch) => {
+export const changePageThunkCreator = (currentPage: number, pageSize: number): AppThunkType => {
+    return (dispatch: AppThunkDispatch) => {
         dispatch(setCurrentPageAC(currentPage))
-        dispatch(setUsersLoadingAC(true))
-        usersAPI.getUsers(currentPage, pageSize)
-            .then(res => {
-                dispatch(setUsersLoadingAC(false))
-                dispatch(setUsersAC(res.items))
-                dispatch(setTotalUserCountAC(res.totalCount))
-            })
+        dispatch(getUsersThunkCreator(currentPage, pageSize))
     }
 }
 
