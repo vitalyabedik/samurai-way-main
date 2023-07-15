@@ -1,4 +1,5 @@
 import React from 'react';
+import {compose} from 'redux';
 import {connect} from 'react-redux';
 
 import {AppStateType} from '../../../redux/redux-store';
@@ -16,8 +17,6 @@ import {
     getUsersThunkCreator,
     unFollowThunkCreator
 } from '../../../redux/thunks/usersThunk';
-import {compose} from 'redux';
-import {withAuthRedirectComponent} from '../../../hoc/withAuthRedirect';
 
 type MapStateToPropsType = {
     usersPage: InitialStateType
@@ -86,5 +85,4 @@ export const UsersContainer = compose<React.ComponentType>(
         unFollow: unFollowThunkCreator,
         changePage: changePageThunkCreator
     }),
-    withAuthRedirectComponent
 )(UsersContainerAPI)
