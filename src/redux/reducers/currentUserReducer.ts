@@ -1,7 +1,6 @@
 import {ActionTypes} from '../store';
 import avatar2 from '../../assets/images/profile/avatars/avatar-2.jpg';
 
-
 const initialState = {
     id: 1,
     avatar: avatar2,

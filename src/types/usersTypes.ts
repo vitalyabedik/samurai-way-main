@@ -7,9 +7,3 @@ export type UserType = {
 
 export type UsersType = UserType[]
 
-export type AuthMeType = {
-    userId: string | null
-    email: string | null
-    login: string | null
-    isAuth: boolean
-}

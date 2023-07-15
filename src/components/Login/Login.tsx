@@ -1,4 +1,7 @@
 import React from 'react';
+import {compose} from 'redux';
+import {connect} from 'react-redux';
+import {Redirect} from 'react-router-dom';
 import {Field, InjectedFormProps, reduxForm} from 'redux-form';
 
 import styles from './Login.module.css'
@@ -6,20 +9,7 @@ import styles from './Login.module.css'
 import {Input} from '../common/FormsControls';
 import {required} from '../../utils/validators';
 import {loginThunkCreator} from '../../redux/thunks/authThunk';
-import {connect, useDispatch} from 'react-redux';
-import {AppStateType, useAppDispatch} from '../../redux/redux-store';
-import {compose} from 'redux';
-import {setCurrentPageAC, setUsersAC} from '../../redux/actions/usersAction';
-import {
-    changePageThunkCreator,
-    followThunkCreator,
-    getUsersThunkCreator,
-    unFollowThunkCreator
-} from '../../redux/thunks/usersThunk';
-import {withAuthRedirectComponent} from '../../hoc/withAuthRedirect';
-import {UsersContainerAPI} from '../Users/UsersContainer';
-import {Redirect} from 'react-router-dom';
-import {FollowingInProgressType, InitialStateType} from '../../redux/reducers/usersReducer';
+import {AppStateType} from '../../redux/redux-store';
 
 export type FormDataType = {
     email: string

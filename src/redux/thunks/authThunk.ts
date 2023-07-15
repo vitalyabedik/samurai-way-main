@@ -8,7 +8,7 @@ import {AppThunkDispatch, AppThunkType} from '../redux-store';
 
 export const getAuthUserDataThunkCreator = () => {
     return (dispatch: Dispatch) => {
-        authAPI.me()
+       return authAPI.me()
             .then(res => {
                 if (res.resultCode === 0) {
                     const {id, email, login} = res.data

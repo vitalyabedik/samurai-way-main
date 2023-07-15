@@ -1,5 +1,5 @@
 import {MESSAGES_ADD} from '../actions/actionTypes';
-import {DialogsPageType, MessageType, UsersType} from '../../types';
+import {MessageType, UsersType} from '../../types';
 import {ActionTypes} from '../store';
 import avatar1 from '../../assets/images/profile/avatars/avatar-1.jpg';
 import avatar2 from '../../assets/images/profile/avatars/avatar-2.jpg';
@@ -74,7 +74,6 @@ const initialState = {
 }
 
 export type InitialStateType = typeof initialState
-
 
 export const dialogsReducer = (state: InitialStateType = initialState, action: ActionTypes): InitialStateType => {
     switch (action.type) {
