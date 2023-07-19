@@ -6,6 +6,7 @@ import profileCover from '../../../assets/images/profile/profile-cover.jpg';
 import {Preloader} from '../../common';
 import {ProfileType} from '../../../types';
 import {ProfileStatus} from './ProfileStatus';
+import {ProfileStatusWithHooks} from './ProfileStatus/ProfileStatusWithHooks';
 
 type PropsType = {
     profile: ProfileType | null
@@ -33,7 +34,8 @@ export const ProfileInfo: React.FC<PropsType> = (props) => {
                 <div className={styles.profileInfo}>
                     <h1 className={styles.profileInfo__title}>{profile.fullName}</h1>
                     <p className={styles.profileInfo__description}>{profile.aboutMe}</p>
-                    <ProfileStatus status={status} updateUserStatus={updateUserStatus}/>
+                    {/*<ProfileStatus status={status} updateUserStatus={updateUserStatus}/>*/}
+                    <ProfileStatusWithHooks status={status} updateUserStatus={updateUserStatus}/>
                 </div>
             </div>
         </div>
