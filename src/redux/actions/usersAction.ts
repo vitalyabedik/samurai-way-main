@@ -16,6 +16,7 @@ export type UsersActionType = ReturnType<typeof followAC>
     | ReturnType<typeof setUsersLoadingAC>
     | ReturnType<typeof setUsersFollowingAC>
 
+export type followACType = ReturnType<typeof followAC>
 export const followAC = (userId: number) => ({
     type: USERS_FOLLOW,
     payload: {

@@ -14,7 +14,7 @@ export type FollowingInProgressType = number[];
 
 const initialState = {
     users: [] as UserType[],
-    pageSize: 50,
+    pageSize: 10,
     totalUsersCount: 0,
     currentPage: 1,
     isLoading: false,

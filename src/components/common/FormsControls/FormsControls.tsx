@@ -1,7 +1,8 @@
-import React, {DetailedHTMLProps, TextareaHTMLAttributes} from "react";
-import {WrappedFieldMetaProps} from "redux-form";
+import React, {DetailedHTMLProps, TextareaHTMLAttributes} from 'react';
+import {Field, WrappedFieldMetaProps} from 'redux-form';
 
 import styles from './FormsControls.module.css'
+
 
 type DefaultInputPropsType = DetailedHTMLProps<TextareaHTMLAttributes<HTMLTextAreaElement>, HTMLTextAreaElement>
 
@@ -12,11 +13,11 @@ type FormsControlType = {
 }
 
 export const FormsControls: React.FC<FormsControlType> = ({
-                                                            input,
-                                                            meta,
-                                                            FormType,
-                                                            ...props
-                                                        }) => {
+                                                              input,
+                                                              meta,
+                                                              FormType,
+                                                              ...props
+                                                          }) => {
     const error = meta.touched && meta.error
     const finalInputName = `${styles.formControl} ${error ? styles.error : ''}`
 
@@ -29,9 +30,18 @@ export const FormsControls: React.FC<FormsControlType> = ({
 }
 
 export const Textarea: React.FC<FormsControlType> = ({...props}) => {
-    return <FormsControls {...props} FormType="textarea" />
+    return <FormsControls {...props} FormType="textarea"/>
 }
 
 export const Input: React.FC<FormsControlType> = ({...props}) => {
-    return <FormsControls {...props} FormType="input" />
+    return <FormsControls {...props} FormType="input"/>
 }
+
+// export const CreateField = (placeholder: string, name: string, type: string, validators: string[], component: React.ReactNode) => {
+//     <Field placeholder={placeholder}
+//            type={type}
+//            name={name}
+//            component={component}
+//            validate={validators}
+//     />
+// }

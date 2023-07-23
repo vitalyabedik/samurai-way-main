@@ -14,7 +14,7 @@ type PropsType = {
     updateUserStatus: (status: string) => void
 }
 
-export const ProfileInfo: React.FC<PropsType> = (props) => {
+export const ProfileInfo = (props: PropsType) => {
     const {profile, status, updateUserStatus} = props
 
     if (!profile) {

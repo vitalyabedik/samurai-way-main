@@ -47,7 +47,8 @@ export type UsersPropsType = MapStateToPropsType & MapDispatchToProps
 
 export class UsersContainerAPI extends React.Component<UsersPropsType> {
     componentDidMount() {
-        this.props.getUsers(this.props.currentPage, this.props.pageSize)
+        const {currentPage, pageSize, getUsers} = this.props
+        getUsers(currentPage, pageSize)
     }
 
     render() {
@@ -68,7 +69,8 @@ export class UsersContainerAPI extends React.Component<UsersPropsType> {
     }
 
     onPageChanged = (pageNumber: number) => {
-        this.props.changePage(pageNumber, this.props.pageSize)
+        const {pageSize, changePage} = this.props
+        changePage(pageNumber, pageSize)
     }
 }
 

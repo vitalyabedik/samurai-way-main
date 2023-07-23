@@ -80,7 +80,7 @@ export const dialogsReducer = (state: InitialStateType = initialState, action: A
         case MESSAGES_ADD:
             const newMessage: MessageType = {
                 id: 9,
-                message: action.newMessageBody,
+                message: action.payload.newMessageBody,
             }
             return {
                 ...state,
