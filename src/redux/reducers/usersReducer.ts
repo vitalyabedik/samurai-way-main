@@ -9,6 +9,7 @@ import {
 } from '../actions/actionTypes';
 import {UserType} from '../../types/usersPageTypes';
 import {ActionTypes} from '../actions/actionCreatorsTypes';
+import {updateObjectInArray} from '../../utils/object-helpers';
 
 export type FollowingInProgressType = number[];
 
@@ -28,19 +29,13 @@ export const usersReducer = (state: InitialStateType = initialState, action: Act
         case (USERS_FOLLOW) : {
             return {
                 ...state,
-                users: state.users.map(user => user.id === action.payload.userId
-                    ? {...user, followed: true}
-                    : user
-                )
+                users: updateObjectInArray(state.users, action.payload.userId, 'id', {followed: true})
             }
         }
         case (USERS_UNFOLLOW) : {
             return {
                 ...state,
-                users: state.users.map(user => user.id === action.payload.userId
-                    ? {...user, followed: false}
-                    : user
-                )
+                users: updateObjectInArray(state.users, action.payload.userId, 'id', {followed: false})
             }
         }
         case (USERS_SET) : {
