@@ -1,11 +1,4 @@
-import {
-    PROFILE_POST_ADD,
-    PROFILE_POST_DELETE,
-    PROFILE_GET_STATUS,
-    PROFILE_SET_USER_PROFILE
-} from '../actions/actionTypes';
 import {PostType, ProfileType, SidebarType} from '../../types';
-import {ActionTypes} from '../store';
 
 import homeIcon from '../../assets/images/profile/about/icon-home.svg';
 import globeIcon from '../../assets/images/profile/about/icon-globe.svg';
@@ -20,6 +13,8 @@ import avatar5 from '../../assets/images/profile/avatars/avatar-5.jpg';
 import avatar6 from '../../assets/images/profile/avatars/avatar-6.jpg';
 import avatar7 from '../../assets/images/profile/avatars/avatar-7.jpg';
 import avatar8 from '../../assets/images/profile/avatars/avatar-8.jpg';
+import {profileReducer} from '../reducers/profileReducer';
+import {addPostAC, deletePostAC} from '../actions/profileAction';
 
 const initialState = {
     posts: [
@@ -124,36 +119,20 @@ const initialState = {
     status: ''
 }
 
-export type InitialStateType = typeof initialState
+it('length of posts should be incremented', () => {
+    let newState = profileReducer(initialState, addPostAC('it-kamasutra.com'))
 
-export const profileReducer = (state: InitialStateType = initialState, action: ActionTypes): InitialStateType => {
-    switch (action.type) {
-        case PROFILE_POST_ADD:
-            const newPost: PostType = {
-                id: 3,
-                message: action.payload.newPostText,
-                likesCount: 0
-            }
-            return {
-                ...state,
-                posts: [...state.posts, newPost],
-            };
-        case PROFILE_POST_DELETE:
-            return {
-                ...state,
-                posts: state.posts.filter(post => post.id !== action.payload.postId),
-            };
-        case PROFILE_SET_USER_PROFILE:
-            return {
-                ...state,
-                profile: action.payload.profile
-            }
-        case PROFILE_GET_STATUS:
-            return {
-                ...state,
-                status: action.payload.status
-            }
-        default:
-            return state;
-    }
-}
+    expect(newState.posts.length).toBe(3)
+})
+
+it('message of new post should be correct', () => {
+    let newState = profileReducer(initialState, addPostAC('it-kamasutra.com'))
+
+    expect(newState.posts[2].message).toBe('it-kamasutra.com')
+})
+
+it('length of posts should be decremented', () => {
+    let newState = profileReducer(initialState, deletePostAC(1))
+
+    expect(newState.posts.length).toBe(1)
+})
