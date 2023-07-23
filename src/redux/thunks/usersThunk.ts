@@ -6,55 +6,55 @@ import {
     setTotalUserCountAC,
     setUsersAC,
     setUsersFollowingAC,
-    setUsersLoadingAC, unFollowAC
+    setUsersLoadingAC, unFollowAC, UsersActionType
 } from '../actions/usersAction';
 import {AppThunkDispatch, AppThunkType} from '../redux-store';
 
-export const getUsersThunkCreator = (currentPage: number, pageSize: number) => {
-    return (dispatch: Dispatch) => {
+export const getUsersThunkCreator = (currentPage: number, pageSize: number) => async (dispatch: Dispatch) => {
+    dispatch(setUsersLoadingAC(true))
 
-        dispatch(setUsersLoadingAC(true))
-        usersAPI.getUsers(currentPage, pageSize)
-            .then(res => {
-                dispatch(setUsersLoadingAC(false))
-                dispatch(setUsersAC(res.items))
-                dispatch(setTotalUserCountAC(res.totalCount))
-            })
-    }
+    const res = await usersAPI.getUsers(currentPage, pageSize)
+
+    dispatch(setUsersLoadingAC(false))
+    dispatch(setUsersAC(res.items))
+    dispatch(setTotalUserCountAC(res.totalCount))
 }
 
-export const changePageThunkCreator = (currentPage: number, pageSize: number): AppThunkType => {
-    return (dispatch: AppThunkDispatch) => {
-        dispatch(setCurrentPageAC(currentPage))
-        dispatch(getUsersThunkCreator(currentPage, pageSize))
-    }
+export const changePageThunkCreator = (currentPage: number, pageSize: number): AppThunkType => (dispatch: AppThunkDispatch) => {
+    dispatch(setCurrentPageAC(currentPage))
+    dispatch(getUsersThunkCreator(currentPage, pageSize))
 }
 
-export const followThunkCreator = (userId: number) => {
-    return (dispatch: Dispatch) => {
 
-        dispatch(setUsersFollowingAC(userId, true))
-        usersAPI.follow(userId)
-            .then(res => {
-                if (res.resultCode === 0) {
-                    dispatch(followAC(userId))
-                }
-            })
-        dispatch(setUsersFollowingAC(userId, false))
+export const followThunkCreator = (userId: number) => async (dispatch: Dispatch) => {
+    dispatch(setUsersFollowingAC(userId, true))
+    const res = await usersAPI.follow(userId)
+
+    if (res.resultCode === 0) {
+        dispatch(followAC(userId))
     }
+
+    dispatch(setUsersFollowingAC(userId, false))
 }
 
-export const unFollowThunkCreator = (userId: number) => {
-    return (dispatch: Dispatch) => {
+export const unFollowThunkCreator = (userId: number) => async (dispatch: Dispatch) => {
+    dispatch(setUsersFollowingAC(userId, true))
 
-        dispatch(setUsersFollowingAC(userId, true))
-        usersAPI.unFollow(userId)
-            .then(res => {
-                if (res.resultCode === 0) {
-                    dispatch(unFollowAC(userId))
-                }
-            })
-        dispatch(setUsersFollowingAC(userId, false))
+    const res = await usersAPI.unFollow(userId)
+    if (res.resultCode === 0) {
+        dispatch(unFollowAC(userId))
     }
+
+    dispatch(setUsersFollowingAC(userId, false))
 }
 
+// const followUnFollowFlow = async (dispatch: Dispatch, userId: number, apiMethod: any, actionCreator: (userId: number) => UsersActionType) => {
+//     dispatch(setUsersFollowingAC(userId, true))
+//     const res = await apiMethod(userId)
+//
+//     if (res.resultCode === 0) {
+//         dispatch(actionCreator(userId))
+//     }
+//
+//     dispatch(setUsersFollowingAC(userId, false))
+// }
