@@ -1,5 +1,5 @@
 import {instance} from './instance';
-import {FormDataType} from '../components/Login';
+import {FormDataType} from '../components/Login/Login';
 
 export const authAPI = {
     me: () => {

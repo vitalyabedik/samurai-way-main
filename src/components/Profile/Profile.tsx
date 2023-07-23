@@ -6,7 +6,7 @@ import {ProfileInfo} from './ProfileInfo/ProfileInfo';
 import {Posts} from './Posts/Posts';
 import {Sidebar} from './Sidebar/Sidebar';
 import {FormDataType, PostFormRedux} from './PostForm';
-import {ProfilePropsType} from './ProfileContainer';
+import {ProfilePropsType} from './ProfileContainer/ProfileContainer';
 import {PostHeader} from './Posts/Post/PostHeader';
 
 export const Profile = (props: ProfilePropsType) => {

@@ -1,1 +1,1 @@
-export * from './UsersContainer'
+export {default} from './UsersContainer'

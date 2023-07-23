@@ -1,1 +1,1 @@
-export * from './DialogsContainer'
+export  {default} from './DialogsContainer'

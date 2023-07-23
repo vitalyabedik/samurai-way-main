@@ -3,7 +3,7 @@ import {stopSubmit} from 'redux-form';
 
 import {authAPI} from '../../api';
 import {setAuthUserDataAC} from '../actions/authAction';
-import {FormDataType} from '../../components/Login';
+import {FormDataType} from '../../components/Login/Login';
 import {AppThunkDispatch, AppThunkType} from '../redux-store';
 
 export const getAuthUserDataThunkCreator = () => async (dispatch: Dispatch) => {

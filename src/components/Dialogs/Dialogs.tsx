@@ -5,7 +5,8 @@ import styles from './Dialogs.module.css'
 import {MessageItem} from './Message';
 import {DialogItems} from './DialogItems';
 import {DialogsFormRedux, FormDataType} from './DialogsForm';
-import {DialogsPropsType} from './DialogsContainer';
+import {DialogsPropsType} from '../Dialogs/DialogsContainer/DialogsContainer';
+
 
 export const Dialogs = (props: DialogsPropsType) => {
     const {sendMessage} = props

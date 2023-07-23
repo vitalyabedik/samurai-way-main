@@ -9,14 +9,16 @@ import {HeaderContainer} from '../components/Header/HeaderContainer';
 import {Music} from '../components/Music';
 import {News} from '../components/News';
 import {Settings} from '../components/Settings';
-import {ProfileContainer} from '../components/Profile/ProfileContainer';
-import {DialogsContainer} from '../components/Dialogs/DialogsContainer';
 import {AsideContainer} from '../components/Aside/AsideContainer';
-import {UsersContainer} from '../components/Users/UsersContainer';
-import {LoginContainer} from '../components/Login';
 import {inititializeThunkCreator} from '../redux/thunks/appThunk';
 import {AppStateType} from '../redux/redux-store';
 import {Preloader} from '../components/common';
+import {withSuspense} from '../hoc/withSuspense';
+
+const ProfileContainer = React.lazy(() => import('../components/Profile/ProfileContainer'))
+const UsersContainer = React.lazy(() => import('../components/Users/UsersContainer'))
+const DialogsContainer = React.lazy(() => import('../components/Dialogs/DialogsContainer'))
+const LoginContainer = React.lazy(() => import('../components/Login'))
 
 class App extends React.Component<AppPropsType> {
     componentDidMount() {
@@ -33,14 +35,14 @@ class App extends React.Component<AppPropsType> {
                     <AsideContainer/>
                     <div className={styles.content}>
                         <Switch>
-                            <Route path="/profile/:userId?" render={() => <ProfileContainer/>}/>
-                            <Route path="/messages" render={() => <DialogsContainer/>}/>
-                            <Route path="/users" render={() => <UsersContainer/>}/>
+                            <Route path="/profile/:userId?" render={withSuspense(ProfileContainer)}/>
+                            <Route path="/messages" render={withSuspense(DialogsContainer)}/>
+                            <Route path="/users" render={withSuspense(UsersContainer)}/>
                             <Route path="/news" render={() => <News/>}/>
                             <Route path="/music" render={() => <Music/>}/>
                             <Route path="/settings" render={() => <Settings/>}/>
 
-                            <Route path="/login" render={() => <LoginContainer/>}/>
+                            <Route path="/login" render={withSuspense(LoginContainer)}/>
                         </Switch>
                     </div>
                 </div>

@@ -25,7 +25,7 @@ const mapStateToProps = (state : AppStateType): MapStateToPropsType => {
     }
 }
 
-export const DialogsContainer = compose<React.ComponentType>(
+export default compose<React.ComponentType>(
     connect(mapStateToProps, {
         sendMessage: addMessageAC,
     }),

@@ -88,7 +88,7 @@ const mapStateToProps = (state: AppStateType): MapStateToPropsType => {
     }
 }
 
-export const LoginContainer = compose<React.ComponentType>(
+export default compose<React.ComponentType>(
     connect(mapStateToProps, {
         login: loginThunkCreator
     }),

@@ -76,7 +76,7 @@ const mapStateToProps = (state: AppStateType): MapStateToPropsType => {
     }
 }
 
-export const ProfileContainer = compose<React.ComponentType>(
+export default compose<React.ComponentType>(
     connect(mapStateToProps, {
         addPost: addPostAC,
         getUserProfile: getUserProfileThunkCreator,
