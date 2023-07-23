@@ -4,7 +4,7 @@ import styles from './Users.module.css';
 
 import {UserType} from '../../types/usersPageTypes';
 import {FollowingInProgressType} from '../../redux/reducers/usersReducer';
-import {Paginator} from '../common/Paginator';
+import {Pagination} from '../common/Pagination';
 import {User} from './User';
 
 type PropsType = {
@@ -32,10 +32,10 @@ export const Users = (props: PropsType) => {
 
     return (
         <div>
-            <Paginator currentPage={currentPage}
-                       pageSize={pageSize}
-                       totalItemsCount={totalUsersCount}
-                       onPageChanged={onPageChanged}
+            <Pagination currentPage={currentPage}
+                        pageSize={pageSize}
+                        totalItemsCount={totalUsersCount}
+                        onPageChanged={onPageChanged}
             />
             {
                 users.map(user =>
