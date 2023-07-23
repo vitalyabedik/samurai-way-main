@@ -11,12 +11,12 @@ type PropsType = {
 }
 
 export const Sidebar = (props: PropsType) => {
-    const {profile} = props
+    const {state, profile} = props
 
     return (
         <div className={styles.root}>
-            <About about={props.state.about} profile={profile}/>
-            <Friends friends={props.state.friends}/>
+            <About about={state.about} profile={profile}/>
+            <Friends friends={state.friends}/>
         </div>
     )
 }

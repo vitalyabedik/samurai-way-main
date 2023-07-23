@@ -32,3 +32,4 @@ export const DialogsContainer = compose<React.ComponentType>(
     withRouter,
     withAuthRedirectComponent
 )(Dialogs)
+

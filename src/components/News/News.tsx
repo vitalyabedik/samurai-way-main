@@ -1,6 +1,10 @@
 import styles from './News.module.css'
 
-export const News = (props: any) => {
+type PropsType = {
+
+}
+
+export const News = (props: PropsType) => {
     return (
         <div className={styles.root}>News</div>
     )

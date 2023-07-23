@@ -1,6 +1,10 @@
 import styles from './Settings.module.css'
 
-export const Settings = (props: any) => {
+type PropsType = {
+
+}
+
+export const Settings = (props: PropsType) => {
     return (
         <div className={styles.root}>Settings</div>
     )

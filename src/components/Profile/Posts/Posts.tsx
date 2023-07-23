@@ -1,3 +1,4 @@
+import React from 'react';
 import styles from './Posts.module.css';
 
 import {Post} from './Post';
@@ -10,7 +11,7 @@ type PropsType = {
     posts: PostType[]
 }
 
-export const Posts = (props: PropsType) => {
+export const Posts = React.memo((props: PropsType) => {
     const postsElements = props.posts.map(post => {
         return (
             <Post key={post.id}
@@ -24,4 +25,4 @@ export const Posts = (props: PropsType) => {
             <div className={styles.posts}>{postsElements}</div>
         </div>
     )
-}
+})

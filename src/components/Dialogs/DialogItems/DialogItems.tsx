@@ -9,18 +9,20 @@ type PropsType = {
 }
 
 export const DialogItems = (props: PropsType) => {
-    let path = `/dialogs/${props.id}`
+    const {id, dialog} = props
+
+    let path = `/dialogs/${id}`
 
     return (
         <div className={styles.root}>
-            <NavLink key={props.dialog.id} to={path}>
+            <NavLink key={dialog.id} to={path}>
                 <li className={styles.item}>
                     <div className={styles.item__image}>
-                        <img className={styles.item__avatar} src={props.dialog.avatar} alt="contact-avatar"/>
+                        <img className={styles.item__avatar} src={dialog.avatar} alt="contact-avatar"/>
                     </div>
                     <div className={styles.userAndMessage}>
                         <div className={styles.item__userName}>
-                            {`${props.dialog.userFirstName} ${props.dialog.userLastName}`}
+                            {`${dialog.userFirstName} ${dialog.userLastName}`}
                         </div>
                         <div className={styles.userMessage}>
                             'Sed diam nonummy nibh euismod tincidunt ut laoreet dolore'

@@ -10,6 +10,7 @@ import {HeaderPropsType} from './HeaderContainer';
 
 export const Header = (props: HeaderPropsType) => {
     const {isAuth, login, logOut} = props
+
     return (
         <header className={styles.root}>
             <div className={styles.mainBlock}>
