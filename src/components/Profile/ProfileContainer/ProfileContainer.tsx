@@ -1,6 +1,7 @@
 import React from 'react';
 import {compose} from 'redux';
 import {connect} from 'react-redux';
+import {RouteComponentProps, withRouter} from 'react-router-dom';
 
 import {addPostAC} from '../../../redux/actions/profileAction';
 import {Profile} from '../Profile';
@@ -8,7 +9,6 @@ import {AppStateType} from '../../../redux/redux-store';
 import {InitialStateType} from '../../../redux/reducers/profileReducer';
 import {InitialCurrentUserStateType} from '../../../redux/reducers/currentUserReducer';
 import {ProfileType} from '../../../types';
-import {RouteComponentProps, withRouter} from 'react-router-dom';
 import {
     getUserProfileThunkCreator,
     getUserStatusThunkCreator,

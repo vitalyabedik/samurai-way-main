@@ -8,10 +8,6 @@ export const inititializeThunkCreator = (): AppThunkType => async (dispatch: App
 
     await promise
     dispatch(setAppInitializedAC())
-
-    // promise.then(() => {
-    //     dispatch(setAppInitializedAC())
-    // })
 }
 
 

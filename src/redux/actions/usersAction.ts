@@ -8,8 +8,8 @@ import {
 } from './actionTypes';
 import {UserType} from '../../types/usersPageTypes';
 
-export type UsersActionType = ReturnType<typeof followAC>
-    | ReturnType<typeof unFollowAC>
+export type UsersActionType = followACType
+    | unFollowACType
     | ReturnType<typeof setUsersAC>
     | ReturnType<typeof setCurrentPageAC>
     | ReturnType<typeof setTotalUserCountAC>
@@ -24,6 +24,7 @@ export const followAC = (userId: number) => ({
     }
 } as const)
 
+export type unFollowACType = ReturnType<typeof unFollowAC>
 export const unFollowAC = (userId: number) => ({
     type: USERS_UNFOLLOW,
     payload: {

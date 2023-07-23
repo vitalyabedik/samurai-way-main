@@ -1,4 +1,4 @@
-import React, { ComponentType, LazyExoticComponent } from 'react';
+import React, {ComponentType, LazyExoticComponent} from 'react';
 
 export const withSuspense = <P extends object>(
     Component: LazyExoticComponent<ComponentType<P>>
