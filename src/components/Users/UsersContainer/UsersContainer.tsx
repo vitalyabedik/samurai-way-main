@@ -12,10 +12,10 @@ import {
 import {Users} from '../Users';
 import {Preloader} from '../../common';
 import {
-    changePageThunkCreator,
-    followThunkCreator,
-    getUsersThunkCreator,
-    unFollowThunkCreator
+    changePageTC,
+    followTC,
+    getUsersTC,
+    unFollowTC,
 } from '../../../redux/thunks/usersThunk';
 import {
     getCurrentPage, getFollowingInProgress,
@@ -89,9 +89,9 @@ export default compose<React.ComponentType>(
     connect(mapStateToProps, {
         setUsers: setUsersAC,
         setCurrentPage: setCurrentPageAC,
-        getUsers: getUsersThunkCreator,
-        follow: followThunkCreator,
-        unFollow: unFollowThunkCreator,
-        changePage: changePageThunkCreator
+        getUsers: getUsersTC,
+        follow: followTC,
+        unFollow: unFollowTC,
+        changePage: changePageTC
     }),
 )(UsersContainerAPI)

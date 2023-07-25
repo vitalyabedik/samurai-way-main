@@ -35,7 +35,7 @@ type ProfileContacts = {
     'mainLink': string | null
 }
 
-type ProfilePhotos = {
+export type ProfilePhotos = {
     small: string
     large: string
 }

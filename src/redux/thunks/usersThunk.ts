@@ -18,8 +18,8 @@ export const getUsersTC = (currentPage: number, pageSize: number) => async (disp
     const res = await usersAPI.getUsers(currentPage, pageSize)
 
     dispatch(setUsersLoadingAC(false))
-    dispatch(setUsersAC(res.data.items))
-    dispatch(setTotalUserCountAC(res.data.totalCount))
+    dispatch(setUsersAC(res.items))
+    dispatch(setTotalUserCountAC(res.totalCount))
 }
 
 export const changePageTC = (currentPage: number, pageSize: number): AppThunkType => (dispatch: AppThunkDispatch) => {

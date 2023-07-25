@@ -10,7 +10,7 @@ import {Music} from '../components/Music';
 import {News} from '../components/News';
 import {Settings} from '../components/Settings';
 import {AsideContainer} from '../components/Aside/AsideContainer';
-import {inititializeThunkCreator} from '../redux/thunks/appThunk';
+import {inititializeTC} from '../redux/thunks/appThunk';
 import {AppStateType} from '../redux/redux-store';
 import {Preloader} from '../components/common';
 import {withSuspense} from '../hoc/withSuspense';
@@ -70,5 +70,5 @@ const mapStateToProps = (state: AppStateType): MapStateToPropsType => {
 export default compose<React.ComponentType>(
     withRouter,
     connect(mapStateToProps, {
-        initialize: inititializeThunkCreator
+        initialize: inititializeTC
     }))(App)
