@@ -1,7 +1,8 @@
 import {
+    PROFILE_GET_STATUS,
+    PROFILE_PHOTO_SAVE_SUCCESS,
     PROFILE_POST_ADD,
     PROFILE_POST_DELETE,
-    PROFILE_GET_STATUS,
     PROFILE_SET_USER_PROFILE
 } from '../actions/actionTypes';
 import {PostType, ProfileType, SidebarType} from '../../types';
@@ -152,6 +153,13 @@ export const profileReducer = (state: InitialStateType = initialState, action: A
             return {
                 ...state,
                 status: action.payload.status
+            }
+        case PROFILE_PHOTO_SAVE_SUCCESS:
+            return {
+                ...state,
+                profile: state.profile
+                    ? {...state.profile, photos: action.payload.photos}
+                    : null
             }
         default:
             return state;

@@ -1,8 +1,7 @@
 import {Dispatch} from 'redux';
 
 import {profileAPI} from '../../api';
-import {setUserProfileAC, setUserStatusAC} from '../actions/profileAction';
-
+import {savePhotoSuccessAC, setUserProfileAC, setUserStatusAC} from '../actions/profileAction';
 
 export const getUserProfileThunkCreator = (userId: string) => async (dispatch: Dispatch) => {
     const res = await profileAPI.getProfile(userId)
@@ -17,8 +16,16 @@ export const getUserStatusThunkCreator = (userId: string) => async (dispatch: Di
 export const updateUserStatusThunkCreator = (status: string) => async (dispatch: Dispatch) => {
     const res = await profileAPI.updateStatus(status)
 
-    if (res.resultCode === 0) {
+    if (res.data.resultCode === 0) {
         dispatch(setUserStatusAC(status))
+    }
+}
+
+export const savePhotoThunkCreator = (file: string) => async (dispatch: Dispatch) => {
+    const res = await profileAPI.savePhoto(file)
+
+    if (res.resultCode === 0) {
+        dispatch(savePhotoSuccessAC(res.data.photos))
     }
 }
 

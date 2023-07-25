@@ -11,7 +11,7 @@ import {InitialCurrentUserStateType} from '../../../redux/reducers/currentUserRe
 import {ProfileType} from '../../../types';
 import {
     getUserProfileThunkCreator,
-    getUserStatusThunkCreator,
+    getUserStatusThunkCreator, savePhotoThunkCreator,
     updateUserStatusThunkCreator
 } from '../../../redux/thunks/profileThunk';
 import {withAuthRedirectComponent} from '../../../hoc/withAuthRedirect';
@@ -34,13 +34,14 @@ type MapDispatchToProps = {
     getUserProfile: (userId: string) => void
     getUserStatus: (userId: string) => void
     updateUserStatus: (status: string) => void
+    savePhoto: (file: File) => void
 }
 
 export type OwnPropsType = MapStateToPropsType & MapDispatchToProps
 export type ProfilePropsType = RouteComponentProps<PathParamsType> & OwnPropsType
 
 export class ProfileContainerAPI extends React.Component<ProfilePropsType> {
-    componentDidMount() {
+    refreshProfile() {
         let userId = this.props.match.params.userId
         if (!userId) {
             userId = this.props.authorizedUserId as string
@@ -54,12 +55,24 @@ export class ProfileContainerAPI extends React.Component<ProfilePropsType> {
         this.props.getUserStatus(userId)
     }
 
+    componentDidMount() {
+        this.refreshProfile()
+    }
+
+    componentDidUpdate(prevProps: Readonly<ProfilePropsType>, prevState: Readonly<{}>, snapshot?: any) {
+        if (this.props.match.params.userId !== prevProps.match.params.userId) {
+            this.refreshProfile()
+        }
+    }
+
     render() {
         return (
             <Profile {...this.props}
+                     isOwner={!this.props.match.params.userId}
                      profile={this.props.profile}
                      status={this.props.status}
                      updateUserStatus={this.props.updateUserStatus}
+                     savePhoto={this.props.savePhoto}
             />
         )
     }
@@ -81,7 +94,8 @@ export default compose<React.ComponentType>(
         addPost: addPostAC,
         getUserProfile: getUserProfileThunkCreator,
         getUserStatus: getUserStatusThunkCreator,
-        updateUserStatus: updateUserStatusThunkCreator
+        updateUserStatus: updateUserStatusThunkCreator,
+        savePhoto: savePhotoThunkCreator
     }),
     withRouter,
     withAuthRedirectComponent

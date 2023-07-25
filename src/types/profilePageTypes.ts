@@ -23,16 +23,8 @@ export type SidebarType = {
     friends: FriendsType
 }
 
-
 type ProfileContacts = {
-    'facebook': string | null,
-    'website': string | null
-    'vk': string | null
-    'twitter': string | null
-    'instagram': string | null
-    'youtube': string | null
-    'github': string | null
-    'mainLink': string | null
+    [key: string]: string | null
 }
 
 export type ProfilePhotos = {
