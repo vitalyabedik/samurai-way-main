@@ -22,7 +22,7 @@ export const getUsersTC = (currentPage: number, pageSize: number) => async (disp
     dispatch(setTotalUserCountAC(res.data.totalCount))
 }
 
-export const changePageThunkCreator = (currentPage: number, pageSize: number): AppThunkType => (dispatch: AppThunkDispatch) => {
+export const changePageTC = (currentPage: number, pageSize: number): AppThunkType => (dispatch: AppThunkDispatch) => {
     dispatch(setCurrentPageAC(currentPage))
     dispatch(getUsersTC(currentPage, pageSize))
 }
