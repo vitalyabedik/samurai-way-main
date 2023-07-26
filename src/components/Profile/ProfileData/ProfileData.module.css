@@ -1,0 +1,29 @@
+.items {
+    display: flex;
+    flex-direction: column;
+    color: #4B5563;
+}
+
+.item {
+    display: flex;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.iconBlock {
+    display: block;
+    width: 28px;
+    height: 28px;
+    margin-right: 10px;
+}
+
+.iconImage {
+    background-color: rgba(229,231,235, 1);
+    border-radius: 50%;
+    padding: 4px;
+}
+
+.info {
+    margin-left: 8px;
+    font-weight: bolder;
+}

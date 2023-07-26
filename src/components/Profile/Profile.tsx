@@ -8,9 +8,32 @@ import {Sidebar} from './Sidebar/Sidebar';
 import {FormDataType, PostFormRedux} from './PostForm';
 import {ProfilePropsType} from './ProfileContainer/ProfileContainer';
 import {PostHeader} from './Posts/Post/PostHeader';
+import {ProfileType} from '../../types';
+import {InitialStateType} from '../../redux/reducers/profileReducer';
+import {InitialCurrentUserStateType} from '../../redux/reducers/currentUserReducer';
 
-export const Profile = (props: ProfilePropsType) => {
-    const {profile, currentUser, status, profilePage, updateUserStatus, addPost} = props
+type PropsType = {
+    profilePage: InitialStateType
+    profile: ProfileType | null
+    currentUser: InitialCurrentUserStateType
+    status: string
+    isOwner: boolean
+    addPost: (newPostText: string) => void
+    updateUserStatus: (status: string) => void
+    savePhoto: (file: File) => void
+}
+
+export const Profile = (props: PropsType) => {
+    const {
+        profile,
+        currentUser,
+        status,
+        profilePage,
+        isOwner,
+        updateUserStatus,
+        addPost,
+        savePhoto
+    } = props
 
     const onAddPost = (values: FormDataType) => {
         addPost(values.newPostText)
@@ -19,7 +42,12 @@ export const Profile = (props: ProfilePropsType) => {
     return (
         <div className={styles.root}>
             <div className={styles.content}>
-                <ProfileInfo profile={profile} status={status} updateUserStatus={updateUserStatus}/>
+                <ProfileInfo isOwner={isOwner}
+                             profile={profile}
+                             status={status}
+                             updateUserStatus={updateUserStatus}
+                             savePhoto={savePhoto}
+                />
                 <div className={styles.items}>
                     <div className={styles.timeline}>
                         <div className={styles.postForm}>
@@ -30,7 +58,7 @@ export const Profile = (props: ProfilePropsType) => {
                         </div>
                         <Posts currentUser={currentUser} posts={profilePage.posts}/>
                     </div>
-                    <Sidebar state={profilePage.sidebar} profile={profile}/>
+                    <Sidebar state={profilePage.sidebar} profile={profile} isOwner={isOwner}/>
                 </div>
             </div>
         </div>
