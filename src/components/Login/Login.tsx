@@ -6,7 +6,7 @@ import {Field, InjectedFormProps, reduxForm} from 'redux-form';
 
 import styles from './Login.module.css'
 
-import {Input} from '../common/FormsControls';
+import {createField, GetStringKeys, Input} from '../common/FormsControls';
 import {required} from '../../utils/validators';
 import {loginThunkCreator} from '../../redux/thunks/authThunk';
 import {AppStateType} from '../../redux/redux-store';
@@ -16,33 +16,24 @@ export type FormDataType = {
     password: string
     rememberMe: boolean
 }
+type LoginFormValuesTypeKeys = GetStringKeys<FormDataType>;
 
 export const LoginForm: React.FC<InjectedFormProps<FormDataType>> = ({error, handleSubmit}) => {
 
     return (
         <form className={styles.loginForm} onSubmit={handleSubmit}>
             <div>
-                <Field placeholder="Email"
-                       type="email"
-                       name="email"
-                       component={Input}
-                       validate={[required]}
-                />
+                {createField<LoginFormValuesTypeKeys>('Email', 'email', [required], Input)}
             </div>
             <div>
-                <Field placeholder="Password"
-                       type="password"
-                       name="password"
-                       component={Input}
-                       validate={[required]}
-                />
+                {createField<LoginFormValuesTypeKeys>('Password', 'password', [required], Input, {type: 'password',})}
             </div>
             <div className={styles.loginCheckbox}>
-                <Field type="Checkbox"
-                       name={'rememberMe'}
-                       component={Input}
-                       validate={[required]}
-                /> <span className={styles.loginCheckboxText}>remember me</span>
+                {createField<LoginFormValuesTypeKeys>(undefined, 'rememberMe', [], Input, {type: 'checkbox'}, 'remember me',)}
+                {/*<Field type="Checkbox"*/}
+                {/*       name={'rememberMe'}*/}
+                {/*       component={Input}*/}
+                {/*/> <span className={styles.loginCheckboxText}>remember me</span>*/}
             </div>
             {error && <div className={styles.formSummaryError}>
                 {error}
@@ -62,7 +53,7 @@ type LoginType = {
     isAuth: boolean
 }
 
-export const Login:React.FC<LoginType> = ({isAuth, login}) => {
+export const Login: React.FC<LoginType> = ({isAuth, login}) => {
 
     const onSubmitHandler = (formData: FormDataType) => {
         login(formData)

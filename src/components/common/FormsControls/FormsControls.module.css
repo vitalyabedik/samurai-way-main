@@ -45,3 +45,16 @@
         color: #ff4b4c;
     }
 }
+
+input[type="checkbox"] {
+    transform: scale(0.5);
+}
+
+label.checkboxLabel {
+    display: flex;
+    align-items: center;
+}
+
+label.checkboxLabel > input[type="checkbox"] {
+    margin-left: 5px;
+}
