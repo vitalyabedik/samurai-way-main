@@ -23,7 +23,7 @@ export type SidebarType = {
     friends: FriendsType
 }
 
-type ProfileContacts = {
+export type ProfileContacts = {
     [key: string]: string | null
 }
 
@@ -33,13 +33,13 @@ export type ProfilePhotos = {
 }
 
 export type ProfileType = {
-    'aboutMe': string,
-    'contacts': ProfileContacts,
-    'lookingForAJob': boolean
-    'lookingForAJobDescription': string
-    'fullName': string
-    'userId': number
-    'photos': ProfilePhotos
+    aboutMe: string,
+    contacts: ProfileContacts,
+    lookingForAJob: boolean
+    lookingForAJobDescription: string
+    fullName: string
+    userId: number
+    photos: ProfilePhotos
 }
 
 

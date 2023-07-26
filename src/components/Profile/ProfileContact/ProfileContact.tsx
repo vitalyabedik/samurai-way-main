@@ -3,6 +3,6 @@ type ContactPropsType = {
     value: string | null
 }
 
-export const Contact = ({title, value}: ContactPropsType) => {
+export const ProfileContact = ({title, value}: ContactPropsType) => {
     return <div><b>{title}</b>: {value}</div>
 }

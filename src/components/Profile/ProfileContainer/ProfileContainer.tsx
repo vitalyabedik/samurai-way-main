@@ -11,10 +11,11 @@ import {InitialCurrentUserStateType} from '../../../redux/reducers/currentUserRe
 import {ProfileType} from '../../../types';
 import {
     getUserProfileThunkCreator,
-    getUserStatusThunkCreator, savePhotoThunkCreator,
+    getUserStatusThunkCreator, savePhotoThunkCreator, updateProfileTC,
     updateUserStatusThunkCreator
 } from '../../../redux/thunks/profileThunk';
 import {withAuthRedirectComponent} from '../../../hoc/withAuthRedirect';
+import {ProfileDataFormType} from '../ProfileDataForm';
 
 type PathParamsType = {
     userId: string
@@ -35,6 +36,7 @@ type MapDispatchToProps = {
     getUserStatus: (userId: string) => void
     updateUserStatus: (status: string) => void
     savePhoto: (file: File) => void
+    updateProfile: (profile: ProfileDataFormType) => Promise<any>
 }
 
 export type OwnPropsType = MapStateToPropsType & MapDispatchToProps
@@ -73,6 +75,7 @@ export class ProfileContainerAPI extends React.Component<ProfilePropsType> {
                      status={this.props.status}
                      updateUserStatus={this.props.updateUserStatus}
                      savePhoto={this.props.savePhoto}
+                     updateProfile={this.props.updateProfile}
             />
         )
     }
@@ -95,7 +98,8 @@ export default compose<React.ComponentType>(
         getUserProfile: getUserProfileThunkCreator,
         getUserStatus: getUserStatusThunkCreator,
         updateUserStatus: updateUserStatusThunkCreator,
-        savePhoto: savePhotoThunkCreator
+        savePhoto: savePhotoThunkCreator,
+        updateProfile: updateProfileTC
     }),
     withRouter,
     withAuthRedirectComponent

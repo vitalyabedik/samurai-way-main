@@ -2,7 +2,8 @@ import React from 'react';
 import styles from '../ProfileData/ProfileData.module.css';
 import homeIcon from '../../../assets/images/profile/about/icon-home.svg';
 import {ProfileType} from '../../../types';
-import {Contact} from '../ProfileContact';
+import {ProfileContact} from '../ProfileContact';
+
 
 type PropsType = {
     profile: ProfileType | null
@@ -49,7 +50,7 @@ export const ProfileData = (props: PropsType) => {
                 </li>
                 {profile?.contacts && <li>
                     <b>Contacts</b>: {Object.keys(profile.contacts).map(key => {
-                    return <Contact key={key} title={key} value={profile.contacts[key]}/>
+                    return <ProfileContact key={key} title={key} value={profile.contacts[key]}/>
                 })}
                 </li>}
             </ul>

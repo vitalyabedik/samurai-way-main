@@ -4,18 +4,21 @@ import styles from './About.module.css';
 
 import {AboutType, ProfileType} from '../../../../types/profilePageTypes';
 import {ProfileData} from '../../ProfileData';
-import {ProfileDataFormType} from '../../ProfileDataForm';
-import ProfileDataFormReduxForm from '../../ProfileDataForm/ProfileDataForm';
+// import {ProfileDataFormType} from '../../ProfileDataForm';
+import ProfileDataForm, {ProfileDataFormType} from '../../ProfileDataForm/ProfileDataForm';
+import {Preloader} from '../../../common';
 
 
 type PropsType = {
     about: AboutType[]
     profile: ProfileType | null
     isOwner: boolean
+    updateProfile: (profile: ProfileDataFormType) => Promise<any>
 }
 
 export const About = (props: PropsType) => {
-    const {profile, isOwner} = props
+    const {profile, isOwner, updateProfile} = props
+
 
     const [editMode, setEditMode] = useState(false)
 
@@ -24,17 +27,24 @@ export const About = (props: PropsType) => {
     }
 
     const onSubmit = (formData: ProfileDataFormType) => {
-        console.log(formData)
+        updateProfile(formData)
+            .then(() => setEditMode(false))
+
     }
 
-
+    if (!profile) {
+        return <Preloader />;
+    }
     return (
         <div className={styles.root}>
             <h4 className={styles.sidebar__title}>About</h4>
             {
-                !editMode
-                    ? <ProfileDataFormReduxForm  profile={profile}
-                                       onSubmit={onSubmit}/>
+                editMode
+                    ? <ProfileDataForm
+                        profile={profile}
+                        onSubmit={onSubmit}
+                        // initialValues={profile}
+                    />
                     : <ProfileData profile={profile}
                                    isOwner={isOwner}
                                    activateEditMode={activateEditMode}

@@ -1,5 +1,5 @@
 import {instance} from './instance';
-import {ProfilePhotos} from '../types';
+import {ProfileType} from '../types';
 
 export const profileAPI = {
     getProfile: (userId: string) => {
@@ -24,6 +24,9 @@ export const profileAPI = {
         })
         .then(response => response.data)
     },
+    updateProfile: (profile: ProfileType) => {
+        return instance.put(`profile`, profile)
+    }
 }
 
 
