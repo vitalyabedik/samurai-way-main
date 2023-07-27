@@ -1,5 +1,5 @@
 import React from 'react';
-import {Switch, Route, withRouter} from 'react-router-dom';
+import {Switch, Route, withRouter, Redirect} from 'react-router-dom';
 import {compose} from 'redux';
 import {connect} from 'react-redux';
 
@@ -35,6 +35,7 @@ class App extends React.Component<AppPropsType> {
                     <AsideContainer/>
                     <div className={styles.content}>
                         <Switch>
+                            <Route exact path="/" render={() => <Redirect to={'/profile'}/>}/>
                             <Route path="/profile/:userId?" render={withSuspense(ProfileContainer)}/>
                             <Route path="/messages" render={withSuspense(DialogsContainer)}/>
                             <Route path="/users" render={withSuspense(UsersContainer)}/>
@@ -43,6 +44,7 @@ class App extends React.Component<AppPropsType> {
                             <Route path="/settings" render={() => <Settings/>}/>
 
                             <Route path="/login" render={withSuspense(LoginContainer)}/>
+                            <Route path="*" render={() => <div>404 NOT FOUND</div>}/>
                         </Switch>
                     </div>
                 </div>
