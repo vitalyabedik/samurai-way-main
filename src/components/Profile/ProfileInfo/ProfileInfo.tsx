@@ -5,7 +5,6 @@ import styles from './ProfileInfo.module.css';
 import profileCover from '../../../assets/images/profile/profile-cover.jpg';
 import {Preloader} from '../../common';
 import {ProfileType} from '../../../types';
-import {ProfileStatus} from './ProfileStatus';
 import {ProfileStatusWithHooks} from './ProfileStatus/ProfileStatusWithHooks';
 import defaultUserPhoto from '../../../assets/images/users/default-user.png'
 

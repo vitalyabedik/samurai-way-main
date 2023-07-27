@@ -1,12 +1,15 @@
 import {instance} from './instance';
-import {FormDataType} from '../components/Login/Login';
+import {LoginFormDataType} from '../components/Login/Login';
 
 export const authAPI = {
     me: () => {
         return instance.get(`auth/me`)
             .then(response => response.data)
     },
-    login: (data: FormDataType) => {
+    // login: (email: string, password: string, rememberMe: boolean = false, captcha: string | null = null) => {
+    //     return instance.post(`auth/login`, {email, password, rememberMe, captcha})
+    // },
+    login: (data: LoginFormDataType) => {
         return instance.post(`auth/login`, data)
             .then(response => response.data)
     },

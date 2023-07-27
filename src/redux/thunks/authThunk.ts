@@ -1,10 +1,11 @@
 import {Dispatch} from 'redux'
+import {AppThunkDispatch, AppThunkType} from '../redux-store';
 import {stopSubmit} from 'redux-form';
 
 import {authAPI} from '../../api';
-import {setAuthUserDataAC} from '../actions/authAction';
-import {FormDataType} from '../../components/Login/Login';
-import {AppThunkDispatch, AppThunkType} from '../redux-store';
+import {getCaptchaUrlAC, setAuthUserDataAC} from '../actions/authAction';
+import {LoginFormDataType} from '../../components/Login/Login';
+import {securityAPI} from '../../api/securityApi';
 
 
 export const getAuthUserDataTC = () => async (dispatch: Dispatch) => {
@@ -17,15 +18,39 @@ export const getAuthUserDataTC = () => async (dispatch: Dispatch) => {
 
 }
 
-export const loginThunkCreator = (data: FormDataType): AppThunkType => async (dispatch: AppThunkDispatch) => {
+export const loginThunkCreator = (data: LoginFormDataType): AppThunkType => async (dispatch: AppThunkDispatch) => {
     const res = await authAPI.login(data)
 
     if (res.resultCode === 0) {
         dispatch(getAuthUserDataTC())
     } else {
+        if (res.resultCode === 10) {
+            dispatch(getCaptchaUrlTC())
+        }
+
         const message = res.messages.length > 0 ? res.messages[0] : 'Some error'
         dispatch(stopSubmit('login', {_error: message}))
     }
+}
+
+// export const loginThunkCreator = (data: LoginFormDataType): AppThunkType => async (dispatch: AppThunkDispatch) => {
+//     debugger
+//     const res = await authAPI.login(data)
+//
+//     if (res.resultCode === 0) {
+//         debugger
+//         dispatch(getAuthUserDataTC())
+//     } else {
+//         const message = res.messages.length > 0 ? res.messages[0] : 'Some error'
+//         dispatch(stopSubmit('login', {_error: message}))
+//     }
+// }
+
+export const getCaptchaUrlTC = () => async (dispatch: Dispatch) => {
+    const res = await securityAPI.getCaptchaUrl()
+
+    const captchaUrl = res.data.url
+    dispatch(getCaptchaUrlAC(captchaUrl))
 }
 
 export const logoutTC = () => async (dispatch: Dispatch) => {
