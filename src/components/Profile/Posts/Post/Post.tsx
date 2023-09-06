@@ -1,19 +1,20 @@
 import styles from './Post.module.css';
 
 import {PostHeader} from './PostHeader';
-import {PostType} from '../../../../types/profilePageTypes';
+import {PostType, ProfileType} from '../../../../types/profilePageTypes';
 import likeIcon from '../../../../assets/images/profile/about/icon-heart.svg'
-import {UserType} from '../../../../types';
 
 type PropsType = {
-    currentUser: UserType
+    profile: ProfileType | null
     post: PostType
 }
 
 export const Post = (props: PropsType) => {
+    const {profile} = props
+
     return (
         <div className={styles.root}>
-            <PostHeader currentUser={props.currentUser}/>
+            <PostHeader profile={profile}/>
             <div className={styles.text}>{props.post.message}</div>
             <div className={styles.likes}>
                 <img className={styles.likesIcon} src={likeIcon} alt="icon-likes"/>

@@ -35,6 +35,7 @@ class App extends React.Component<AppPropsType> {
                     <AsideContainer/>
                     <div className={styles.content}>
                         <Switch>
+                            {/*<Redirect exact from="/" to="/profile" />*/}
                             <Route exact path="/" render={() => <Redirect to={'/profile'}/>}/>
                             <Route path="/profile/:userId?" render={withSuspense(ProfileContainer)}/>
                             <Route path="/messages" render={withSuspense(DialogsContainer)}/>

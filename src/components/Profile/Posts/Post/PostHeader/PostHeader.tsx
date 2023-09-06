@@ -1,25 +1,25 @@
 import styles from './PostHeader.module.css';
 
 import moreIcon from '../../../../../assets/images/posts/icon-more.svg'
-import {UserType} from '../../../../../types';
+import {ProfileType} from '../../../../../types';
+import {Preloader} from '../../../../../components/common';
+import {AvatarAndFullName} from '../../../../../components/common/AvatarAndFullName';
 
 type PropsType = {
-    currentUser: UserType
+    profile: ProfileType | null
     showMore?: boolean
 }
 
 export const PostHeader = (props: PropsType) => {
-    const {showMore = true} = props
-    const {avatar, userFirstName, userLastName} = props.currentUser
+    const {showMore = true, profile} = props
+
+    if (!profile) {
+        return <Preloader/>
+    }
 
     return (
         <div className={styles.root}>
-            <div className={styles.user}>
-                <div className={styles.user__image}>
-                    <img className={styles.user__avatar} src={avatar} alt="contact-avatar"/>
-                </div>
-                <span className={styles.user__Name}>{`${userFirstName} ${userLastName}`}</span>
-            </div>
+            <AvatarAndFullName image={profile.photos.large} fullName={profile.fullName}/>
             {showMore && <div className={styles.iconBlock}>
                 <img className={styles.icon} src={moreIcon} alt="more-icon"/>
             </div>}

@@ -2,21 +2,25 @@ import React from 'react';
 import styles from './Posts.module.css';
 
 import {Post} from './Post';
-import {PostType} from '../../../types/profilePageTypes';
-import {UserType} from '../../../types';
-
+import {PostType, ProfileType} from '../../../types/profilePageTypes';
 
 type PropsType = {
-    currentUser: UserType
+    profile: ProfileType | null
     posts: PostType[]
 }
 
 export const Posts = React.memo((props: PropsType) => {
-    const postsElements = props.posts.map(post => {
+    const {
+        posts,
+        profile
+    } = props
+
+    const postsElements = posts.map(post => {
         return (
             <Post key={post.id}
                   post={post}
-                  currentUser={props.currentUser}/>
+                  profile={profile}
+            />
         )
     })
 

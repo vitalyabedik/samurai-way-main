@@ -6,17 +6,14 @@ import {ProfileInfo} from './ProfileInfo/ProfileInfo';
 import {Posts} from './Posts/Posts';
 import {Sidebar} from './Sidebar/Sidebar';
 import {FormDataType, PostFormRedux} from './PostForm';
-import {ProfilePropsType} from './ProfileContainer/ProfileContainer';
 import {PostHeader} from './Posts/Post/PostHeader';
 import {ProfileType} from '../../types';
 import {InitialStateType} from '../../redux/reducers/profileReducer';
-import {InitialCurrentUserStateType} from '../../redux/reducers/currentUserReducer';
 import {ProfileDataFormType} from '../Profile/ProfileDataForm';
 
 type PropsType = {
     profilePage: InitialStateType
     profile: ProfileType | null
-    currentUser: InitialCurrentUserStateType
     status: string
     isOwner: boolean
     addPost: (newPostText: string) => void
@@ -29,7 +26,6 @@ type PropsType = {
 export const Profile = (props: PropsType) => {
     const {
         profile,
-        currentUser,
         status,
         profilePage,
         isOwner,
@@ -56,11 +52,11 @@ export const Profile = (props: PropsType) => {
                     <div className={styles.timeline}>
                         <div className={styles.postForm}>
                             <div className={styles.imgAndTextarea}>
-                                <PostHeader currentUser={currentUser} showMore={false}/>
+                                <PostHeader profile={profile} showMore={false}/>
                                 <PostFormRedux onSubmit={onAddPost}/>
                             </div>
                         </div>
-                        <Posts currentUser={currentUser} posts={profilePage.posts}/>
+                        <Posts profile={profile} posts={profilePage.posts}/>
                     </div>
                     <Sidebar state={profilePage.sidebar}
                              profile={profile}
