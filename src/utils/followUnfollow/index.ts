@@ -1,6 +1,7 @@
 import {Dispatch} from 'redux';
 
 import {followACType, setUsersFollowingAC, unFollowACType} from '../../redux/actions/usersAction';
+import {ResultCode} from '../../api/instance';
 
 type FollowUnfollowAction = followACType | unFollowACType;
 
@@ -8,7 +9,7 @@ export const followUnfollow = async (userId: number, actionCreator: (userId: num
     dispatch(setUsersFollowingAC(userId, true));
 
     const data = await apiMethod(userId);
-    if (data.resultCode === 0) {
+    if (data.resultCode === ResultCode.SUCCESS) {
         dispatch(actionCreator(userId));
     }
 
