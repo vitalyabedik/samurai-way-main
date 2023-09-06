@@ -17,6 +17,12 @@
     justify-content: space-evenly;
 }
 
+.imgAndTextarea {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
 .postForm {
     background-color: white;
     padding: 20px;

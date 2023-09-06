@@ -51,5 +51,26 @@
 }
 
 .loginBlock {
-
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
+
+.button {
+    width: 30px;
+    height: 30px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.navlink {
+    cursor: pointer;
+    color: #666666;
+    font-weight: 600;
+}
+
+.navlink:hover {
+    color: #007bff;
+}
+

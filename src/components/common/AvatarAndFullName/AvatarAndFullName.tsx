@@ -5,8 +5,8 @@ import styles from './AvatarAndFullName.module.css';
 import defaultUserPhoto from '../../../assets/images/users/default-user.png';
 
 type PropsType = {
-    image: string
-    fullName: string
+    image: string | null
+    fullName: string | null
 }
 
 export const AvatarAndFullName = (props: PropsType) => {
