@@ -7,3 +7,16 @@ export const instance = axios.create({
         'API-KEY': `${process.env.REACT_APP_API_KEY}`
     }
 })
+
+// types
+export type BaseResponseType<T = {}> = {
+    data: T
+    resultCode: number
+    messages: string[]
+}
+
+export enum ResultCode {
+    SUCCESS = 0,
+    ERROR = 1,
+    CAPTCHA_ERROR = 10,
+}

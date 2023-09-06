@@ -6,7 +6,7 @@ import {ProfileType} from '../../types';
 import {AppStateType, AppThunkType} from '../../redux/redux-store';
 import {stopSubmit} from 'redux-form';
 
-export const getUserProfileThunkCreator = (userId: string) => async (dispatch: Dispatch) => {
+export const getUserProfileThunkCreator = (userId: number) => async (dispatch: Dispatch) => {
     const res = await profileAPI.getProfile(userId)
     dispatch(setUserProfileAC(res))
 }

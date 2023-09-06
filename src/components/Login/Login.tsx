@@ -65,7 +65,7 @@ export const LoginForm: React.FC<AllSampleFormProps> = (props) => {
 const LoginReduxForm = reduxForm<LoginFormDataType, LoginFormPropsType>({form: 'login'})(LoginForm)
 
 type LoginType = {
-    login: (formData: LoginFormDataType) => void
+    login: (email: string, password: string, rememberMe: boolean, captcha: string | null) => void
     isAuth: boolean
     captchaUrl: string | null
 }
@@ -78,7 +78,7 @@ export const Login: React.FC<LoginType> = (props) => {
     } = props
 
     const onSubmitHandler = (formData: LoginFormDataType) => {
-        login(formData)
+        login(formData.email,formData.password,formData.rememberMe,formData.captcha)
     }
 
     if (isAuth) return <Redirect to={'/profile'}/>

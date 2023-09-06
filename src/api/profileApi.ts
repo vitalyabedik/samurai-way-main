@@ -2,7 +2,7 @@ import {instance} from './instance';
 import {ProfileType} from '../types';
 
 export const profileAPI = {
-    getProfile: (userId: string) => {
+    getProfile: (userId: number) => {
         return instance.get(`profile/${userId}`)
         .then(response => response.data)
     },

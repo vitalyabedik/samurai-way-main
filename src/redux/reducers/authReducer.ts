@@ -2,7 +2,7 @@ import {AUTH_GET_CAPTCHA_URL, AUTH_SET_USER_DATA} from '../actions/actionTypes';
 import {AuthActionType} from '../actions/authAction';
 
 export type AuthMeType = {
-    userId: string | null
+    userId: number | null
     email: string | null
     login: string | null
     isAuth: boolean
@@ -22,7 +22,6 @@ export type InitialStateType = typeof initialState
 export const authReducer = (state: InitialStateType = initialState, action: AuthActionType): InitialStateType => {
     switch (action.type) {
         case (AUTH_SET_USER_DATA): {
-            debugger
             return {
                 ...state,
                 ...action.payload

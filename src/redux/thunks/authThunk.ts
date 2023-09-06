@@ -1,50 +1,34 @@
 import {Dispatch} from 'redux'
 import {AppThunkDispatch, AppThunkType} from '../redux-store';
-import {stopSubmit} from 'redux-form';
 
 import {authAPI} from '../../api';
 import {getCaptchaUrlAC, setAuthUserDataAC} from '../actions/authAction';
-import {LoginFormDataType} from '../../components/Login/Login';
 import {securityAPI} from '../../api/securityApi';
+import {ResultCode} from '../../api/instance';
 
 
 export const getAuthUserDataTC = () => async (dispatch: Dispatch) => {
-    const res = await authAPI.me()
+    const meData = await authAPI.me()
 
-    if (res.resultCode === 0) {
-        const {id, email, login} = res.data
+    if (meData.resultCode === ResultCode.SUCCESS) {
+        const {id, email, login} = meData.data
         dispatch(setAuthUserDataAC(id, email, login, true))
     }
 
 }
 
-export const loginThunkCreator = (data: LoginFormDataType): AppThunkType => async (dispatch: AppThunkDispatch) => {
-    const res = await authAPI.login(data)
+export const loginThunkCreator = (email: string, password: string, rememberMe: boolean, captcha: string | null): AppThunkType => async (dispatch: AppThunkDispatch) => {
+    const data = await authAPI.login(email, password, rememberMe, captcha)
 
-    if (res.resultCode === 0) {
+    if (data.resultCode === ResultCode.SUCCESS) {
         dispatch(getAuthUserDataTC())
-    } else {
-        if (res.resultCode === 10) {
+    } else if (data.resultCode === ResultCode.CAPTCHA_ERROR) {
             dispatch(getCaptchaUrlTC())
         }
 
-        const message = res.messages.length > 0 ? res.messages[0] : 'Some error'
-        dispatch(stopSubmit('login', {_error: message}))
-    }
+        // const message = res.messages.length > 0 ? res.messages[0] : 'Some error'
+        // dispatch(stopSubmit('login', {_error: message}))
 }
-
-// export const loginThunkCreator = (data: LoginFormDataType): AppThunkType => async (dispatch: AppThunkDispatch) => {
-//     debugger
-//     const res = await authAPI.login(data)
-//
-//     if (res.resultCode === 0) {
-//         debugger
-//         dispatch(getAuthUserDataTC())
-//     } else {
-//         const message = res.messages.length > 0 ? res.messages[0] : 'Some error'
-//         dispatch(stopSubmit('login', {_error: message}))
-//     }
-// }
 
 export const getCaptchaUrlTC = () => async (dispatch: Dispatch) => {
     const res = await securityAPI.getCaptchaUrl()
@@ -54,9 +38,9 @@ export const getCaptchaUrlTC = () => async (dispatch: Dispatch) => {
 }
 
 export const logoutTC = () => async (dispatch: Dispatch) => {
-    const res = await authAPI.logOut()
+    const data = await authAPI.logOut()
 
-    if (res.resultCode === 0) {
+    if (data.resultCode === ResultCode.SUCCESS) {
         dispatch(setAuthUserDataAC(null, null, null, false))
     }
 }
