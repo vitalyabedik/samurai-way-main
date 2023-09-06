@@ -9,10 +9,10 @@ export const instance = axios.create({
 })
 
 // types
-export type BaseResponseType<T = {}> = {
-    data: T
-    resultCode: number
+export type BaseResponseType<T = {}, RC = ResultCode> = {
+    resultCode: RC
     messages: string[]
+    data: T
 }
 
 export enum ResultCode {

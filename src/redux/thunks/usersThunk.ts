@@ -15,11 +15,11 @@ import {followUnfollow} from '../../utils/followUnfollow';
 export const getUsersTC = (currentPage: number, pageSize: number) => async (dispatch: Dispatch) => {
     dispatch(setUsersLoadingAC(true))
 
-    const res = await usersAPI.getUsers(currentPage, pageSize)
+    const data = await usersAPI.getUsers(currentPage, pageSize)
 
     dispatch(setUsersLoadingAC(false))
-    dispatch(setUsersAC(res.items))
-    dispatch(setTotalUserCountAC(res.totalCount))
+    dispatch(setUsersAC(data.items))
+    dispatch(setTotalUserCountAC(data.totalCount))
 }
 
 export const changePageTC = (currentPage: number, pageSize: number): AppThunkType => (dispatch: AppThunkDispatch) => {

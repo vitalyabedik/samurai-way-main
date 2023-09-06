@@ -7,8 +7,8 @@ type FollowUnfollowAction = followACType | unFollowACType;
 export const followUnfollow = async (userId: number, actionCreator: (userId: number) => FollowUnfollowAction, apiMethod: (userId: number) => Promise<any>, dispatch: Dispatch) => {
     dispatch(setUsersFollowingAC(userId, true));
 
-    const res = await apiMethod(userId);
-    if (res.resultCode === 0) {
+    const data = await apiMethod(userId);
+    if (data.resultCode === 0) {
         dispatch(actionCreator(userId));
     }
 

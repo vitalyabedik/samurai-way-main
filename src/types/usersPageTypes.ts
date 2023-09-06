@@ -9,11 +9,11 @@ export type PhotosType = {
 }
 
 export type UserType = {
-    id: number,
-    followed: boolean,
-    photos: PhotosType,
     name: string,
+    id: number,
+    photos: PhotosType,
     status: string,
+    followed: boolean,
     location?: LocationType
 }
 
