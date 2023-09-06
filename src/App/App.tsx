@@ -14,6 +14,7 @@ import {inititializeTC} from '../redux/thunks/appThunk';
 import {AppStateType} from '../redux/redux-store';
 import {Preloader} from '../components/common';
 import {withSuspense} from '../hoc/withSuspense';
+import {NotFound404} from '../components/common/NotFound404';
 
 const ProfileContainer = React.lazy(() => import('../components/Profile/ProfileContainer'))
 const UsersContainer = React.lazy(() => import('../components/Users/UsersContainer'))
@@ -45,7 +46,7 @@ class App extends React.Component<AppPropsType> {
                             <Route path="/settings" render={() => <Settings/>}/>
 
                             <Route path="/login" render={withSuspense(LoginContainer)}/>
-                            <Route path="*" render={() => <div>404 NOT FOUND</div>}/>
+                            <Route path="*" render={() => <NotFound404/>}/>
                         </Switch>
                     </div>
                 </div>

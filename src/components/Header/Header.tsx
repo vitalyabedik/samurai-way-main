@@ -8,7 +8,6 @@ import logo from '../../assets/images/header/logo.png';
 import iconSearch from '../../assets/images/header/icon-search.svg';
 import {HeaderPropsType} from './HeaderContainer';
 import {AvatarAndFullName} from '../../components/common/AvatarAndFullName';
-import {Preloader} from '../../components/common';
 import React from 'react';
 
 
@@ -43,9 +42,7 @@ export const Header = (props: HeaderPropsType) => {
                     </button>
                 </div>
                 :
-                <div>
-                    <NavLink className={styles.navlink} to={'/login'}>Login</NavLink>
-                </div>
+                <NavLink className={styles.navlink} to={'/login'}>Login</NavLink>
             }
         </header>
     )
