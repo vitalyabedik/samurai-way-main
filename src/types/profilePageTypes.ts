@@ -33,13 +33,13 @@ export type ProfilePhotos = {
 }
 
 export type ProfileType = {
-    aboutMe: string,
-    contacts: ProfileContacts,
+    userId: number
     lookingForAJob: boolean
     lookingForAJobDescription: string
     fullName: string
-    userId: number
+    contacts: ProfileContacts,
     photos: ProfilePhotos
+    aboutMe?: string,
 }
 
 

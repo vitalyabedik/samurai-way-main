@@ -5,34 +5,35 @@ import {savePhotoSuccessAC, setUserProfileAC, setUserStatusAC} from '../actions/
 import {ProfileType} from '../../types';
 import {AppStateType, AppThunkType} from '../../redux/redux-store';
 import {stopSubmit} from 'redux-form';
+import {ResultCode} from '../../api/instance';
 
 export const getUserProfileThunkCreator = (userId: number) => async (dispatch: Dispatch) => {
-    const res = await profileAPI.getProfile(userId)
-    dispatch(setUserProfileAC(res))
+    const data = await profileAPI.getProfile(userId)
+    dispatch(setUserProfileAC(data))
 }
 
 export const getUserStatusThunkCreator = (userId: string) => async (dispatch: Dispatch) => {
-    const res = await profileAPI.getStatus(userId)
-    dispatch(setUserStatusAC(res))
+    const data = await profileAPI.getStatus(userId)
+    dispatch(setUserStatusAC(data))
 }
 
 export const updateUserStatusThunkCreator = (status: string) => async (dispatch: Dispatch) => {
-    const res = await profileAPI.updateStatus(status)
+    const data = await profileAPI.updateStatus(status)
 
-    if (res.data.resultCode === 0) {
+    if (data.resultCode === ResultCode.SUCCESS) {
         dispatch(setUserStatusAC(status))
     }
 }
 
 export const savePhotoThunkCreator = (file: string) => async (dispatch: Dispatch) => {
-    const res = await profileAPI.savePhoto(file)
+    const data = await profileAPI.savePhoto(file)
 
-    if (res.resultCode === 0) {
-        dispatch(savePhotoSuccessAC(res.data.photos))
+    if (data.resultCode === ResultCode.SUCCESS) {
+        dispatch(savePhotoSuccessAC(data.data.photos))
     }
 }
 
-export const updateProfileTC = (profile: ProfileType): AppThunkType  => async (dispatch, getState: () => AppStateType) => {
+export const updateProfileTC = (profile: ProfileType): AppThunkType => async (dispatch, getState: () => AppStateType) => {
     const userId = getState().auth.userId
 
     if (!userId) {
@@ -40,16 +41,16 @@ export const updateProfileTC = (profile: ProfileType): AppThunkType  => async (d
         return
     }
 
-    const res = await profileAPI.updateProfile(profile)
+    const data = await profileAPI.updateProfile(profile)
 
-    if (res.data.resultCode === 0) {
+    if (data.resultCode === ResultCode.SUCCESS) {
         dispatch(getUserProfileThunkCreator(userId))
     } else {
-        dispatch(stopSubmit('edit-profile', {_error: res.data.messages[0]}))
+        dispatch(stopSubmit('edit-profile', {_error: data.messages[0]}))
         // распарсить строку и сформировать объект
         // dispatch(stopSubmit('edit-profile', {'contacts': {facebook: res.data.messages[0]}}))
 
-        return Promise.reject(res.data.messages[0])
+        return Promise.reject(data.messages[0])
     }
 }
 
