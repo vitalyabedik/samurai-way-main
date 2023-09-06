@@ -4,10 +4,12 @@ import {getAuthUserDataTC} from './authThunk';
 import {setAppInitializedAC} from '../actions/appAction';
 
 export const inititializeTC = (): AppThunkType => async (dispatch: AppThunkDispatch) => {
-    const promise = dispatch(getAuthUserDataTC())
-
-    await promise
-    dispatch(setAppInitializedAC())
+    try {
+        await dispatch(getAuthUserDataTC())
+        dispatch(setAppInitializedAC())
+    } catch (e) {
+        console.error(e)
+    }
 }
 
 

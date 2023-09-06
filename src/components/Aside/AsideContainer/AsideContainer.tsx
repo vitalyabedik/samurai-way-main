@@ -12,7 +12,7 @@ export type AsidePropsType = MapStateToPropsType
 
 const mapStateToProps = (state : AppStateType): MapStateToPropsType => {
     return {
-        aside: state.aside
+        aside: state.aside,
     }
 }
 

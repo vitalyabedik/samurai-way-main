@@ -30,6 +30,7 @@ export const Users = (props: PropsType) => {
         onPageChanged,
     } = props
 
+    console.log(users)
     return (
         <div>
             <Pagination currentPage={currentPage}

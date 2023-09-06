@@ -31,13 +31,13 @@ class App extends React.Component<AppPropsType> {
 
         return (
             <div className={styles.root}>
-                <HeaderContainer/>
+                {this.props.isAuth && <HeaderContainer/>}
                 <div className={styles.container}>
-                    <AsideContainer/>
+                    {this.props.isAuth && <AsideContainer/>}
                     <div className={styles.content}>
                         <Switch>
-                            {/*<Redirect exact from="/" to="/profile" />*/}
-                            <Route exact path="/" render={() => <Redirect to={'/profile'}/>}/>
+                            <Redirect exact from="/" to="/profile" />
+                            {/*<Route exact path="/" render={() => <Redirect to={'/profile'}/>}/>*/}
                             <Route path="/profile/:userId?" render={withSuspense(ProfileContainer)}/>
                             <Route path="/messages" render={withSuspense(DialogsContainer)}/>
                             <Route path="/users" render={withSuspense(UsersContainer)}/>
@@ -57,6 +57,7 @@ class App extends React.Component<AppPropsType> {
 
 type MapStateToPropsType = {
     isInitialized: boolean
+    isAuth: boolean
 }
 
 type MapDispatchToProps = {
@@ -68,6 +69,7 @@ export type AppPropsType = MapStateToPropsType & MapDispatchToProps
 const mapStateToProps = (state: AppStateType): MapStateToPropsType => {
     return {
         isInitialized: state.app.isInitialized,
+        isAuth: state.auth.isAuth
     }
 }
 
