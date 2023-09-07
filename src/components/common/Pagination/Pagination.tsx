@@ -45,10 +45,9 @@ export const Pagination = (props: PropsType) => {
     let rightPortionPageNumber = portionNumber * portionSize
 
     return (
-        <div>
             <div className={styles.pagination}>
                 {portionNumber > 1 &&
-                    <button onClick={onClickPrevHandler}>PREV</button>
+                    <button className={styles.button} onClick={onClickPrevHandler}>PREV</button>
                 }
                 {pages
                     .filter(p => p >= leftPortionPageNumber && p <= rightPortionPageNumber)
@@ -63,9 +62,8 @@ export const Pagination = (props: PropsType) => {
                         )
                     })}
                 {portionCount > portionNumber &&
-                    <button onClick={onClickNextHandler}>NEXT</button>
+                    <button className={styles.button} onClick={onClickNextHandler}>NEXT</button>
                 }
             </div>
-        </div>
     );
 }
