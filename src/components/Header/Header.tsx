@@ -12,8 +12,9 @@ import React from 'react';
 
 
 export const Header = (props: HeaderPropsType) => {
-    const {isAuth, logOut, profile} = props
+    const {isAuth, logOut, profile, login} = props
 
+    console.log(login)
 
     return (
         <header className={styles.root}>
@@ -36,7 +37,7 @@ export const Header = (props: HeaderPropsType) => {
             {isAuth
                 ?
                 <div className={styles.loginBlock}>
-                    {profile && <AvatarAndFullName image={profile?.photos.large} fullName={profile?.fullName}/>}
+                     {login && <div className={styles.loginName}>{login}</div>}
                     <button className={styles.button} onClick={logOut}>
                         <img src={logoutIcon} alt="logout"/>
                     </button>
