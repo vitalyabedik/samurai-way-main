@@ -12,4 +12,9 @@
 
 .input {
     text-align: center;
+    max-width: 400px!important;
+    color: #393939 !important;
+    background: #f0f2f5 !important;
+    border-radius: 20px !important;
+    padding: 12px 24px;
 }
