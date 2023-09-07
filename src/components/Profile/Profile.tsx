@@ -10,6 +10,7 @@ import {PostHeader} from './Posts/Post/PostHeader';
 import {ProfileType} from '../../types';
 import {InitialStateType} from '../../redux/reducers/profileReducer';
 import {ProfileDataFormType} from '../Profile/ProfileDataForm';
+import {UserType} from '../../types/usersPageTypes';
 
 type PropsType = {
     profilePage: InitialStateType
@@ -20,7 +21,7 @@ type PropsType = {
     updateUserStatus: (status: string) => void
     savePhoto: (file: File) => void
     updateProfile: (profile: ProfileDataFormType) => Promise<any>
-
+    friends: UserType[]
 }
 
 export const Profile = (props: PropsType) => {
@@ -32,7 +33,8 @@ export const Profile = (props: PropsType) => {
         updateUserStatus,
         addPost,
         savePhoto,
-        updateProfile
+        updateProfile,
+        friends
     } = props
 
     const onAddPost = (values: FormDataType) => {
@@ -62,6 +64,7 @@ export const Profile = (props: PropsType) => {
                              profile={profile}
                              isOwner={isOwner}
                              updateProfile={updateProfile}
+                             friends={friends}
                     />
                 </div>
             </div>

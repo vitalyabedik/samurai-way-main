@@ -16,6 +16,9 @@ import {
 } from '../../../redux/thunks/profileThunk';
 import {withAuthRedirectComponent} from '../../../hoc/withAuthRedirect';
 import {ProfileDataFormType} from '../ProfileDataForm';
+import {getUsersFriendsTC} from '../../../redux/thunks/usersThunk';
+import {getFriends} from '../../../redux/selectors/usersSelector';
+import {UserType} from '../../../types/usersPageTypes';
 
 type PathParamsType = {
     userId: string
@@ -28,6 +31,7 @@ type MapStateToPropsType = {
     status: string
     authorizedUserId: number | null
     isAuth: boolean
+    friends: UserType[]
 }
 
 type MapDispatchToProps = {
@@ -37,6 +41,7 @@ type MapDispatchToProps = {
     updateUserStatus: (status: string) => void
     savePhoto: (file: File) => void
     updateProfile: (profile: ProfileDataFormType) => Promise<any>
+    getFriends: () => void
 }
 
 export type OwnPropsType = MapStateToPropsType & MapDispatchToProps
@@ -59,6 +64,7 @@ export class ProfileContainerAPI extends React.Component<ProfilePropsType> {
 
     componentDidMount() {
         this.refreshProfile()
+        this.props.getFriends()
     }
 
     componentDidUpdate(prevProps: Readonly<ProfilePropsType>, prevState: Readonly<{}>, snapshot?: any) {
@@ -76,6 +82,7 @@ export class ProfileContainerAPI extends React.Component<ProfilePropsType> {
                      updateUserStatus={this.props.updateUserStatus}
                      savePhoto={this.props.savePhoto}
                      updateProfile={this.props.updateProfile}
+                     friends={this.props.friends}
             />
         )
     }
@@ -88,7 +95,8 @@ const mapStateToProps = (state: AppStateType): MapStateToPropsType => {
         profile: state.profilePage.profile,
         status: state.profilePage.status,
         authorizedUserId: state.auth.userId,
-        isAuth: state.auth.isAuth
+        isAuth: state.auth.isAuth,
+        friends: getFriends(state)
     }
 }
 
@@ -99,7 +107,8 @@ export default compose<React.ComponentType>(
         getUserStatus: getUserStatusThunkCreator,
         updateUserStatus: updateUserStatusThunkCreator,
         savePhoto: savePhotoThunkCreator,
-        updateProfile: updateProfileTC
+        updateProfile: updateProfileTC,
+        getFriends: getUsersFriendsTC
     }),
     withRouter,
     withAuthRedirectComponent

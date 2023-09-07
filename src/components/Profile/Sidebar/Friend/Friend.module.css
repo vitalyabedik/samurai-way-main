@@ -8,8 +8,6 @@
 .img {
     height: 96px;
     width: 89px;
-
-
     object-fit: cover;
     border-radius: 8px;
 }
@@ -19,7 +17,12 @@
     color: #4B5563;
     font-weight: 600;
     margin-top: 8px;
+    max-width: 70px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
+
 
 
 

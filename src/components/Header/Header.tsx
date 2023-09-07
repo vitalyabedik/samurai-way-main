@@ -14,7 +14,6 @@ import React from 'react';
 export const Header = (props: HeaderPropsType) => {
     const {isAuth, logOut, profile} = props
 
-
     return (
         <header className={styles.root}>
             <div className={styles.mainBlock}>

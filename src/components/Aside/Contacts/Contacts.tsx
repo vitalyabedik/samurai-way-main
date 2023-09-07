@@ -1,6 +1,5 @@
 import styles from './Contacts.module.css';
 
-
 import {Contact} from '../Contact';
 import {UserType} from '../../../types/usersPageTypes';
 
