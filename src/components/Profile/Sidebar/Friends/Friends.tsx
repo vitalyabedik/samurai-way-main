@@ -8,7 +8,7 @@ type PropsType = {
 }
 
 export const Friends = (props: PropsType) => {
-    const { friends} = props
+    const {friends} = props
 
     return (
         <div className={styles.root}>
