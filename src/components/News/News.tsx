@@ -1,3 +1,5 @@
+import {UnderConstructionPage} from '../../components/common/UnderConstructionPage';
+
 import styles from './News.module.css'
 
 type PropsType = {
@@ -6,6 +8,6 @@ type PropsType = {
 
 export const News = (props: PropsType) => {
     return (
-        <div className={styles.root}>News</div>
+        <div className={styles.root}><UnderConstructionPage/></div>
     )
 }
