@@ -7,7 +7,6 @@ import {addPostAC} from '../../../redux/actions/profileAction';
 import {Profile} from '../Profile';
 import {AppStateType} from '../../../redux/redux-store';
 import {InitialStateType} from '../../../redux/reducers/profileReducer';
-import {InitialCurrentUserStateType} from '../../../redux/reducers/currentUserReducer';
 import {ProfileType} from '../../../types';
 import {
     getUserProfileThunkCreator,
@@ -26,7 +25,6 @@ type PathParamsType = {
 
 type MapStateToPropsType = {
     profilePage: InitialStateType
-    currentUser: InitialCurrentUserStateType
     profile: ProfileType | null
     status: string
     authorizedUserId: number | null
@@ -91,7 +89,6 @@ export class ProfileContainerAPI extends React.Component<ProfilePropsType> {
 const mapStateToProps = (state: AppStateType): MapStateToPropsType => {
     return {
         profilePage: state.profilePage,
-        currentUser: state.currentUser,
         profile: state.profilePage.profile,
         status: state.profilePage.status,
         authorizedUserId: state.auth.userId,

@@ -5,8 +5,6 @@ import {composeWithDevTools} from 'redux-devtools-extension';
 
 import {profileReducer} from './reducers/profileReducer';
 import {dialogsReducer} from './reducers/dialogsReducer';
-import {asideReducer} from './reducers/asideReducer';
-import {currentUserReducer} from './reducers/currentUserReducer';
 import {usersReducer} from './reducers/usersReducer';
 import {authReducer} from './reducers/authReducer';
 import {ActionTypes} from './actions/actionCreatorsTypes';
@@ -17,8 +15,6 @@ const rootReducer = combineReducers({
     profilePage: profileReducer,
     dialogsPage: dialogsReducer,
     usersPage: usersReducer,
-    aside: asideReducer,
-    currentUser: currentUserReducer,
     auth: authReducer,
     form: formReducer
 })

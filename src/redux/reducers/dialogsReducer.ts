@@ -1,6 +1,6 @@
 import {MESSAGES_ADD} from '../actions/actionTypes';
 import {MessageType, UsersType} from '../../types';
-import {ActionTypes} from '../store';
+import {ActionTypes} from '../actions/actionCreatorsTypes';
 import avatar1 from '../../assets/images/profile/avatars/avatar-1.jpg';
 import avatar2 from '../../assets/images/profile/avatars/avatar-2.jpg';
 import avatar3 from '../../assets/images/profile/avatars/avatar-3.jpg';
