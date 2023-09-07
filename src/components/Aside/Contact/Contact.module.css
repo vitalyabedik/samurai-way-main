@@ -10,6 +10,11 @@
     cursor: pointer;
 }
 
+.item:hover {
+    background-color:  #2a41e812;
+    scale: 1.02;
+}
+
 .item__image {
     display: flex;
     margin-right: 10px;

@@ -5,6 +5,10 @@
     padding: 10px 0;
 }
 
+.item:hover {
+  scale: 1.05;
+}
+
 .img {
     height: 96px;
     width: 89px;
