@@ -1,80 +1,15 @@
 .root {
-    background-color: #FFFFFF;
-    margin-bottom: 30px;
-    border-radius: 0 0 12px 12px ;
-    border: 1px solid #ebe9e6;
+    margin-bottom: 5px;
 }
 
-.profileCover {
-    width: 100%;
-    height: 100%;
-    height: 285px;
-    object-fit: cover;
-    border-radius: 12px 12px 0 0;
-    z-index: 1;
-}
-
-.profileContent {
-    margin-top: -140px;
-    top: 270px;
+.status {
+    height: 40px;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
+
+}
+
+.input {
     text-align: center;
 }
-
-.profileAvatar {
-    position: relative;
-    width: 160px;
-    height: 160px;
-    margin-right: 0px;
-    margin-bottom: 15px;
-    border-radius: 50%;
-    z-index: 2;
-}
-
-.profileAvatar__img {
-    box-shadow: 0 2px 20px 0 rgba(0, 0, 0, 0.3);
-    border: 4px solid #FFF;
-    border-radius: 50%;
-    width: 100%;
-    height: 100%;
-    background: #dcdcdc;
-    object-fit: cover;
-}
-
-.userStatus {
-    height: 19px;
-    width: 19px;
-    bottom: 13px;
-    right: 13px;
-    background-color: #38b653;
-    position: absolute;
-    content: "";
-    display: block;
-    border: 3px solid #fff;
-    border-radius: 50%;
-    visibility: visible;
-}
-
-.profileInfo {
-    margin-bottom: 7px;
-    margin-top: 10px;
-    color: #464646;
-    text-transform: capitalize;
-    font-weight: 600;
-}
-
-.profileInfo__title {
-    margin-top: 0;
-}
-
-.profileInfo__description {
-    font-size: 16px;
-    font-weight: 400;
-    margin-bottom: 25px;
-    line-height: 27px;
-    color: #9c9c9c;
-}
-

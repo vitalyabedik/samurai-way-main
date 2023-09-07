@@ -7,6 +7,7 @@ import {Preloader} from '../../common';
 import {ProfileType} from '../../../types';
 import {ProfileStatusWithHooks} from './ProfileStatus/ProfileStatusWithHooks';
 import defaultUserPhoto from '../../../assets/images/users/default-user.png'
+import editIcon from '../../../assets/images/profile/icon-edit.svg'
 
 type PropsType = {
     profile: ProfileType | null
@@ -35,13 +36,23 @@ export const ProfileInfo = (props: PropsType) => {
             <div className={styles.profileContent}>
                 <div className={styles.profileAvatar}>
                     <img className={styles.profileAvatar__img} src={profile.photos.large || defaultUserPhoto} alt="profile-avatar-8"/>
-                    {isOwner && <input type="file" onChange={onMainPhotoSelected}/>}
+                    {isOwner &&
+                        <label htmlFor="mainPhotoInput" className={styles.fileInputLabel}>
+                            <input
+                                id="mainPhotoInput"
+                                type="file"
+                                onChange={onMainPhotoSelected}
+                                className={styles.fileInput}
+                            />
+                            <img className={styles.fileInputIcon} src={editIcon} alt='edit-icon'/>
+                        </label>
+                    }
+
                     <div className={styles.userStatus}></div>
                 </div>
                 <div className={styles.profileInfo}>
                     <h1 className={styles.profileInfo__title}>{profile.fullName}</h1>
                     <p className={styles.profileInfo__description}>{profile.aboutMe}</p>
-                    {/*<ProfileStatus status={status} updateUserStatus={updateUserStatus}/>*/}
                     <ProfileStatusWithHooks status={status} updateUserStatus={updateUserStatus}/>
                 </div>
             </div>

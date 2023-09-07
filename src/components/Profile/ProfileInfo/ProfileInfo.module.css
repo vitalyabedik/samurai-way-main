@@ -44,6 +44,25 @@
     object-fit: cover;
 }
 
+.fileInput {
+    display: none;
+}
+
+.fileInputLabel {
+    display: inline-block;
+    cursor: pointer;
+}
+
+.fileInputIcon {
+    background-color: #f0f2f5;
+    vertical-align: middle;
+    border-radius: 50%;
+    padding: 7px;
+    position: absolute;
+    top: 10%;
+    left: 0;
+}
+
 .userStatus {
     height: 19px;
     width: 19px;
@@ -68,12 +87,13 @@
 
 .profileInfo__title {
     margin-top: 0;
+    margin-bottom: 8px;
 }
 
 .profileInfo__description {
     font-size: 16px;
     font-weight: 400;
-    margin-bottom: 25px;
+    margin-bottom: 5px;
     line-height: 27px;
     color: #9c9c9c;
 }
