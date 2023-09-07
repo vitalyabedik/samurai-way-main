@@ -40,13 +40,9 @@ export const LoginForm: React.FC<AllSampleFormProps> = (props) => {
             <div>
                 {createField<LoginFormValuesTypeKeys>('Password', 'password', [required], Input, {type: 'password',})}
             </div>
-            <div className={styles.loginCheckbox}>
-                {createField<LoginFormValuesTypeKeys>(undefined, 'rememberMe', [], Input, {type: 'checkbox'}, 'remember me',)}
-                {/*<Field type="Checkbox"*/}
-                {/*       name={'rememberMe'}*/}
-                {/*       component={Input}*/}
-                {/*/> <span className={styles.loginCheckboxText}>remember me</span>*/}
-            </div>
+            {/*<div className={styles.loginCheckbox}>*/}
+            {/*    {createField<LoginFormValuesTypeKeys>(undefined, 'rememberMe', [], Input, {type: 'checkbox'}, 'remember me',)}*/}
+            {/*</div>*/}
 
             {captchaUrl && <img src={captchaUrl} alt="captcha-image"/>}
             {captchaUrl && createField<LoginFormValuesTypeKeys>('Symbols from image', 'captcha', [required], Input)}
@@ -55,7 +51,7 @@ export const LoginForm: React.FC<AllSampleFormProps> = (props) => {
                 {error}
             </div>}
             <div>
-                <button className={styles.loginButton}>Login</button>
+                <button className={styles.loginButton}>Get Started</button>
             </div>
         </form>
     )
@@ -78,18 +74,32 @@ export const Login: React.FC<LoginType> = (props) => {
     } = props
 
     const onSubmitHandler = (formData: LoginFormDataType) => {
-        login(formData.email,formData.password,formData.rememberMe,formData.captcha)
+        login(formData.email, formData.password, formData.rememberMe, formData.captcha)
     }
 
     if (isAuth) return <Redirect to={'/profile'}/>
 
     return (
-        <div className={styles.root}>
-            <h1>Login</h1>
-            <LoginReduxForm
-                onSubmit={onSubmitHandler}
-                captchaUrl={captchaUrl}
-            />
+        <div className={styles.wrapper}>
+            <div className={styles.root}>
+                <h1 className={styles.title}>Login</h1>
+                <LoginReduxForm
+                    onSubmit={onSubmitHandler}
+                    captchaUrl={captchaUrl}
+                />
+            </div>
+            <div className={styles.testLoginInfo}>
+                <p>To log in get registered here:</p>
+                <p>
+                    <a href={'https://social-network.samuraijs.com/'} target={'_blank'} rel="noreferrer">
+                        {' '}
+                        https://social-network.samuraijs.com/
+                    </a>
+                </p>
+                <p>or use common test account credentials:</p>
+                <p>Email: free@samuraijs.com</p>
+                <p>Password: free</p>
+            </div>
         </div>
     );
 };
