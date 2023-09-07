@@ -30,28 +30,29 @@ export const Users = (props: PropsType) => {
         onPageChanged,
     } = props
 
-    console.log(users)
     return (
-        <div className={styles.root}>
-            <div className={styles.container}>
-                <h2 className={styles.title}>Users</h2>
-                <div className={styles.users}>
-                    {
-                        users.map(user =>
-                            <User key={user.id}
-                                  user={user}
-                                  followingInProgress={followingInProgress}
-                                  follow={follow}
-                                  unFollow={unFollow}
-                            />
-                        )
-                    }
+        <div className={styles.wrapper}>
+            <div className={styles.root}>
+                <div className={styles.container}>
+                    <h2 className={styles.title}>Users</h2>
+                    <div className={styles.users}>
+                        {
+                            users.map(user =>
+                                <User key={user.id}
+                                      user={user}
+                                      followingInProgress={followingInProgress}
+                                      follow={follow}
+                                      unFollow={unFollow}
+                                />
+                            )
+                        }
+                    </div>
+                    <Pagination currentPage={currentPage}
+                                pageSize={pageSize}
+                                totalItemsCount={totalUsersCount}
+                                onPageChanged={onPageChanged}
+                    />
                 </div>
-                <Pagination currentPage={currentPage}
-                            pageSize={pageSize}
-                            totalItemsCount={totalUsersCount}
-                            onPageChanged={onPageChanged}
-                />
             </div>
         </div>
     );

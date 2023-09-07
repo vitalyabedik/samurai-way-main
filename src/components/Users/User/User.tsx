@@ -33,31 +33,25 @@ export const User = (props: PropsType) => {
 
     let isDisabled = followingInProgress.some(id => id === user.id)
 
+    console.log(user)
     return (
-        <div>
-            <div>
+        <div className={styles.container}>
+            <div className={styles.root}>
                 <NavLink to={`/profile/${user.id}`}>
                     <img className={styles.userPhoto}
                          src={user.photos.small ? user.photos.small : defaultUserPhoto}
                          alt="user-image"/>
                 </NavLink>
-            </div>
-            <div>
-                <span>{user.name}</span>
-                <span>{user.status}</span>
-            </div>
-            <div>
-                <span>{`${'user.location.city'} ${'user.location.country'}`}</span>
-            </div>
-            <div>
+                <div className={styles.name}>{user.name}</div>
+                <div className={styles.status}>{user.status ?  user.status :'No status'}</div>
                 {
                     user.followed
-                        ? <button disabled={isDisabled} onClick={() => {
+                        ? <button className={styles.buttonUnfollow} disabled={isDisabled} onClick={() => {
                             onClickUnFollowHandler(user.id)
-                        }}>Unfollow</button>
-                        : <button disabled={isDisabled} onClick={() => {
+                        }}>Unfollowing</button>
+                        : <button className={styles.buttonFollow} disabled={isDisabled} onClick={() => {
                             onClickFollowHandler(user.id)
-                        }}>Follow</button>
+                        }}>Following</button>
                 }
             </div>
         </div>

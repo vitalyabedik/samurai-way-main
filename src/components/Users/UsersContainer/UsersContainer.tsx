@@ -54,16 +54,17 @@ export class UsersContainerAPI extends React.Component<UsersPropsType> {
     render() {
         return (
             <>
-                {this.props.isLoading && <Preloader/>}
-                <Users users={this.props.users}
-                       currentPage={this.props.currentPage}
-                       pageSize={this.props.pageSize}
-                       totalUsersCount={this.props.totalUsersCount}
-                       follow={this.props.follow}
-                       unFollow={this.props.unFollow}
-                       onPageChanged={this.onPageChanged}
-                       followingInProgress={this.props.followingInProgress}
-                />
+                {this.props.isLoading
+                    ? <Preloader/>
+                    : <Users users={this.props.users}
+                             currentPage={this.props.currentPage}
+                             pageSize={this.props.pageSize}
+                             totalUsersCount={this.props.totalUsersCount}
+                             follow={this.props.follow}
+                             unFollow={this.props.unFollow}
+                             onPageChanged={this.onPageChanged}
+                             followingInProgress={this.props.followingInProgress}
+                    />}
             </>
         );
     }
