@@ -23,8 +23,8 @@ export const FormsControls: React.FC<FormsControlType> = ({
 
     return (
         <div className={finalInputName}>
-            {error && <div className={styles.errorMessage}>{meta.error}</div>}
             <FormType {...input} {...props}/>
+            {error && <div className={styles.errorMessage}>{meta.error}</div>}
         </div>
     )
 }
@@ -42,12 +42,14 @@ export function createField<FormKeyType extends string>(
     name: FormKeyType,
     validators: Array<FieldValidatorType>,
     component: React.FC<FormsControlType>,
-    props?: {className?: string,
-        type?:string},
+    props?: {
+        className?: string,
+        type?: string
+    },
     text = '',
 ) {
     return (
-        <div>
+        <div className={styles.createFieldRoot}>
             <Field
                 placeholder={placeholder}
                 name={name}
@@ -56,7 +58,7 @@ export function createField<FormKeyType extends string>(
                 className={props?.className}
                 {...props}
             />{' '}
-            <label> {text} </label>
+            <label className={styles.createFieldText}> {text} </label>
         </div>
     );
 }

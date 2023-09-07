@@ -15,14 +15,13 @@ export const DialogsForm: React.FC<InjectedFormProps<FormDataType>> = (props) =>
     return (
         <div className={styles.root}>
             <form onSubmit={props.handleSubmit}>
-                <div className={styles.textareaBlock}>
+                <div className={styles.textareaButtonBlock}>
                     <Field component={Textarea}
                            name="newMessageBody"
                            placeholder="Enter your Message"
                            validate={[required, maxLengthText]}
+                           className={styles.textarea}
                     />
-                </div>
-                <div className={styles.buttonBlock}>
                     <button className={styles.button}>Send</button>
                 </div>
             </form>

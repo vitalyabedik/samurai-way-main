@@ -35,14 +35,11 @@ export const LoginForm: React.FC<AllSampleFormProps> = (props) => {
     return (
         <form className={styles.loginForm} onSubmit={handleSubmit}>
             <div>
-                {createField<LoginFormValuesTypeKeys>('Email', 'email', [required], Input)}
+                {createField<LoginFormValuesTypeKeys>('Email', 'email', [required], Input, {className: styles.loginInput}, 'Email Address') }
             </div>
             <div>
-                {createField<LoginFormValuesTypeKeys>('Password', 'password', [required], Input, {type: 'password',})}
+                {createField<LoginFormValuesTypeKeys>('Password', 'password', [required], Input, {type: 'password'}, 'Password')}
             </div>
-            {/*<div className={styles.loginCheckbox}>*/}
-            {/*    {createField<LoginFormValuesTypeKeys>(undefined, 'rememberMe', [], Input, {type: 'checkbox'}, 'remember me',)}*/}
-            {/*</div>*/}
 
             {captchaUrl && <img src={captchaUrl} alt="captcha-image"/>}
             {captchaUrl && createField<LoginFormValuesTypeKeys>('Symbols from image', 'captcha', [required], Input)}
