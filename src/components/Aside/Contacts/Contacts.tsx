@@ -1,14 +1,17 @@
 import styles from './Contacts.module.css';
 
-import {UsersType} from '../../../types';
+
 import {Contact} from '../Contact';
+import {UserType} from '../../../types/usersPageTypes';
 
 type PropsType = {
-    contacts: UsersType
+    contacts: UserType[]
 }
 
 export const Contacts = (props: PropsType) => {
     const {contacts} = props
+
+    console.log(contacts)
 
     return (
         <div className={styles.root}>

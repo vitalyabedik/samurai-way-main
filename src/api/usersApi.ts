@@ -13,7 +13,11 @@ export const usersAPI = {
     unFollow: (userId: number) => {
         return instance.delete<BaseResponseType>(`follow/${userId}`)
             .then(response => response.data)
-    }
+    },
+    getFriends: () => {
+        return instance.get<UsersResponseDataType>(`users?page=${1}&page=${10}&friend=${true}`)
+            .then(response => response.data)
+    },
 }
 
 // types

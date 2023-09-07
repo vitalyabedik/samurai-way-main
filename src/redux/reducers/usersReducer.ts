@@ -1,6 +1,7 @@
 import {
     USERS_FOLLOW,
     USERS_FOLLOWING_IN_PROGRESS,
+    USERS_FRIENDS_SET,
     USERS_IS_LOADING,
     USERS_SET,
     USERS_SET_CURRENT_PAGE,
@@ -19,7 +20,8 @@ const initialState = {
     totalUsersCount: 0,
     currentPage: 1,
     isLoading: false,
-    followingInProgress: [] as FollowingInProgressType
+    followingInProgress: [] as FollowingInProgressType,
+    usersFriends: [] as UserType[]
 }
 
 export type InitialStateType = typeof initialState
@@ -68,6 +70,12 @@ export const usersReducer = (state: InitialStateType = initialState, action: Act
                 followingInProgress: action.payload.isFetching
                     ? [...state.followingInProgress, action.payload.userId]
                     : state.followingInProgress.filter(id => id !== action.payload.userId)
+            }
+        }
+        case (USERS_FRIENDS_SET) : {
+            return {
+                ...state,
+                usersFriends: action.payload.usersFriends
             }
         }
 

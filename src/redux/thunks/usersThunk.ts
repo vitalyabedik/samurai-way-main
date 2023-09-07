@@ -8,6 +8,7 @@ import {
     setUsersLoadingAC,
     followAC,
     unFollowAC,
+    setUsersFriendsAC,
 } from '../actions/usersAction';
 import {AppThunkDispatch, AppThunkType} from '../redux-store';
 import {followUnfollow} from '../../utils/followUnfollow';
@@ -34,3 +35,13 @@ export const followTC = (userId: number) => async (dispatch: Dispatch) => {
 export const unFollowTC = (userId: number) => async (dispatch: Dispatch) => {
     await followUnfollow(userId, unFollowAC, usersAPI.unFollow.bind(usersAPI), dispatch);
 };
+
+export const getUsersFriendsTC = () => async (dispatch: Dispatch) => {
+    dispatch(setUsersLoadingAC(true))
+
+    const data = await usersAPI.getFriends()
+
+    dispatch(setUsersLoadingAC(false))
+    dispatch(setUsersFriendsAC(data.items))
+    dispatch(setTotalUserCountAC(data.totalCount))
+}

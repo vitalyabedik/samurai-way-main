@@ -5,9 +5,14 @@ import {UserType} from '../../types/usersPageTypes';
 import {FollowingInProgressType} from '../reducers/usersReducer';
 
 export const getUsersSelector = (state: AppStateType): UserType[]  => state.usersPage.users
+export const getFriendsSelector = (state: AppStateType): UserType[]  => state.usersPage.usersFriends
 
 export const getUsers = createSelector(getUsersSelector, (users) => {
     return users.filter(u => true)
+})
+
+export const getFriends = createSelector(getFriendsSelector, (usersFriends) => {
+    return usersFriends.filter(u => true)
 })
 
 export const getPageSize = (state: AppStateType): number  => state.usersPage.pageSize

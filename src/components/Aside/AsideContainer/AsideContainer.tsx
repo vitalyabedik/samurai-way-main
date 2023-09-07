@@ -1,20 +1,20 @@
 import {connect} from 'react-redux';
-import {Aside} from '../Aside';
 
+import {Aside} from '../Aside';
 import {AppStateType} from '../../../redux/redux-store';
-import {InitialStateType} from '../../../redux/reducers/asideReducer';
+import {getFriends} from '../../../redux/selectors/usersSelector';
+import {UserType} from '../../../types/usersPageTypes';
 
 type MapStateToPropsType = {
-    aside : InitialStateType
+    friends: UserType[]
 }
 
 export type AsidePropsType = MapStateToPropsType
 
 const mapStateToProps = (state : AppStateType): MapStateToPropsType => {
     return {
-        aside: state.aside,
+        friends: getFriends(state)
     }
 }
-
 
 export const AsideContainer = connect(mapStateToProps)(Aside)

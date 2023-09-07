@@ -15,6 +15,7 @@ import {AppStateType} from '../redux/redux-store';
 import {Preloader} from '../components/common';
 import {withSuspense} from '../hoc/withSuspense';
 import {NotFound404} from '../components/common/NotFound404';
+import {getUsersFriendsTC} from '../redux/thunks/usersThunk';
 
 const ProfileContainer = React.lazy(() => import('../components/Profile/ProfileContainer'))
 const UsersContainer = React.lazy(() => import('../components/Users/UsersContainer'))
@@ -24,6 +25,7 @@ const LoginContainer = React.lazy(() => import('../components/Login'))
 class App extends React.Component<AppPropsType> {
     componentDidMount() {
         this.props.initialize()
+        this.props.getFriends()
     }
 
     render() {
@@ -62,6 +64,7 @@ type MapStateToPropsType = {
 
 type MapDispatchToProps = {
     initialize: () => void
+    getFriends: () => void
 }
 
 export type AppPropsType = MapStateToPropsType & MapDispatchToProps
@@ -76,5 +79,6 @@ const mapStateToProps = (state: AppStateType): MapStateToPropsType => {
 export default compose<React.ComponentType>(
     withRouter,
     connect(mapStateToProps, {
-        initialize: inititializeTC
+        initialize: inititializeTC,
+        getFriends: getUsersFriendsTC
     }))(App)
