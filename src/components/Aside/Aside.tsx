@@ -6,7 +6,7 @@ import {AsidePropsType} from './AsideContainer';
 
 
 export const Aside = (props: AsidePropsType) => {
-    const { friends} = props
+    const {users} = props
 
     return (
         <aside className={styles.root}>
@@ -15,7 +15,7 @@ export const Aside = (props: AsidePropsType) => {
                     <Navbar/>
                 </div>
                 <div className={styles.contacts}>
-                    <Contacts contacts={friends}/>
+                    <Contacts contacts={users}/>
                 </div>
             </div>
         </aside>

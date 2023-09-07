@@ -2,7 +2,6 @@ import styles from './Sidebar.module.css'
 
 import {About} from './About';
 import {Friends} from './Friends';
-
 import {ProfileType, SidebarType} from '../../../types';
 import {ProfileDataFormType} from '../../Profile/ProfileDataForm';
 import {UserType} from '../../../types/usersPageTypes';
@@ -12,11 +11,11 @@ type PropsType = {
     profile: ProfileType | null
     isOwner: boolean
     updateProfile: (profile: ProfileDataFormType) => Promise<any>
-    friends: UserType[]
+    users: UserType[]
 }
 
 export const Sidebar = (props: PropsType) => {
-    const {state, profile, isOwner, updateProfile, friends} = props
+    const {state, profile, isOwner, updateProfile, users} = props
 
     return (
         <div className={styles.root}>
@@ -25,7 +24,7 @@ export const Sidebar = (props: PropsType) => {
                    isOwner={isOwner}
                    updateProfile={updateProfile}
             />
-            <Friends friends={friends}/>
+            <Friends users={users}/>
         </div>
     )
 }

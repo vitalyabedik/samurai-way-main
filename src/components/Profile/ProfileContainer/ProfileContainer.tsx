@@ -15,8 +15,8 @@ import {
 } from '../../../redux/thunks/profileThunk';
 import {withAuthRedirectComponent} from '../../../hoc/withAuthRedirect';
 import {ProfileDataFormType} from '../ProfileDataForm';
-import {getUsersFriendsTC} from '../../../redux/thunks/usersThunk';
-import {getFriends} from '../../../redux/selectors/usersSelector';
+import {getUsersTC} from '../../../redux/thunks/usersThunk';
+import {getUsers} from '../../../redux/selectors/usersSelector';
 import {UserType} from '../../../types/usersPageTypes';
 
 type PathParamsType = {
@@ -29,7 +29,7 @@ type MapStateToPropsType = {
     status: string
     authorizedUserId: number | null
     isAuth: boolean
-    friends: UserType[]
+    users: UserType[]
 }
 
 type MapDispatchToProps = {
@@ -39,7 +39,7 @@ type MapDispatchToProps = {
     updateUserStatus: (status: string) => void
     savePhoto: (file: File) => void
     updateProfile: (profile: ProfileDataFormType) => Promise<any>
-    getFriends: () => void
+    getUsers: (currentPage: number, pageSize: number, isFriend: { value: boolean } | undefined) => void
 }
 
 export type OwnPropsType = MapStateToPropsType & MapDispatchToProps
@@ -62,7 +62,7 @@ export class ProfileContainerAPI extends React.Component<ProfilePropsType> {
 
     componentDidMount() {
         this.refreshProfile()
-        this.props.getFriends()
+        this.props.getUsers(1, 10, {value: true})
     }
 
     componentDidUpdate(prevProps: Readonly<ProfilePropsType>, prevState: Readonly<{}>, snapshot?: any) {
@@ -80,7 +80,7 @@ export class ProfileContainerAPI extends React.Component<ProfilePropsType> {
                      updateUserStatus={this.props.updateUserStatus}
                      savePhoto={this.props.savePhoto}
                      updateProfile={this.props.updateProfile}
-                     friends={this.props.friends}
+                     users={this.props.users}
             />
         )
     }
@@ -93,7 +93,7 @@ const mapStateToProps = (state: AppStateType): MapStateToPropsType => {
         status: state.profilePage.status,
         authorizedUserId: state.auth.userId,
         isAuth: state.auth.isAuth,
-        friends: getFriends(state)
+        users: getUsers(state)
     }
 }
 
@@ -105,7 +105,7 @@ export default compose<React.ComponentType>(
         updateUserStatus: updateUserStatusThunkCreator,
         savePhoto: savePhotoThunkCreator,
         updateProfile: updateProfileTC,
-        getFriends: getUsersFriendsTC
+        getUsers: getUsersTC,
     }),
     withRouter,
     withAuthRedirectComponent

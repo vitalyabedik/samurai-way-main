@@ -42,8 +42,9 @@ export function createField<FormKeyType extends string>(
     name: FormKeyType,
     validators: Array<FieldValidatorType>,
     component: React.FC<FormsControlType>,
-    props = {},
-    text = "",
+    props?: {className?: string,
+        type?:string},
+    text = '',
 ) {
     return (
         <div>
@@ -52,10 +53,12 @@ export function createField<FormKeyType extends string>(
                 name={name}
                 validate={validators}
                 component={component}
+                className={props?.className}
                 {...props}
-            />{" "}
+            />{' '}
             <label> {text} </label>
         </div>
     );
 }
+
 export type GetStringKeys<T> = Extract<keyof T, string>;

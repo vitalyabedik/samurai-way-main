@@ -21,7 +21,7 @@ type PropsType = {
     updateUserStatus: (status: string) => void
     savePhoto: (file: File) => void
     updateProfile: (profile: ProfileDataFormType) => Promise<any>
-    friends: UserType[]
+    users: UserType[]
 }
 
 export const Profile = (props: PropsType) => {
@@ -34,7 +34,7 @@ export const Profile = (props: PropsType) => {
         addPost,
         savePhoto,
         updateProfile,
-        friends
+        users
     } = props
 
     const onAddPost = (values: FormDataType) => {
@@ -64,7 +64,7 @@ export const Profile = (props: PropsType) => {
                              profile={profile}
                              isOwner={isOwner}
                              updateProfile={updateProfile}
-                             friends={friends}
+                             users={users}
                     />
                 </div>
             </div>

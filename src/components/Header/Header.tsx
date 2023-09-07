@@ -7,14 +7,9 @@ import logoutIcon from '../../assets/images/header/icon-logout.svg';
 import logo from '../../assets/images/header/logo.png';
 import iconSearch from '../../assets/images/header/icon-search.svg';
 import {HeaderPropsType} from './HeaderContainer';
-import {AvatarAndFullName} from '../../components/common/AvatarAndFullName';
-import React from 'react';
-
 
 export const Header = (props: HeaderPropsType) => {
-    const {isAuth, logOut, profile, login} = props
-
-    console.log(login)
+    const {isAuth, logOut,  login} = props
 
     return (
         <header className={styles.root}>

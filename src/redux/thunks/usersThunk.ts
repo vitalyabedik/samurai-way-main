@@ -8,15 +8,14 @@ import {
     setUsersLoadingAC,
     followAC,
     unFollowAC,
-    setUsersFriendsAC,
 } from '../actions/usersAction';
 import {AppThunkDispatch, AppThunkType} from '../redux-store';
 import {followUnfollow} from '../../utils/followUnfollow';
 
-export const getUsersTC = (currentPage: number, pageSize: number) => async (dispatch: Dispatch) => {
+export const getUsersTC = (currentPage: number, pageSize: number, isFriend: {value: boolean} | undefined) => async (dispatch: Dispatch) => {
     dispatch(setUsersLoadingAC(true))
 
-    const data = await usersAPI.getUsers(currentPage, pageSize)
+    const data = await usersAPI.getUsers(currentPage, pageSize, isFriend)
 
     dispatch(setUsersLoadingAC(false))
     dispatch(setUsersAC(data.items))
@@ -25,7 +24,7 @@ export const getUsersTC = (currentPage: number, pageSize: number) => async (disp
 
 export const changePageTC = (currentPage: number, pageSize: number): AppThunkType => (dispatch: AppThunkDispatch) => {
     dispatch(setCurrentPageAC(currentPage))
-    dispatch(getUsersTC(currentPage, pageSize))
+    dispatch(getUsersTC(currentPage, pageSize, undefined))
 }
 
 export const followTC = (userId: number) => async (dispatch: Dispatch) => {
@@ -36,12 +35,3 @@ export const unFollowTC = (userId: number) => async (dispatch: Dispatch) => {
     await followUnfollow(userId, unFollowAC, usersAPI.unFollow.bind(usersAPI), dispatch);
 };
 
-export const getUsersFriendsTC = () => async (dispatch: Dispatch) => {
-    dispatch(setUsersLoadingAC(true))
-
-    const data = await usersAPI.getFriends()
-
-    dispatch(setUsersLoadingAC(false))
-    dispatch(setUsersFriendsAC(data.items))
-    dispatch(setTotalUserCountAC(data.totalCount))
-}

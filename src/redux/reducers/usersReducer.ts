@@ -1,7 +1,6 @@
 import {
     USERS_FOLLOW,
     USERS_FOLLOWING_IN_PROGRESS,
-    USERS_FRIENDS_SET,
     USERS_IS_LOADING,
     USERS_SET,
     USERS_SET_CURRENT_PAGE,
@@ -72,13 +71,6 @@ export const usersReducer = (state: InitialStateType = initialState, action: Act
                     : state.followingInProgress.filter(id => id !== action.payload.userId)
             }
         }
-        case (USERS_FRIENDS_SET) : {
-            return {
-                ...state,
-                usersFriends: action.payload.usersFriends
-            }
-        }
-
         default:
             return state;
     }

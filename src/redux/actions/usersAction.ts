@@ -5,7 +5,6 @@ import {
     USERS_SET_CURRENT_PAGE,
     USERS_SET_TOTAL_COUNT,
     USERS_UNFOLLOW,
-    USERS_FRIENDS_SET
 } from './actionTypes';
 import {UserType} from '../../types/usersPageTypes';
 
@@ -16,7 +15,6 @@ export type UsersActionType = followACType
     | ReturnType<typeof setTotalUserCountAC>
     | ReturnType<typeof setUsersLoadingAC>
     | ReturnType<typeof setUsersFollowingAC>
-    | ReturnType<typeof setUsersFriendsAC>
 
 export type followACType = ReturnType<typeof followAC>
 export const followAC = (userId: number) => ({
@@ -70,9 +68,3 @@ export const setUsersFollowingAC = (userId: number, isFetching: boolean) => ({
     }
 } as const)
 
-export const setUsersFriendsAC = (usersFriends: UserType[]) => ({
-    type: USERS_FRIENDS_SET,
-    payload: {
-        usersFriends
-    }
-} as const);

@@ -2,8 +2,9 @@ import {BaseResponseType, instance} from './instance';
 import {UserType} from '../types/usersPageTypes';
 
 export const usersAPI = {
-    getUsers: (pageNumber: number = 1, pageSize: number = 10) => {
-        return instance.get<UsersResponseDataType>(`users?page=${pageNumber}&page=${pageSize}`)
+    getUsers: (pageNumber: number = 1, pageSize: number = 10, isFriend: {value: boolean} | undefined = undefined) => {
+        const friendParam = isFriend ? `&friend=${isFriend.value}` : ''
+        return instance.get<UsersResponseDataType>(`users?page=${pageNumber}&page=${pageSize}${friendParam}`)
             .then(response => response.data)
     },
     follow: (userId: number) => {
@@ -12,10 +13,6 @@ export const usersAPI = {
     },
     unFollow: (userId: number) => {
         return instance.delete<BaseResponseType>(`follow/${userId}`)
-            .then(response => response.data)
-    },
-    getFriends: () => {
-        return instance.get<UsersResponseDataType>(`users?page=${1}&page=${10}&friend=${true}`)
             .then(response => response.data)
     },
 }

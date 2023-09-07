@@ -1,28 +1,29 @@
+import {useState} from 'react';
+
 import styles from './Friends.module.css';
 
 import {Friend} from '../Friend';
 import {UserType} from '../../../../types/usersPageTypes';
-import {useState} from 'react';
 
 type PropsType = {
-    friends: UserType[]
+    users: UserType[]
 }
 
 export const Friends = (props: PropsType) => {
-    const {friends} = props
+    const {users} = props
 
     const [showAllFriends, setShowAllFriends] = useState(false)
 
     const onShowClickHandler = () => setShowAllFriends(!showAllFriends)
 
-    const displayedFriends = showAllFriends ? friends : friends.slice(0, 6)
+    const displayedFriends = showAllFriends ? users : users.slice(0, 6)
 
     return (
         <div className={styles.root}>
             <div className={styles.friendsHeader}>
                 <div className={styles.titleAndCount}>
                     <h4>Friends</h4>
-                    <div className={styles.friendsCount}>{friends.length} Friends</div>
+                    <div className={styles.friendsCount}>{users.length} Friends</div>
                 </div>
                 <div className={styles.seeAll}>
                     {
