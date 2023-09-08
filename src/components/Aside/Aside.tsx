@@ -3,10 +3,14 @@ import styles from './Aside.module.css';
 import {Contacts} from './Contacts';
 import {Navbar} from './Navbar';
 import {AsidePropsType} from './AsideContainer';
+import {useLocation} from 'react-router-dom';
 
 
 export const Aside = (props: AsidePropsType) => {
     const {users} = props
+
+    const location = useLocation();
+    const currentPath = location.pathname;
 
     return (
         <aside className={styles.root}>
@@ -14,9 +18,9 @@ export const Aside = (props: AsidePropsType) => {
                 <div className={styles.navbar}>
                     <Navbar/>
                 </div>
-                <div className={styles.contacts}>
+                {currentPath === '/profile' && <div className={styles.contacts}>
                     <Contacts contacts={users}/>
-                </div>
+                </div>}
             </div>
         </aside>
     )
