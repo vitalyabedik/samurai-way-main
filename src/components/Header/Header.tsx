@@ -1,4 +1,4 @@
-import {NavLink} from 'react-router-dom';
+import {NavLink, useLocation} from 'react-router-dom';
 
 import styles from './Header.module.css';
 
@@ -11,6 +11,9 @@ import {HeaderPropsType} from './HeaderContainer';
 export const Header = (props: HeaderPropsType) => {
     const {isAuth, logOut,  login} = props
 
+    const location = useLocation();
+    const currentPath = location.pathname;
+
     return (
         <header className={styles.root}>
             <div className={styles.mainBlock}>
@@ -22,12 +25,12 @@ export const Header = (props: HeaderPropsType) => {
                         <img src={logo} alt="logo"/>
                     </div>
                 </div>
-                <div className={styles.searchBlock}>
+                {currentPath === '/users' && <div className={styles.searchBlock}>
                     <div className={styles.searchIcon}>
                         <img src={iconSearch} alt="icon-search"/>
                     </div>
-                    <input className={styles.searchInput} placeholder="Search for Friends , music and more.."/>
-                </div>
+                    <input className={styles.searchInput} placeholder="Search for users and friends..."/>
+                </div>}
             </div>
             {isAuth
                 ?

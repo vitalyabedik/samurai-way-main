@@ -5,9 +5,11 @@ import {AppStateType} from '../../../redux/redux-store';
 import {Header} from '../Header';
 import {logoutTC} from '../../../redux/thunks/authThunk';
 import {ProfileType} from '../../../types';
+import {useLocation} from 'react-router-dom';
 
 export class HeaderContainerAPI extends React.Component<HeaderPropsType> {
     render() {
+
         return (
             <Header {...this.props} />
         )
