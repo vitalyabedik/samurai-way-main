@@ -15,7 +15,7 @@ export const ProfileContact: React.FC<ProfileContactProps> = ({title, value, ico
                     <img className={styles.iconImage} src={icon} alt={`${title}-icon`}/>
                 </div>
             )}
-            {value}
+            <a href={value ? value : '#'} target={'_blank'}>{value}</a>
         </li>
     );
 };
