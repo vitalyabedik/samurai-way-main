@@ -4,7 +4,7 @@ import styles from './ProfileDataForm.module.css';
 import s from '../../Login/Login.module.css'
 
 import homeIcon from '../../../assets/images/profile/about/icon-home.svg';
-import {ProfileType} from '../../../types';
+import {ProfileContacts, ProfileType} from '../../../types';
 import {createField, GetStringKeys, Input, Textarea} from '../../common/FormsControls';
 import {ProfileContact} from '../ProfileContact';
 
@@ -25,13 +25,7 @@ export type ProfileDataFormType = {
     aboutMe: string;
     lookingForAJob: boolean;
     lookingForAJobDescription: string;
-    contacts: {
-        facebook: string;
-        vk: string;
-        instagram: string;
-        github: string;
-    }
-
+    contacts: ProfileContacts
 }
 type ProfileDataFormValuesTypeKeys = GetStringKeys<ProfileDataFormType>;
 type AllSampleFormProps = PropsType & InjectedFormProps<ProfileDataFormType, PropsType>;
@@ -44,20 +38,20 @@ const ProfileDataForm: React.FC<AllSampleFormProps> = (props) => {
             <div className={styles.root}>
                 <div className={styles.formItems}>
                     <div>
-                        <b>Full name</b>: {profile?.lookingForAJob}
+                        <b>Full name</b>: {profile?.fullName}
                         {createField<ProfileDataFormValuesTypeKeys>('Full name', 'fullName', [], Input)}
-                    </div>
-                    <div>
-                        <b>Looking for a job</b>: {profile?.lookingForAJob ? 'yes' : 'no'}
-                        {createField<ProfileDataFormValuesTypeKeys>('', 'lookingForAJob', [], Input, {type: 'checkbox'})}
-                    </div>
-                    <div>
-                        <b>My professional skills</b>: {profile?.lookingForAJobDescription}
-                        {createField<ProfileDataFormValuesTypeKeys>('My professional skills', 'lookingForAJobDescription', [], Textarea)}
                     </div>
                     <div>
                         <b>About me</b>: {profile?.aboutMe}
                         {createField<ProfileDataFormValuesTypeKeys>('About me', 'aboutMe', [], Textarea)}
+                    </div>
+                    <div className={styles.checkboxContainer}>
+                        <div><b>Looking for a job</b>: {profile?.lookingForAJob ? 'Yes' : 'No'}</div>
+                        {createField<ProfileDataFormValuesTypeKeys>('', 'lookingForAJob', [], Input, {type: 'checkbox', className: styles.checkbox}, )}
+                    </div>
+                    <div>
+                        <b>My professional skills</b>: {profile?.lookingForAJobDescription}
+                        {createField<ProfileDataFormValuesTypeKeys>('My professional skills', 'lookingForAJobDescription', [], Textarea)}
                     </div>
                     {profile?.contacts &&
                         <div className={styles.contacts}>
@@ -79,11 +73,3 @@ const ProfileDataForm: React.FC<AllSampleFormProps> = (props) => {
 };
 
 export default reduxForm<ProfileDataFormType, PropsType>({form: 'edit-profile'})(ProfileDataForm)
-
-// export default ProfileDataFormReduxForm;
-
-// const ProfileDataFormReduxForm = reduxForm<ProfileType, PropsType>({
-//     form: "edit-profile",
-// })(ProfileDataForm);
-//
-// export default ProfileDataFormReduxForm;

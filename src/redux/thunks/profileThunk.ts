@@ -46,7 +46,7 @@ export const updateProfileTC = (profile: ProfileType): AppThunkType => async (di
     if (data.resultCode === ResultCode.SUCCESS) {
         dispatch(getUserProfileThunkCreator(userId))
     } else {
-        dispatch(stopSubmit('edit-profile', {_error: data.messages[0]}))
+        dispatch(stopSubmit('edit-profile', {_error: data.messages[0] || 'Incorrect data'}))
         // распарсить строку и сформировать объект
         // dispatch(stopSubmit('edit-profile', {'contacts': {facebook: res.data.messages[0]}}))
 

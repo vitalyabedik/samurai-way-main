@@ -4,7 +4,6 @@ import styles from './About.module.css';
 
 import {AboutType, ProfileType} from '../../../../types/profilePageTypes';
 import {ProfileData} from '../../ProfileData';
-// import {ProfileDataFormType} from '../../ProfileDataForm';
 import ProfileDataForm, {ProfileDataFormType} from '../../ProfileDataForm/ProfileDataForm';
 import {Preloader} from '../../../common';
 
@@ -43,7 +42,7 @@ export const About = (props: PropsType) => {
                     ? <ProfileDataForm
                         profile={profile}
                         onSubmit={onSubmit}
-                        // initialValues={profile}
+                        initialValues={profile}
                     />
                     : <ProfileData profile={profile}
                                    isOwner={isOwner}

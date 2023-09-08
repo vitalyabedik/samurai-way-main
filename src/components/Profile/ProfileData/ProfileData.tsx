@@ -64,7 +64,7 @@ export const ProfileData = (props: PropsType) => {
                              alt="lookingForAJob-icon"/>
                     </div>
                     <div>Looking for a job:</div>
-                    <div className={styles.info}>{!profile?.lookingForAJob ? profile?.lookingForAJob : 'No'}</div>
+                    <div className={styles.info}>{profile?.lookingForAJob ? 'Yes': 'No'}</div>
                 </li>
                 {profile?.lookingForAJobDescription && (
                     <li className={styles.item}>
