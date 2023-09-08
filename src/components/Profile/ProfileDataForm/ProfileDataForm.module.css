@@ -1,7 +1,22 @@
-.items {
+.root {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.formContainer {
+    margin-top: 12px;
+}
+
+.formItems {
     display: flex;
     flex-direction: column;
     color: #4B5563;
+    gap: 15px;
+}
+
+.buttonContainer {
+    background-color: red;
 }
 
 .item {
@@ -26,4 +41,28 @@
 .info {
     margin-left: 8px;
     font-weight: bolder;
+}
+
+.contacts {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.saveButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    background-color: #2563EB;
+    border: none;
+    border-radius: 6px;
+    padding: 10px;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.saveButton:hover {
+    opacity: 0.9;
 }

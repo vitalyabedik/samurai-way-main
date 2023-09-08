@@ -1,9 +1,10 @@
 import React from 'react';
+import {NavLink} from 'react-router-dom';
 
 import styles from './Contact.module.css';
+
 import {UserType} from '../../../types/usersPageTypes';
 import defaultUserPhoto from '../../../assets/images/users/default-user.png';
-import {NavLink} from 'react-router-dom';
 
 type PropsType = {
     contact: UserType
