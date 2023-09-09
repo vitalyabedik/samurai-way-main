@@ -35,7 +35,7 @@ export const LoginForm: React.FC<AllSampleFormProps> = (props) => {
     return (
         <form className={styles.loginForm} onSubmit={handleSubmit}>
             <div>
-                {createField<LoginFormValuesTypeKeys>('Email', 'email', [required], Input, {className: styles.loginInput}, 'Email Address') }
+                {createField<LoginFormValuesTypeKeys>('Email', 'email', [required], Input, {className: styles.loginInput}, 'Email Address')}
             </div>
             <div>
                 {createField<LoginFormValuesTypeKeys>('Password', 'password', [required], Input, {type: 'password'}, 'Password')}
@@ -86,11 +86,9 @@ export const Login: React.FC<LoginType> = (props) => {
                 />
             </div>
             <div className={styles.testLoginInfo}>
-                <p>To log in get registered here:</p>
-                <p>
+                <p>To log in get registered
                     <a href={'https://social-network.samuraijs.com/'} target={'_blank'} rel="noreferrer">
-                        {' '}
-                        https://social-network.samuraijs.com/
+                        <span className={styles.link}> here,</span>
                     </a>
                 </p>
                 <p>or use common test account credentials:</p>
