@@ -5,11 +5,20 @@ import styles from './Header.module.css';
 import menuIcon from '../../assets/images/header/icon-menu.svg';
 import logoutIcon from '../../assets/images/header/icon-logout.svg';
 import logo from '../../assets/images/header/logo.png';
-import iconSearch from '../../assets/images/header/icon-search.svg';
-import {HeaderPropsType} from './HeaderContainer';
+import {UsersSearchForm} from '../../components/Users/UsersSearchForm';
+import {FilterType} from '../../redux/reducers/usersReducer';
+import {ProfileType} from '../../types';
 
-export const Header = (props: HeaderPropsType) => {
-    const {isAuth, logOut,  login} = props
+type PropsType = {
+    isAuth: boolean
+    login: string | null
+    profile: ProfileType | null
+    logOut: () => void
+    onFilterChanged: (filter: FilterType) => void
+}
+
+export const Header = (props: PropsType) => {
+    const {isAuth, logOut,  login, onFilterChanged} = props
 
     const location = useLocation();
     const currentPath = location.pathname;
@@ -25,11 +34,9 @@ export const Header = (props: HeaderPropsType) => {
                         <img src={logo} alt="logo"/>
                     </div>
                 </div>
-                {currentPath === '/users' && <div className={styles.searchBlock}>
-                    <div className={styles.searchIcon}>
-                        <img src={iconSearch} alt="icon-search"/>
-                    </div>
-                    <input className={styles.searchInput} placeholder="Search for users and friends..."/>
+                {currentPath === '/users' && <div className={styles.search}>
+                    <UsersSearchForm onFilterChanged={onFilterChanged}/>
+                    {/*<input className={styles.searchInput} placeholder="Search for users and friends..."/>*/}
                 </div>}
             </div>
             {isAuth

@@ -1,0 +1,57 @@
+.root {
+    position: relative;
+}
+
+.hidden {
+    display: none;
+}
+
+.searchIcon {
+    position: absolute;
+    left: 15px;
+    z-index: 10;
+    top: calc(50% - 8px);
+}
+
+.searchInput {
+    position: relative;
+    width: 100%;
+    font-size: 15px;
+    height: 44px;
+    outline: 0;
+    border: 1px solid transparent;
+    color: #393939;
+    padding: 0 30px 0 40px;
+    background: #f0f2f5;
+    border-radius: 2rem;
+    transition: all 0.3s ease;
+}
+
+.searchInputPadding {
+    padding: 10px;
+}
+
+.buttonContainer {
+    position: absolute;
+    right: 0;
+    top: calc(50% - 22px);
+}
+
+.searchButton {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 8px;
+    background-color: #2563EB;
+    height: 44px;
+    cursor: pointer;
+    padding: 0 10px;
+    transition: all 0.3s ease;
+}
+
+.searchButton:hover {
+    opacity: 0.9;
+}
+
