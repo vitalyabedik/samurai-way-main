@@ -20,6 +20,17 @@
     color: #FFFFFF;
 }
 
+.pageNumber.selectedPage {
+    color: #FFFFFF;
+    font-weight: bold;
+    background-color: #2563EB;
+    border: none;
+}
+
+.pageNumber.selectedPage:hover {
+    opacity: 0.9;
+}
+
 .button {
     background-color: #2563EB;
     padding: 0 20px;
@@ -35,13 +46,4 @@
     opacity: 0.9;
 }
 
-.pageNumber.selectedPage {
-    color: #FFFFFF;
-    font-weight: bold;
-    background-color: #2563EB;
-    border: none;
-}
 
-.pageNumber.selectedPage:hover {
-    opacity: 0.9;
-}

@@ -16,8 +16,7 @@ export const Contacts = (props: PropsType) => {
             <ul className={styles.items}>
                 {contacts.map(contact =>
                     <Contact key={contact.id} contact={contact}/>
-                )
-                }
+                )}
             </ul>
         </div>
     )

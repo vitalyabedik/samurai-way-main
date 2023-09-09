@@ -1,0 +1,31 @@
+.root {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+}
+
+.button {
+    padding: 0 20px;
+    cursor: pointer;
+    color: #666666;
+    font-weight: 500;
+    height: 36px;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+}
+
+.button:hover {
+    background-color: #2563EB;
+    color: #FFFFFF;
+}
+
+.button.selected {
+    color: #FFFFFF;
+    font-weight: bold;
+    background-color: #2563EB;
+    border: none;
+}
+
+.button.selected:hover {
+    opacity: 0.9;
+}

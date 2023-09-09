@@ -7,6 +7,7 @@ import {FilterType, FollowingInProgressType} from '../../redux/reducers/usersRed
 import {Pagination} from '../common/Pagination';
 import {User} from './User';
 import {UsersSearchForm} from './UsersSearchForm';
+import {UsersFilteredButtons} from './UsersFilteredButtons';
 
 type PropsType = {
     users: UserType[]
@@ -36,9 +37,12 @@ export const Users = (props: PropsType) => {
     return (
         <div className={styles.wrapper}>
             <div className={styles.root}>
+                    <div className={styles.usersHeader}>
+                        <h2 className={styles.title}>Users</h2>
+                        <UsersFilteredButtons/>
+                    </div>
                 <div className={styles.container}>
-                    <h2 className={styles.title}>Users</h2>
-                    <UsersSearchForm onFilterChanged={onFilterChanged}/>
+                    {/*<UsersSearchForm onFilterChanged={onFilterChanged}/>*/}
                     <div className={styles.users}>
                         {
                             users.map(user =>
