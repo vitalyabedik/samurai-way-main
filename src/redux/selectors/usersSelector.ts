@@ -20,8 +20,6 @@ export const getIsLoading = (state: AppStateType): boolean => state.usersPage.is
 
 export const getFollowingInProgress = (state: AppStateType): FollowingInProgressType => state.usersPage.followingInProgress
 
-export const getUsersFilter = (state: AppStateType) => {
-    console.log('selector', 'filter:', state.usersPage.filter)
-    return state.usersPage.filter
-}
+export const getUsersFilter = (state: AppStateType): FilterType => state.usersPage.filter
+
 

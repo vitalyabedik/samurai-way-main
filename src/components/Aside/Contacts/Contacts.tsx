@@ -10,8 +10,6 @@ type PropsType = {
 export const Contacts = (props: PropsType) => {
     const {contacts} = props
 
-    console.log(contacts)
-
     return (
         <div className={styles.root}>
             <h3 className={styles.title}>Contacts</h3>

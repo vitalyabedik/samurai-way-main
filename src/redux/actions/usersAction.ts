@@ -69,16 +69,12 @@ export const setUsersFollowingAC = (userId: number, isFetching: boolean) => ({
     }
 } as const)
 
-export const setUsersFilterAC = (term: string) => {
-    console.log('AC', 'term:', term)
-    return {
-        type: USERS_SET_FILTER,
-        payload: {
-            term
-        }
-    } as const;
-}
-
+export const setUsersFilterAC = (term: string) => ({
+    type: USERS_SET_FILTER,
+    payload: {
+        term
+    }
+} as const)
 
 
 // ================================================

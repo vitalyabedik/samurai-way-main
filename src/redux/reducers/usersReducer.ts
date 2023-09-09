@@ -79,7 +79,6 @@ export const usersReducer = (state: InitialStateType = initialState, action: Act
             }
         }
         case (USERS_SET_FILTER): {
-            console.log('reducer', 'action.payload:', action.payload)
             return {
                 ...state,
                 filter: action.payload

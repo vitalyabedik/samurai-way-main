@@ -12,7 +12,6 @@ import {
 import {Users} from '../Users';
 import {Preloader} from '../../common';
 import {
-    // changePageTC,
     followTC,
     getUsersTC,
     unFollowTC,
@@ -55,12 +54,10 @@ export class UsersContainerAPI extends React.Component<UsersPropsType> {
     onPageChanged = (currentPage: number) => {
         const {pageSize, filter:{term}} = this.props
         this.props.getUsers({currentPage, pageSize, term})
-        // changePage(pageNumber, pageSize)
     }
 
     onFilterChanged = (filter: FilterType) => {
         const {pageSize} = this.props
-        console.log('onFilterChanged', 'filter.term:', filter.term)
         this.props.getUsers({currentPage:1, pageSize, term:filter.term})
     }
 
@@ -103,7 +100,6 @@ export default compose<React.ComponentType>(
         getUsers: getUsersTC,
         follow: followTC,
         unFollow: unFollowTC,
-        // changePage: changePageTC
     }),
 )(UsersContainerAPI)
 
