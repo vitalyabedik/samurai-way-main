@@ -39,7 +39,12 @@ type MapDispatchToProps = {
     updateUserStatus: (status: string) => void
     savePhoto: (file: File) => void
     updateProfile: (profile: ProfileDataFormType) => Promise<any>
-    getUsers: (currentPage: number, pageSize: number, isFriend: { value: boolean } | undefined) => void
+    getUsers: (params: {
+        currentPage: number,
+        pageSize: number,
+        term: string,
+        isFriend?: { value: boolean }
+    }) => void
 }
 
 export type OwnPropsType = MapStateToPropsType & MapDispatchToProps
@@ -62,7 +67,7 @@ export class ProfileContainerAPI extends React.Component<ProfilePropsType> {
 
     componentDidMount() {
         this.refreshProfile()
-        this.props.getUsers(1, 10, {value: true})
+        this.props.getUsers({currentPage: 1, pageSize: 10, isFriend: {value: true}, term: ''})
     }
 
     componentDidUpdate(prevProps: Readonly<ProfilePropsType>, prevState: Readonly<{}>, snapshot?: any) {

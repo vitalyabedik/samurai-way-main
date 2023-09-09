@@ -3,9 +3,10 @@ import React from 'react';
 import styles from './Users.module.css';
 
 import {UserType} from '../../types/usersPageTypes';
-import {FollowingInProgressType} from '../../redux/reducers/usersReducer';
+import {FilterType, FollowingInProgressType} from '../../redux/reducers/usersReducer';
 import {Pagination} from '../common/Pagination';
 import {User} from './User';
+import {UsersSearchForm} from './UsersSearchForm';
 
 type PropsType = {
     users: UserType[]
@@ -16,6 +17,7 @@ type PropsType = {
     follow: (userId: number) => void
     unFollow: (userId: number) => void
     onPageChanged: (pageNumber: number) => void
+    onFilterChanged: (filter: FilterType) => void
 }
 
 export const Users = (props: PropsType) => {
@@ -28,6 +30,7 @@ export const Users = (props: PropsType) => {
         follow,
         unFollow,
         onPageChanged,
+        onFilterChanged
     } = props
 
     return (
@@ -35,6 +38,7 @@ export const Users = (props: PropsType) => {
             <div className={styles.root}>
                 <div className={styles.container}>
                     <h2 className={styles.title}>Users</h2>
+                    <UsersSearchForm onFilterChanged={onFilterChanged}/>
                     <div className={styles.users}>
                         {
                             users.map(user =>

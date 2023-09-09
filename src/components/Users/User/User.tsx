@@ -33,7 +33,6 @@ export const User = (props: PropsType) => {
 
     let isDisabled = followingInProgress.some(id => id === user.id)
 
-    console.log(user)
     return (
         <div className={styles.container}>
             <div className={styles.root}>
