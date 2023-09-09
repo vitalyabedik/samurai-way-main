@@ -6,7 +6,7 @@
 }
 
 .pageNumber {
-    padding: 0 32px;
+    padding: 0 15px;
     border: 1px solid #e5e7eb;
     border-radius: 6px;
     cursor: pointer;
@@ -25,6 +25,7 @@
     font-weight: bold;
     background-color: #2563EB;
     border: none;
+    height: 36px;
 }
 
 .pageNumber.selectedPage:hover {
@@ -32,18 +33,21 @@
 }
 
 .button {
-    background-color: #2563EB;
-    padding: 0 20px;
-    cursor: pointer;
-    color: #FFFFFF;
-    font-weight: 500;
-    height: 36px;
-    border: none;
+    padding: 0 15px;
+    background-color: #e5e7eb;
+    border: 1px solid #e5e7eb;
     border-radius: 6px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    color: #666666;
+    height: 36px;
+    font-weight: 600;
 }
 
 .button:hover {
-    opacity: 0.9;
+    background-color: #2563EB;
+    color: #FFFFFF;
 }
 
 

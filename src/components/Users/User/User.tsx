@@ -42,7 +42,7 @@ export const User = (props: PropsType) => {
                          alt="user-image"/>
                 </NavLink>
                 <div className={styles.name}>{user.name}</div>
-                <div className={styles.status}>{user.status ?  user.status :'No status'}</div>
+                <div className={styles.status}>{user.status ? user.status : 'No status'}</div>
                 {
                     user.followed
                         ? <button className={styles.buttonUnfollow} disabled={isDisabled} onClick={() => {
