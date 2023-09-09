@@ -11,7 +11,7 @@
 
 .img {
     height: 96px;
-    width: 89px;
+    max-width: 89px;
     object-fit: cover;
     border-radius: 8px;
 }
@@ -26,6 +26,56 @@
     white-space: nowrap;
     text-overflow: ellipsis;
 }
+
+@media (max-width: 992px) {
+    .img {
+        height: 180px;
+        max-width: 160px;
+        object-fit: cover;
+        border-radius: 8px;
+    }
+
+    .userName {
+        max-width: 160px;
+    }
+}
+
+@media (max-width: 675px) {
+    .img {
+        height: 140px;
+        width: 100%;
+        object-fit: cover;
+        border-radius: 8px;
+    }
+
+
+    .userName {
+        max-width: 120px;
+    }
+}
+
+@media (max-width: 634px) {
+    .img {
+        height: 130px;
+        max-width: 400px;
+        width: 100%;
+        object-fit: cover;
+        border-radius: 8px;
+    }
+}
+
+@media (max-width: 457px) {
+    .img {
+        height: 80px;
+        object-fit: cover;
+        border-radius: 8px;
+    }
+
+    .userName {
+        max-width: 70px;
+    }
+}
+
 
 
 

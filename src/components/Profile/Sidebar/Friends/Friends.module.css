@@ -34,7 +34,6 @@
     flex-wrap: wrap;
     justify-content: space-between;
     margin-top: 5px;
-
 }
 
 .friendsButton {
@@ -54,4 +53,20 @@
 .friendsButton:hover {
     opacity: 0.9;
 }
+
+@media (max-width: 992px) {
+    .items {
+       gap: 30px;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 490px) {
+    .items {
+        gap: 15px;
+        justify-content: center;
+    }
+}
+
+
 
