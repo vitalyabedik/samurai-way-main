@@ -47,7 +47,7 @@ export type UsersPropsType = MapStateToPropsType & MapDispatchToProps
 
 export class UsersContainerAPI extends React.Component<UsersPropsType> {
     componentDidMount() {
-        const {currentPage, pageSize, filter, getUsers} = this.props
+        const {currentPage, pageSize, getUsers} = this.props
         getUsers(currentPage, pageSize, {term: '', friend: null})
     }
 

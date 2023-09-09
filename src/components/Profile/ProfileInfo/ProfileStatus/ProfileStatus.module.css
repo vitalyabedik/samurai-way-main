@@ -1,17 +1,17 @@
 .root {
     margin-bottom: 5px;
+    max-width: 500px;
+    word-break: break-word;
 }
 
 .status {
-    height: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    line-height: 22px;
+    color: #666666
 }
 
 .input {
     text-align: center;
-    max-width: 400px!important;
+    max-width: 400px !important;
     color: #393939 !important;
     background: #f0f2f5 !important;
     border-radius: 20px !important;
