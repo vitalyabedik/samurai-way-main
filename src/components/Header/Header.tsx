@@ -14,7 +14,7 @@ type PropsType = {
     login: string | null
     profile: ProfileType | null
     logOut: () => void
-    onFilterChanged: (filter: FilterType) => void
+    onFilterChanged: (filterSearch: string) => void
 }
 
 export const Header = (props: PropsType) => {
@@ -36,7 +36,6 @@ export const Header = (props: PropsType) => {
                 </div>
                 {currentPath === '/users' && <div className={styles.search}>
                     <UsersSearchForm onFilterChanged={onFilterChanged}/>
-                    {/*<input className={styles.searchInput} placeholder="Search for users and friends..."/>*/}
                 </div>}
             </div>
             {isAuth

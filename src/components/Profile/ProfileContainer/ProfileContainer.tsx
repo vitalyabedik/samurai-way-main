@@ -18,6 +18,7 @@ import {ProfileDataFormType} from '../ProfileDataForm';
 import {getUsersTC} from '../../../redux/thunks/usersThunk';
 import {getUsers} from '../../../redux/selectors/usersSelector';
 import {UserType} from '../../../types/usersPageTypes';
+import {FilterType} from '../../../redux/reducers/usersReducer';
 
 type PathParamsType = {
     userId: string
@@ -39,12 +40,7 @@ type MapDispatchToProps = {
     updateUserStatus: (status: string) => void
     savePhoto: (file: File) => void
     updateProfile: (profile: ProfileDataFormType) => Promise<any>
-    getUsers: (params: {
-        currentPage: number,
-        pageSize: number,
-        term: string,
-        isFriend?: { value: boolean }
-    }) => void
+    getUsers: (currentPage: number, pageSize: number, filter: FilterType) => void
 }
 
 export type OwnPropsType = MapStateToPropsType & MapDispatchToProps
@@ -67,7 +63,7 @@ export class ProfileContainerAPI extends React.Component<ProfilePropsType> {
 
     componentDidMount() {
         this.refreshProfile()
-        this.props.getUsers({currentPage: 1, pageSize: 10, isFriend: {value: true}, term: ''})
+        this.props.getUsers(1,  10, {term: '', friend: true} )
     }
 
     componentDidUpdate(prevProps: Readonly<ProfilePropsType>, prevState: Readonly<{}>, snapshot?: any) {

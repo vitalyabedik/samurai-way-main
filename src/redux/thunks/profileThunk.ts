@@ -1,10 +1,10 @@
 import {Dispatch} from 'redux';
+import {stopSubmit} from 'redux-form';
 
 import {profileAPI} from '../../api';
 import {savePhotoSuccessAC, setUserProfileAC, setUserStatusAC} from '../actions/profileAction';
 import {ProfileType} from '../../types';
 import {AppStateType, AppThunkType} from '../../redux/redux-store';
-import {stopSubmit} from 'redux-form';
 import {ResultCode} from '../../api/instance';
 
 export const getUserProfileThunkCreator = (userId: number) => async (dispatch: Dispatch) => {

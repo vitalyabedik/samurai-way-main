@@ -6,7 +6,6 @@ import {UserType} from '../../types/usersPageTypes';
 import {FilterType, FollowingInProgressType} from '../../redux/reducers/usersReducer';
 import {Pagination} from '../common/Pagination';
 import {User} from './User';
-import {UsersSearchForm} from './UsersSearchForm';
 import {UsersFilteredButtons} from './UsersFilteredButtons';
 
 type PropsType = {
@@ -19,7 +18,7 @@ type PropsType = {
     follow: (userId: number) => void
     unFollow: (userId: number) => void
     onPageChanged: (pageNumber: number) => void
-    onFilterChanged: (value: boolean | undefined) => void
+    onFilterChanged: (filter: FilterType) => void
 }
 
 export const Users = (props: PropsType) => {
@@ -44,7 +43,6 @@ export const Users = (props: PropsType) => {
                         <UsersFilteredButtons filter={filter} onFilterChanged={onFilterChanged}/>
                     </div>
                 <div className={styles.container}>
-                    {/*<UsersSearchForm onFilterChanged={onFilterChanged}/>*/}
                     <div className={styles.users}>
                         {
                             users.map(user =>

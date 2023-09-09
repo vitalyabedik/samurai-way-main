@@ -10,9 +10,9 @@ import {getUsersTC} from '../../../redux/thunks/usersThunk';
 import {getCurrentPage, getPageSize, getUsersFilter} from '../../../redux/selectors/usersSelector';
 
 export class HeaderContainerAPI extends React.Component<HeaderPropsType> {
-    onFilterChanged = (filter: FilterType) => {
-        const {pageSize} = this.props
-        this.props.getUsers({currentPage:1, pageSize, term:filter.term})
+    onFilterChanged = (filterSearch: string) => {
+        const {pageSize, filter} = this.props
+        this.props.getUsers(1, pageSize, {friend: filter.friend, term: filterSearch})
     }
 
     render() {
@@ -33,7 +33,7 @@ type MapStateToPropsType = {
 
 type MapDispatchToProps = {
     logOut: () => void
-    getUsers: (params:{currentPage: number, pageSize: number, term: string}) => void
+    getUsers: (currentPage: number, pageSize: number, filter: FilterType) => void
 }
 
 export type HeaderPropsType = MapStateToPropsType & MapDispatchToProps

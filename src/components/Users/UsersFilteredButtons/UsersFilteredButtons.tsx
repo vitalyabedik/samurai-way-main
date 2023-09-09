@@ -1,29 +1,28 @@
 import styles from './UsersFilteredButtons.module.css'
 
 import {FilterType} from '../../../redux/reducers/usersReducer';
-import {useState} from 'react';
 
 type PropsType = {
     filter: FilterType
-    onFilterChanged: (value?: boolean) => void
+    onFilterChanged: (filter: FilterType) => void
 }
 
 export const UsersFilteredButtons: React.FC<PropsType> = (props) => {
     const {onFilterChanged, filter} = props
 
-    const onClickFilterChangedHandler = (value?: boolean) => onFilterChanged(value)
+    const onClickFilterChangedHandler = (filter: FilterType) => onFilterChanged(filter)
 
     return (
         <div className={styles.root}>
-            <button onClick={() => onClickFilterChangedHandler(undefined)}
-                    className={`${styles.button} ${filter === undefined ? styles.buttonSelected : ''}`}>
+            <button onClick={() => onClickFilterChangedHandler({friend: null, term: filter.term})}
+                    className={`${styles.button} ${filter.friend === null ? styles.buttonSelected : ''}`}>
                 All
             </button>
-            <button onClick={() => onClickFilterChangedHandler(true)}
-                    className={`${styles.button} ${filter ? styles.buttonSelected : ''}`}>Followed
+            <button onClick={() => onClickFilterChangedHandler({friend: true, term: filter.term})}
+                    className={`${styles.button} ${filter.friend === true ? styles.buttonSelected : ''}`}>Followed
             </button>
-            <button onClick={() => onClickFilterChangedHandler(false)}
-                    className={`${styles.button} ${!filter ? styles.buttonSelected : ''}`}
+            <button onClick={() => onClickFilterChangedHandler({friend: false, term: filter.term})}
+                    className={`${styles.button} ${filter.friend === false ? styles.buttonSelected : ''}`}
             >
                 Unfollowed
             </button>
