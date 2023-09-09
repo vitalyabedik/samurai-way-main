@@ -21,14 +21,14 @@
     outline: 0;
     border: 1px solid transparent;
     color: #393939;
-    padding: 0 30px 0 40px;
-    background: #f0f2f5;
-    border-radius: 2rem;
+    padding: 0 30px 0 40px!important;
+    background: #f0f2f5!important;
+    border-radius: 2rem!important;
     transition: all 0.3s ease;
 }
 
 .searchInputPadding {
-    padding: 10px;
+    padding: 10px!important;
 }
 
 .buttonContainer {

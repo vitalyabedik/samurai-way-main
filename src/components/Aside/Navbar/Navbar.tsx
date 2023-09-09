@@ -33,7 +33,7 @@ export const Navbar = () => {
                     <div className={styles.item__image}>
                         <img src={iconMessages} alt="icon-messages"/>
                     </div>
-                    <span>Messages</span>
+                    <span className={styles.span}>Messages</span>
                 </NavLink>
             </li>
             <li className={styles.item}>

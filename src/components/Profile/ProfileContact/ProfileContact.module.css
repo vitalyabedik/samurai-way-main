@@ -14,3 +14,7 @@
 .iconImage {
     padding: 4px;
 }
+
+.link:hover {
+    color: #2563EB;
+}
