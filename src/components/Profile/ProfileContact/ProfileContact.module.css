@@ -11,10 +11,20 @@
     margin-right: 10px
 }
 
+.iconBlock:hover {
+    scale: 1.1;
+}
+
 .iconImage {
     padding: 4px;
 }
 
 .link:hover {
     color: #2563EB;
+}
+
+@media (max-width: 480px) {
+    .link {
+      display: none;
+    }
 }

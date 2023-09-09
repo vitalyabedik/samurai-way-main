@@ -12,10 +12,14 @@ export const ProfileContact: React.FC<ProfileContactProps> = ({title, value, ico
         <li className={styles.root}>
             {icon && (
                 <div className={styles.iconBlock}>
-                    <img className={styles.iconImage} src={icon} alt={`${title}-icon`}/>
+                    <a href={value ? value : '#'} target={'_blank'}>
+                        <img className={styles.iconImage} src={icon} alt={`${title}-icon`}/>
+                    </a>
                 </div>
             )}
+            <p>
             <a className={styles.link} href={value ? value : '#'} target={'_blank'}>{value}</a>
+            </p>
         </li>
     );
 };

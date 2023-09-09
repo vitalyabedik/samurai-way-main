@@ -102,3 +102,29 @@
     color: #9c9c9c;
 }
 
+
+@media (max-width: 480px) {
+    .profileContent {
+        margin-top: -100px;
+        top: 170px;
+    }
+
+    .profileCover {
+        height: 200px;
+    }
+
+    .profileAvatar {
+        width: 120px;
+        height: 120px;
+    }
+
+    .profileInfo__title {
+        font-size: 24px;
+    }
+
+    .fileInputIcon {
+        top: 20%;
+        left: -15px;
+        transition: 0.3s;
+    }
+}

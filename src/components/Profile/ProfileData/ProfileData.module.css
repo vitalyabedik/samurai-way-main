@@ -62,3 +62,21 @@
     flex-direction: column;
     gap: 6px;
 }
+
+
+
+@media (max-width: 480px) {
+    .root {
+        font-size: 14px;
+    }
+
+    .iconBlock {
+       display: none;
+    }
+
+    .contact {
+        display: flex;
+        flex-direction: row;
+        gap: 6px;
+    }
+}

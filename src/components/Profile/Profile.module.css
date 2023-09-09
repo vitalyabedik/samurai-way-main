@@ -3,18 +3,19 @@
 }
 
 .content {
-    width: 1000px;
+    max-width: 1000px;
     margin: 0 auto;
 }
 
 .timeline {
-    width: 480px;
+    max-width: 480px;
 }
 
 .items {
-    margin-top:20px;
+    margin-top: 20px;
     display: flex;
     justify-content: space-evenly;
+    gap: 20px;
 }
 
 .imgAndTextarea {
@@ -37,4 +38,16 @@
     width: 40px;
     height: 40px;
     border-radius: 50%;
+}
+
+@media (max-width: 992px) {
+    .items {
+        flex-wrap: wrap;
+        flex-direction: column-reverse;
+        align-items: center;
+    }
+
+    .timeline {
+        max-width: 100%;
+    }
 }

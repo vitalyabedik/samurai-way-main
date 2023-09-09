@@ -21,7 +21,7 @@ export const PostForm: React.FC<InjectedFormProps<FormDataType>> = (props) => {
             <form onSubmit={props.handleSubmit}>
                 <Field component={Textarea}
                        className={styles.textarea} name={'newPostText'}
-                       placeholder={'What\'s Your Mind ? Hamse!'}
+                       placeholder={'What\'s Your Mind ?'}
                        validate={[required, maxLengthText]}
                 />
                 <div className={styles.buttonBlock}>
