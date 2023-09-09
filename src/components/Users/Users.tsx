@@ -15,10 +15,11 @@ type PropsType = {
     pageSize: number
     totalUsersCount: number
     followingInProgress: FollowingInProgressType
+    filter: FilterType
     follow: (userId: number) => void
     unFollow: (userId: number) => void
     onPageChanged: (pageNumber: number) => void
-    onFilterChanged: (filter: FilterType) => void
+    onFilterChanged: (value: boolean | undefined) => void
 }
 
 export const Users = (props: PropsType) => {
@@ -28,6 +29,7 @@ export const Users = (props: PropsType) => {
         pageSize,
         totalUsersCount,
         followingInProgress,
+        filter,
         follow,
         unFollow,
         onPageChanged,
@@ -39,7 +41,7 @@ export const Users = (props: PropsType) => {
             <div className={styles.root}>
                     <div className={styles.usersHeader}>
                         <h2 className={styles.title}>Users</h2>
-                        <UsersFilteredButtons/>
+                        <UsersFilteredButtons filter={filter} onFilterChanged={onFilterChanged}/>
                     </div>
                 <div className={styles.container}>
                     {/*<UsersSearchForm onFilterChanged={onFilterChanged}/>*/}

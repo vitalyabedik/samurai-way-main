@@ -39,7 +39,12 @@ type MapDispatchToProps = {
     unFollow: (userId: number) => void
     setUsers: (users: UserType[]) => void
     setCurrentPage: (page: number) => void
-    getUsers: (params:{currentPage: number, pageSize: number, term: string}) => void
+    getUsers: (params: {
+        currentPage: number,
+        pageSize: number,
+        term: string,
+        isFriend?: { value?: boolean }
+    }) => void
     changePage: (currentPage: number, pageSize: number) => void
 }
 
@@ -56,9 +61,9 @@ export class UsersContainerAPI extends React.Component<UsersPropsType> {
         this.props.getUsers({currentPage, pageSize, term})
     }
 
-    onFilterChanged = (filter: FilterType) => {
-        const {pageSize} = this.props
-        this.props.getUsers({currentPage:1, pageSize, term:filter.term})
+    onFilterChanged = (value?: boolean ) => {
+        const {pageSize, filter:{term}} = this.props
+        this.props.getUsers({currentPage:1, pageSize, term: term, isFriend: {value} })
     }
 
     render() {
@@ -75,6 +80,7 @@ export class UsersContainerAPI extends React.Component<UsersPropsType> {
                              onPageChanged={this.onPageChanged}
                              followingInProgress={this.props.followingInProgress}
                              onFilterChanged={this.onFilterChanged}
+                             filter={this.props.filter}
                     />}
             </>
         );

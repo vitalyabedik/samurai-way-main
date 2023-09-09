@@ -11,11 +11,12 @@ import {
 } from '../actions/usersAction';
 import {followUnfollow} from '../../utils/followUnfollow';
 
-export const getUsersTC = ({pageSize,currentPage,isFriend,term}:{
+export const getUsersTC = ({pageSize, currentPage, isFriend, term}: {
                                currentPage: number,
                                pageSize: number,
                                term: string,
-                               isFriend?: {value: boolean} },
+                               isFriend?: { value: boolean }
+                           },
 ) => async (dispatch: Dispatch) => {
     dispatch(setUsersLoadingAC(true))
     dispatch(setCurrentPageAC(currentPage))
@@ -36,7 +37,6 @@ export const followTC = (userId: number) => async (dispatch: Dispatch) => {
 export const unFollowTC = (userId: number) => async (dispatch: Dispatch) => {
     await followUnfollow(userId, unFollowAC, usersAPI.unFollow.bind(usersAPI), dispatch);
 };
-
 
 
 // ===============================

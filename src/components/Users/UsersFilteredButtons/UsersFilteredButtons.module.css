@@ -19,13 +19,13 @@
     color: #FFFFFF;
 }
 
-.button.selected {
+.buttonSelected {
     color: #FFFFFF;
     font-weight: bold;
     background-color: #2563EB;
     border: none;
 }
 
-.button.selected:hover {
+.buttonSelected:hover {
     opacity: 0.9;
 }
