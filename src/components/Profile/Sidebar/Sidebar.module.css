@@ -7,3 +7,11 @@
 .sidebar__title {
     color: #333333;
 }
+
+@media (max-width: 992px) {
+    .root {
+        max-width: 708px;
+        width: 100%;
+    }
+}
+

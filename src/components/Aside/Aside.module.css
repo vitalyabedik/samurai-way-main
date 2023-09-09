@@ -1,12 +1,18 @@
 .root {
-    width: 270px;
+    max-width: 270px;
     font-size: 16px;
     font-weight: 600;
     border-right: 1px solid rgba(229,231,235, 1);
     border-bottom: 1px solid rgba(229,231,235, 1);
+    height: 100vh;
 }
 
 .wrapper {
     margin: 15px 5px;
 }
 
+@media (max-width: 600px) {
+    .wrapper {
+        margin: 0;
+    }
+}

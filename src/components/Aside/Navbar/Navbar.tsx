@@ -17,7 +17,7 @@ export const Navbar = () => {
                     <div className={styles.item__image}>
                         <img src={iconProfile} alt="icon-profile"/>
                     </div>
-                    <span>Profile</span>
+                    <span className={styles.span}>Profile</span>
                 </NavLink>
             </li>
             <li className={styles.item}>
@@ -25,7 +25,7 @@ export const Navbar = () => {
                     <div className={styles.item__image}>
                         <img src={iconUsers} alt="icon-users"/>
                     </div>
-                    <span>Users</span>
+                    <span className={styles.span}>Users</span>
                 </NavLink>
             </li>
             <li className={styles.item}>
@@ -41,7 +41,7 @@ export const Navbar = () => {
                     <div className={styles.item__image}>
                         <img src={iconNews} alt="icon-news"/>
                     </div>
-                    <span>News</span>
+                    <span className={styles.span}>News</span>
                 </NavLink>
             </li>
             <li className={styles.item}>
@@ -49,7 +49,7 @@ export const Navbar = () => {
                     <div className={styles.item__image}>
                         <img src={iconMusic} alt="icon-music"/>
                     </div>
-                    <span>Music</span>
+                    <span className={styles.span}>Music</span>
                 </NavLink>
             </li>
             <li className={styles.item}>
@@ -57,7 +57,7 @@ export const Navbar = () => {
                     <div className={styles.item__image}>
                         <img src={iconSettings} alt="icon-settings"/>
                     </div>
-                    <span>Settings</span>
+                    <span className={styles.span}>Settings</span>
                 </NavLink>
             </li>
         </ul>
