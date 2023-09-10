@@ -48,7 +48,7 @@ export const LoginForm: React.FC<AllSampleFormProps> = (props) => {
                 {error}
             </div>}
             <div>
-                <button className={styles.loginButton}>Get Started</button>
+                <button type='submit' className={styles.loginButton}>Get Started</button>
             </div>
         </form>
     )
