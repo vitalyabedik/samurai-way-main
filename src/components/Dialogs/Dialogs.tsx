@@ -6,11 +6,14 @@ import {MessageItem} from './Message';
 import {DialogItems} from './DialogItems';
 import {DialogsFormRedux, FormDataType} from './DialogsForm';
 import {DialogsPropsType} from '../Dialogs/DialogsContainer/DialogsContainer';
+import {useWindowWidth} from '../../hooks';
 
 
 export const Dialogs = (props: DialogsPropsType) => {
     const {sendMessage} = props
     const {dialogs, messages} = props.dialogsPage
+
+    const isDesktop = useWindowWidth(1200)
 
     const addNewMessage = (values: FormDataType) => {
        sendMessage(values.newMessageBody)
@@ -30,7 +33,7 @@ export const Dialogs = (props: DialogsPropsType) => {
 
     return (
         <div className={styles.root}>
-            <div className={styles.dialogs__items}>{dialogsElements}</div>
+            {!isDesktop && <div className={styles.dialogs__items}>{dialogsElements}</div>}
             <div className={styles.messages}>
                 <div className={styles.messages__items}>{messagesElements}</div>
                 <DialogsFormRedux onSubmit={addNewMessage}/>

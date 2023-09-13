@@ -1,17 +1,17 @@
-import styles from './Message.module.css'
+import React from 'react';
+import styles from './Message.module.css';
 
 type PropsType = {
-    id: number
-    message: string
-}
+    id: number;
+    message: string;
+};
 
 export const MessageItem = (props: PropsType) => {
-    const {message} = props
+    const { message } = props;
 
     return (
         <div className={styles.root}>
-            {message}
+            <div className={styles.message}>{message}</div>
         </div>
-    )
-}
-
+    );
+};

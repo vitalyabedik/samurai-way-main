@@ -9,5 +9,5 @@
 .messages__items {
     display: flex;
     flex-direction: column;
-    background-color: cadetblue;
+    margin: 10px;
 }
