@@ -1,7 +1,7 @@
 .pagination {
     width: 100%;
     display: flex;
-    justify-content: center ;
+    justify-content: center;
     gap: 15px;
 }
 
@@ -48,6 +48,27 @@
 .button:hover {
     background-color: #2563EB;
     color: #FFFFFF;
+}
+
+@media (max-width: 960px) {
+    .pagination {
+        gap: 5px;
+    }
+
+    .button {
+        padding: 2px;
+    }
+
+    .pageNumber {
+        padding: 2px;
+    }
+}
+
+@media (max-width: 690px) {
+    .pagination {
+        flex-wrap: wrap;
+        gap: 5px;
+    }
 }
 
 
