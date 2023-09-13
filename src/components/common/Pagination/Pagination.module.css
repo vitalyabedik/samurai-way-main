@@ -64,9 +64,14 @@
     }
 }
 
-@media (max-width: 690px) {
+@media (max-width: 850px) {
     .pagination {
         flex-wrap: wrap;
+    }
+}
+
+@media (max-width: 690px) {
+    .pagination {
         gap: 5px;
     }
 }
