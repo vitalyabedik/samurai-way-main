@@ -7,13 +7,11 @@
 
 .container {
   display: flex;
-  background-color: #b47373;
-  /*background-color: #f9fafb;*/
+  background-color: #f9fafb;
 }
 
 .content {
   width:100%;
-  /*height: 100vh;*/
 }
 
 h3 {
