@@ -5,6 +5,7 @@
 .root {
     background-color: #FFFFFF;
     max-width: 1200px;
+    width: 100%;
     margin: 0 auto;
     border-radius: 12px ;
     border: 1px solid #ebe9e6;
@@ -16,6 +17,7 @@
     display: flex;
     flex-direction: column;
     gap: 50px;
+    width: 100%;
 }
 
 .usersHeader {
@@ -37,3 +39,26 @@
     gap: 30px;
 }
 
+
+@media (max-width: 960px) {
+    .wrapper {
+        margin: 30px;
+    }
+
+    .container {
+        flex-direction: column-reverse;
+        gap: 30px;
+    }
+}
+
+@media (max-width: 690px) {
+    .container {
+      padding: 20px 10px ;
+    }
+}
+
+@media (max-width: 460px) {
+    .wrapper {
+        margin: 10px;
+    }
+}
