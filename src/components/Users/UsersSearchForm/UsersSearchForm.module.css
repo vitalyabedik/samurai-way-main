@@ -13,6 +13,13 @@
     top: calc(50% - 8px);
 }
 
+.clearIcon {
+    position: absolute;
+    right: 80px;
+    z-index: 10;
+    top: calc(50% - 8px);
+}
+
 .searchInput {
     position: relative;
     width: 100%;
