@@ -14,10 +14,10 @@
     position: relative;
     color: #2563EB;
     box-sizing: border-box;
-    animation: animloader 1s linear infinite alternate;
+    animation: animationLoader 1s linear infinite alternate;
 }
 
-@keyframes animloader {
+@keyframes animationLoader {
     0% {
         box-shadow: -38px -12px ,  -14px 0,  14px 0, 38px 0;
     }
