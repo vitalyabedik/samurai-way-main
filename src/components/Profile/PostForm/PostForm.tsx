@@ -1,11 +1,11 @@
 import React from 'react';
+import {Field, InjectedFormProps, reduxForm} from 'redux-form';
 
 import styles from './PostForm.module.css';
 
 import {UserType} from '../../../types';
-import {Field, InjectedFormProps, reduxForm} from 'redux-form';
 import {maxLengthCreator, required} from '../../../utils/validators';
-import {FormsControls, Textarea} from '../../common/FormsControls';
+import {Textarea} from '../../common/FormsControls';
 
 export type FormDataType = {
     newPostText: string
@@ -15,7 +15,6 @@ export type FormDataType = {
 const maxLengthText = maxLengthCreator(10)
 
 export const PostForm: React.FC<InjectedFormProps<FormDataType>> = (props) => {
-
     return (
         <div className={styles.root}>
             <form onSubmit={props.handleSubmit}>
