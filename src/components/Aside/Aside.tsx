@@ -1,9 +1,10 @@
+import {useLocation} from 'react-router-dom';
+
 import styles from './Aside.module.css';
 
 import {Contacts} from './Contacts';
 import {Navbar} from './Navbar';
 import {AsidePropsType} from './AsideContainer';
-import {useLocation} from 'react-router-dom';
 
 
 export const Aside = (props: AsidePropsType) => {
