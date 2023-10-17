@@ -6,7 +6,6 @@ import styles from './Header.module.css';
 import { UsersSearchForm } from '../../components/Users/UsersSearchForm';
 import { ProfileType } from '../../types';
 import {useWindowWidth} from '../../hooks';
-import menuIcon from '../../assets/images/header/icon-menu.svg';
 import iconSearch from '../../assets/images/header/icon-search-button.svg';
 import logoutIcon from '../../assets/images/header/icon-logout.svg';
 import logo from '../../assets/images/header/logo.png';
@@ -36,12 +35,14 @@ export const Header = (props: PropsType) => {
         <header className={styles.root}>
             <div className={styles.mainBlock}>
                 {!isSearchFormVisible && <div className={styles.logoBlock}>
-                    <div className={styles.menuIcon}>
-                        <img src={menuIcon} alt="menu"/>
-                    </div>
-                    <div className={styles.menuLogo}>
-                        <img src={logo} alt="logo"/>
-                    </div>
+                    {/*<div className={styles.menuIcon}>*/}
+                    {/*    <img src={menuIcon} alt="menu"/>*/}
+                    {/*</div>*/}
+                    <NavLink to='/'>
+                        <div className={styles.menuLogo}>
+                            <img src={logo} alt="logo"/>
+                        </div>
+                    </NavLink>
                 </div>}
                 {currentPath === '/users' && (
                     <div className={styles.search}>
