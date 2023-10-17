@@ -7,8 +7,9 @@ import {profileReducer} from './reducers/profileReducer';
 import {dialogsReducer} from './reducers/dialogsReducer';
 import {usersReducer} from './reducers/usersReducer';
 import {authReducer} from './reducers/authReducer';
-import {ActionTypes} from './actions/actionCreatorsTypes';
 import {appReducer} from './reducers/appReducer';
+import {chatReducer} from './reducers/chatReducer';
+import {ActionTypes} from './actions/actionCreatorsTypes';
 
 const rootReducer = combineReducers({
     app: appReducer,
@@ -16,6 +17,7 @@ const rootReducer = combineReducers({
     dialogsPage: dialogsReducer,
     usersPage: usersReducer,
     auth: authReducer,
+    chat: chatReducer,
     form: formReducer
 })
 
