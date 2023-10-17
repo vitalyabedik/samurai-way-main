@@ -6,7 +6,7 @@ import {Provider} from 'react-redux';
 import './assets/styles/styles.css'
 import './index.css';
 
-import App from './App/App';
+import App from './app/App';
 import {store} from './redux/redux-store'
 
 export const renderTree = () => {

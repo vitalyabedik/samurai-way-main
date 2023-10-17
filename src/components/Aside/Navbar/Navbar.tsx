@@ -3,6 +3,7 @@ import {NavLink} from 'react-router-dom';
 import styles from './Navbar.module.css';
 
 import iconProfile from '../../../assets/images/aside/icon-profile.svg';
+import iconChat from '../../../assets/images/aside/icon-chat.svg';
 import iconMessages from '../../../assets/images/aside/icon-messages.svg';
 import iconUsers from '../../../assets/images/aside/icon-users.svg';
 import iconNews from '../../../assets/images/aside/icon-news.svg';
@@ -26,6 +27,14 @@ export const Navbar = () => {
                         <img src={iconUsers} alt="icon-users"/>
                     </div>
                     <span className={styles.span}>Users</span>
+                </NavLink>
+            </li>
+            <li className={styles.item}>
+                <NavLink to="/chat" className={styles.item__link} activeClassName={styles.item__link_active}>
+                    <div className={styles.item__image}>
+                        <img src={iconChat} alt="icon-chat"/>
+                    </div>
+                    <span className={styles.span}>Chat</span>
                 </NavLink>
             </li>
             <li className={styles.item}>

@@ -1,0 +1,7 @@
+.messages__items {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    height: 500px;
+    overflow-y: auto;
+}

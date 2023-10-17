@@ -15,9 +15,11 @@ import {AppStateType} from '../redux/redux-store';
 import {Preloader} from '../components/common';
 import {withSuspense} from '../hoc/withSuspense';
 import {NotFound404} from '../components/common/NotFound404';
+import ChatPage from '../components/Chat/ChatPage/ChatPage';
 
 const ProfileContainer = React.lazy(() => import('../components/Profile/ProfileContainer'))
 const UsersContainer = React.lazy(() => import('../components/Users/UsersContainer'))
+const ChatContainer = React.lazy(() => import('../components/Chat/ChatPage/ChatPage'))
 const DialogsContainer = React.lazy(() => import('../components/Dialogs/DialogsContainer'))
 const LoginContainer = React.lazy(() => import('../components/Login'))
 
@@ -38,6 +40,7 @@ class App extends React.Component<AppPropsType> {
                         <Switch>
                             <Route exact path="/" render={() => <Redirect to={'/profile'}/>}/>
                             <Route path="/profile/:userId?" render={withSuspense(ProfileContainer)}/>
+                            <Route path="/chat" render={() => <ChatPage/>  }/>
                             <Route path="/messages" render={withSuspense(DialogsContainer)}/>
                             <Route path="/users" render={withSuspense(UsersContainer)}/>
                             <Route path="/news" render={() => <News/>}/>
