@@ -1,3 +1,5 @@
+import {v1} from 'uuid';
+
 import {ChatMessageType} from '../../api/chatApi';
 import {ChatActionType} from '../actions/chatActions';
 import {CHAT_MESSAGES_RECEVIED, CHAT_SET_STATUS} from '../actions/actionTypes';
@@ -17,7 +19,13 @@ export const chatReducer = (state: InitialStateType = initialState, action: Chat
         case (CHAT_MESSAGES_RECEVIED): {
             return {
                 ...state,
-                messages: [...state.messages, ...action.payload.messages]
+                messages: [
+                    ...state.messages,
+                    ...action.payload.messages.map(message => ({
+                        ...message,
+                        id: v1(),
+                    })),
+                ].filter((_, index, array) => index >= array.length - 100),
             }
         }
         case (CHAT_SET_STATUS): {
