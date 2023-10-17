@@ -1,13 +1,13 @@
 import {v1} from 'uuid';
 
-import {ChatMessageType} from '../../api/chatApi';
 import {ChatActionType} from '../actions/chatActions';
 import {CHAT_MESSAGES_RECEVIED, CHAT_SET_STATUS} from '../actions/actionTypes';
+import {ChatMessageDomainType} from '../../api/chatApi';
 
 export type ChatStatusType = 'pending' | 'ready' | 'error'
 
 const initialState = {
-    messages: [] as ChatMessageType[],
+    messages: [] as ChatMessageDomainType[],
     status: 'pending' as ChatStatusType
 }
 

@@ -81,6 +81,10 @@ export type ChatMessageType = {
     userName: string
 }
 
+export type ChatMessageDomainType = ChatMessageType & {
+    id: string
+}
+
 type CallbackType = MessagesReceviedSubscriberType | StatusChangedSubscriberType
 
 type EventsNamesType = 'messages-received' | 'status-changed'
