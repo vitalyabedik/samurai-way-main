@@ -4,7 +4,6 @@ import {ChatMessageType} from '../../api/chatApi';
 import {ChatActionType} from '../actions/chatActions';
 import {CHAT_MESSAGES_RECEVIED, CHAT_SET_STATUS} from '../actions/actionTypes';
 
-
 export type ChatStatusType = 'pending' | 'ready' | 'error'
 
 const initialState = {

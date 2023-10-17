@@ -11,9 +11,9 @@ type PropsType = {
 }
 
 export const ChatMessage = memo((props: PropsType) => {
-    const {id, message} = props
+    const {message} = props
 
-    let path = `/chat/${id}`
+    let path = `/profile/${message.userId}`
 
     return (
             <div className={styles.root}>
