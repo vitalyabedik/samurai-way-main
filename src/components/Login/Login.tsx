@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {compose} from 'redux';
 import {connect} from 'react-redux';
 import {Redirect} from 'react-router-dom';
@@ -48,7 +48,7 @@ export const LoginForm: React.FC<AllSampleFormProps> = (props) => {
                 {error}
             </div>}
             <div>
-                <button type='submit' className={styles.loginButton}>Get Started</button>
+                <button type="submit" className={styles.loginButton}>Get Started</button>
             </div>
         </form>
     )
@@ -69,6 +69,16 @@ export const Login: React.FC<LoginType> = (props) => {
         login,
         captchaUrl
     } = props
+
+    const [isVisible, setIsVisible] = useState(false)
+
+    const onShowHandler = () => {
+        setIsVisible(true)
+    }
+
+    const onHideHandler = () => {
+        setIsVisible(false)
+    }
 
     const onSubmitHandler = (formData: LoginFormDataType) => {
         login(formData.email, formData.password, formData.rememberMe, formData.captcha)
@@ -91,9 +101,13 @@ export const Login: React.FC<LoginType> = (props) => {
                         <span className={styles.link}> here,</span>
                     </a>
                 </p>
-                <p>or use common test account credentials:</p>
-                <p>Email: free@samuraijs.com</p>
-                <p>Password: free</p>
+                <p>or use common test account credentials: {!isVisible ? <span className={styles.text} onClick={onShowHandler}>Show data</span> :
+                    <span className={styles.text} onClick={onHideHandler}>Hide data</span>}</p>
+                {isVisible &&
+                    <>
+                        <p className={styles.loginData}>Email: free@samuraijs.com</p>
+                        <p className={styles.loginData}>Password: free</p>
+                    </>}
             </div>
         </div>
     );
