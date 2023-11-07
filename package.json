@@ -1,8 +1,8 @@
 {
-  "name": "samurai-way",
+  "name": "socialite",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://vitalyabedik.github.io/it-incubator.samurai-way",
+  "homepage": "https://vitalyabedik.github.io/socialite",
   "dependencies": {
     "@testing-library/jest-dom": "5.14.1",
     "@testing-library/react": "12.0.0",

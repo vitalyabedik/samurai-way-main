@@ -38,7 +38,7 @@ class App extends React.Component<AppPropsType> {
                     {this.props.isAuth && <AsideContainer/>}
                     <div className={styles.content}>
                         <Switch>
-                            <Route exact path="/" render={() => <Redirect to={'/profile'}/>}/>
+                            <Route exact path="/" render={() => <Redirect to='/profile'/>}/>
                             <Route path="/profile/:userId?" render={withSuspense(ProfileContainer)}/>
                             <Route path="/chat" render={() => <ChatPage/>  }/>
                             <Route path="/messages" render={withSuspense(DialogsContainer)}/>
